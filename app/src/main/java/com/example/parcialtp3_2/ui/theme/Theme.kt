@@ -12,12 +12,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = Caribbean_Green,
+    secondary = Honeydew,
+    tertiary = Light_Green,
+    onPrimary = Cyprus,
+    onSecondary = Fence_Green,
+    onTertiary = Void,
+    background = light_blue,
+    inverseSurface = Ocean_blue,
+    tertiaryContainer = Vivid_blue
+
 )
 
-private val LightColorScheme = lightColorScheme(
+/*private val LightColorScheme = lightColorScheme(
     primary = Purple40,
     secondary = PurpleGrey40,
     tertiary = Pink40
@@ -32,7 +39,7 @@ private val LightColorScheme = lightColorScheme(
     onSurface = Color(0xFF1C1B1F),
     */
 )
-
+*/
 @Composable
 fun Parcialtp3_2Theme(
     darkTheme: Boolean = isSystemInDarkTheme(),
@@ -47,7 +54,7 @@ fun Parcialtp3_2Theme(
         }
 
         darkTheme -> DarkColorScheme
-        else -> LightColorScheme
+        else -> DarkColorScheme
     }
 
     MaterialTheme(
