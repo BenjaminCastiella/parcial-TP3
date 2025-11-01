@@ -7,7 +7,7 @@ import  androidx.compose.ui.Modifier
 import com.example.parcialtp3_2.components.ViewBackground
 
 @Composable
-fun SignUp(navController: NavController, modifier: Modifier){
+fun LogIn(navController: NavController, modifier: Modifier){
     ViewBackground(
         false,
         0.70f,

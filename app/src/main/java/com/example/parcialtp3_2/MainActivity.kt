@@ -7,15 +7,14 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.parcialtp3_2.ui.theme.Parcialtp3_2Theme
-import com.example.parcial_tp3_gro_8.views.SignUp
+import com.example.parcialtp3_2.views.LogIn
+import com.example.parcialtp3_2.views.Menu
+import com.example.parcialtp3_2.views.SignUp
 import com.example.parcialtp3_2.views.Welcome
 
 class MainActivity : ComponentActivity() {
@@ -33,8 +32,17 @@ class MainActivity : ComponentActivity() {
                     ){
                         composable(route = "/") {
                             Welcome(navController, modifier = Modifier.padding(innerPadding))
-                            //SignUp(navController, modifier = Modifier.padding(innerPadding))
                         }
+                        composable(route = "sign") {
+                            SignUp(navController, modifier = Modifier.padding(innerPadding))
+                        }
+                        composable(route = "log") {
+                            LogIn(navController, modifier = Modifier.padding(innerPadding))
+                        }
+                        composable(route = "menu") {
+                            Menu(navController, modifier = Modifier.padding(innerPadding))
+                        }
+
                     }
                 }
             }
