@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">parcialtp3_2</string>
+    <string name="container_name">Username Or Email</string>
+    <string name="container_label">example@example.com</string>
+    <string name="container_password">Password</string>
+    <string name="welcome">Welcome</string>
+    <string name="psw_message">●●●●●●●●</string>
+    <string name="log_in_button">Log In</string>
+    <string name="sign_up_button">Sign Up</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="sign_up_with">or sign up with</string>
+    <string name="create_account">Create Account</string>
 </resources>

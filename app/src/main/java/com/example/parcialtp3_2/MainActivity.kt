@@ -12,6 +12,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.parcialtp3_2.ui.theme.Parcialtp3_2Theme
+import com.example.parcialtp3_2.views.CreateAccount
 import com.example.parcialtp3_2.views.LogIn
 import com.example.parcialtp3_2.views.Menu
 import com.example.parcialtp3_2.views.SignUp
@@ -28,7 +29,7 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     NavHost(
                         navController = navController,
-                        startDestination = "/"
+                        startDestination = "sign"
                     ){
                         composable(route = "/") {
                             Welcome(navController, modifier = Modifier.padding(innerPadding))
@@ -42,6 +43,10 @@ class MainActivity : ComponentActivity() {
                         composable(route = "menu") {
                             Menu(navController, modifier = Modifier.padding(innerPadding))
                         }
+                        composable("create_account"){
+                            CreateAccount(navController,modifier = Modifier.padding(innerPadding))
+                        }
+
 
                     }
                 }
