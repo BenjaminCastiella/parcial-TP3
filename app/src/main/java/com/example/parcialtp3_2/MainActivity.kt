@@ -14,6 +14,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.parcialtp3_2.ui.theme.Parcialtp3_2Theme
 import com.example.parcialtp3_2.views.LogIn
 import com.example.parcialtp3_2.views.Menu
+import com.example.parcialtp3_2.views.Profile
 import com.example.parcialtp3_2.views.SignUp
 import com.example.parcialtp3_2.views.Welcome
 
@@ -30,8 +31,8 @@ class MainActivity : ComponentActivity() {
                         navController = navController,
                         startDestination = "log"
                     ){
-                        composable(route = "/") {
-                            Welcome(navController, modifier = Modifier.padding(innerPadding))
+                        composable(route = "profile") {
+                            Profile(navController, modifier = Modifier.padding(innerPadding))
                         }
                         composable(route = "sign") {
                             SignUp(navController, modifier = Modifier.padding(innerPadding))
@@ -42,6 +43,7 @@ class MainActivity : ComponentActivity() {
                         composable(route = "menu") {
                             Menu(navController, modifier = Modifier.padding(innerPadding))
                         }
+
 
                     }
                 }
