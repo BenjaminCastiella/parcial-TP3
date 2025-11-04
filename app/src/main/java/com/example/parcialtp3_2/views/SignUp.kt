@@ -41,7 +41,7 @@ import com.example.parcialtp3_2.components.secretInputText
 fun SignUp(navController: NavController, modifier: Modifier){
     ViewBackground(
         false,
-        0.75f,
+        0.80f,
         null,
         content1 = {
             Column (
@@ -109,7 +109,13 @@ fun SignUp(navController: NavController, modifier: Modifier){
 
                     Spacer(modifier = Modifier.height(25.dp))
 
-                    confirmationButton(modifier = Modifier, initText = stringResource(R.string.log_in_button))
+                    confirmationButton(modifier = Modifier,
+                        initText = stringResource(R.string.log_in_button),
+                        buttonColor = Color(0xFF00D09E),
+                        navController = navController,
+                        esCreate = false)
+
+
 
                     Spacer(modifier = Modifier.height(10.dp))
 
@@ -128,7 +134,8 @@ fun SignUp(navController: NavController, modifier: Modifier){
                         modifier = Modifier,
                         initText = stringResource(R.string.sign_up_button),
                         buttonColor = Color(0xFFDFF7E2),
-                        navController = navController
+                        navController = navController,
+                        esCreate = false
                     )
 
                     Spacer(modifier = Modifier.height(20.dp))
@@ -189,6 +196,8 @@ fun SignUp(navController: NavController, modifier: Modifier){
                         },
                         modifier = Modifier.padding(top = 5.dp).clickable{
                             //Navigation to Sign Up Screen
+                            navController.navigate("create_account")
+
                         },
 
 

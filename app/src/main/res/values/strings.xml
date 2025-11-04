@@ -10,4 +10,14 @@
     <string name="forgot_password">Forgot Password?</string>
     <string name="sign_up_with">or sign up with</string>
     <string name="create_account">Create Account</string>
+    <string name="create_full_name">Full Name</string>
+    <string name="create_email">Email</string>
+    <string name="create_mobile_number">Mobile Number</string>
+    <string name="create_mobile_number_content">+ 123 456 789</string>
+    <string name="create_date">Date of birth</string>
+    <string name="create_date_input">DD / MM /YYYY</string>
+    <string name = "confirm_password">Confirm Password</string>
+    <string name="terms">By continuing, you agree to
+ Terms of Use and Privacy Policy.</string>
+
 </resources>

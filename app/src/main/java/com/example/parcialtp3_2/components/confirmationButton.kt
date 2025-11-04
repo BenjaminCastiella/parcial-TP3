@@ -22,15 +22,26 @@ import androidx.navigation.NavController
 
 @Composable
 fun confirmationButton(modifier: Modifier, initText: String ,buttonColor: Color = Color(0xFF00D09E),
-        navController: NavController? = null,) {
+        navController: NavController? = null, esCreate:Boolean) {
     Button(
         shape = RoundedCornerShape(30.dp),
         onClick = {
-            if(initText == "Log In"){
-                //  navega al home
-            } else if (initText == "Sign Up"){
-                // Navega al create account
-                navController?.navigate("create_account")
+            when(initText){
+                "Log In" -> {
+                    // Navega al home
+                    //navController?.navigate("sign")
+                }
+                "Sign Up" -> {
+                    // Navega al create account
+                    if(esCreate){
+                        navController?.navigate("sign")
+
+                    }else {
+                        navController?.navigate("create_account")
+                    }
+
+                }
+
             }
         },
         modifier = modifier.width(195.dp).height(55.dp),

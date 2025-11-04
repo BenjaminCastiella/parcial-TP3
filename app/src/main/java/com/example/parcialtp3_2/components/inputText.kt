@@ -26,7 +26,7 @@ import com.example.parcialtp3_2.R
 @Composable
 
 fun inputText(modifier: Modifier, initText: String){
-    var textState by remember { mutableStateOf(initText) }
+    var textState by remember { mutableStateOf("") }
 
     TextField(
         value = textState,
