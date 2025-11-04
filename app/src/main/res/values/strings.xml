@@ -22,6 +22,8 @@
     <string name="forgot">Forgot Password</string>
     <string name="reset">Reset Password?</string>
     <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
+    <string name="emailAddress">Enter Email Address</string>
+    <string name="next_step_button">Next Step</string>
 
 
 </resources>

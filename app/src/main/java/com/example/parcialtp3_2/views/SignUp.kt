@@ -125,6 +125,7 @@ fun SignUp(navController: NavController, modifier: Modifier){
                         fontWeight = FontWeight(600),
                         fontFamily = FontFamily(Font(R.font.poppins_semi_bold)),
                         modifier = Modifier.clickable {
+                            navController.navigate("forgot")
                         }
                     )
 

@@ -16,6 +16,7 @@ import com.example.parcialtp3_2.views.CreateAccount
 import com.example.parcialtp3_2.views.ForgotPassword
 import com.example.parcialtp3_2.views.LogIn
 import com.example.parcialtp3_2.views.Menu
+import com.example.parcialtp3_2.views.NewPassword
 import com.example.parcialtp3_2.views.SignUp
 import com.example.parcialtp3_2.views.Welcome
 
@@ -49,6 +50,9 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(route = "forgot") {
                             ForgotPassword(navController, modifier = Modifier.padding(innerPadding))
+                        }
+                        composable(route = "new_password") {
+                            NewPassword(navController, modifier = Modifier.padding(innerPadding))
                         }
 
 
