@@ -8,16 +8,20 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.parcialtp3_2.ui.theme.Parcialtp3_2Theme
+import com.example.parcialtp3_2.views.ChangePin
 import com.example.parcialtp3_2.views.EditProfile
 import com.example.parcialtp3_2.views.LogIn
 import com.example.parcialtp3_2.views.Menu
 import com.example.parcialtp3_2.views.Profile
+import com.example.parcialtp3_2.views.Security
 import com.example.parcialtp3_2.views.SignUp
 import com.example.parcialtp3_2.views.Welcome
+import java.security.Security
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +51,13 @@ class MainActivity : ComponentActivity() {
                         composable(route = "menu") {
                             Menu(navController, modifier = Modifier.padding(innerPadding))
                         }
+                        composable(route = "security") {
+                            Security(navController, modifier = Modifier.padding(innerPadding))
+                        }
+                        composable(route = "changePin") {
+                            ChangePin(navController, modifier = Modifier.padding(innerPadding))
+                        }
+
 
 
                     }
@@ -54,4 +65,6 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
+
 }

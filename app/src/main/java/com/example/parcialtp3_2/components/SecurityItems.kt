@@ -8,21 +8,15 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.parcialtp3_2.R
-import com.example.parcialtp3_2.code_behind.IconBoxes
-import data.ItemsPerfil
-
+import data.ItemSecurity
 
 @Composable
-fun VistaPerfil (onNavigate: (String) -> Unit) {
+fun  SecurityItems(onNavigate: (String) -> Unit) {
     val items = listOf(
-        ItemsPerfil("Edit Profile", R.drawable.profile, IconBoxes.LIGHT_BLUE, "editProfile"),
-        ItemsPerfil("Security",R.drawable.seguridad, IconBoxes.MID_BLUE, "security"),
-        ItemsPerfil("Settings",R.drawable.settings, IconBoxes.DARK_BLUE, "profile"),
-        ItemsPerfil("Help",R.drawable.help, IconBoxes.LIGHT_BLUE, "profile"),
-        ItemsPerfil("Logout",R.drawable.logout, IconBoxes.MID_BLUE, "profile")
+        ItemSecurity(title = "Change pin", destination = "changePin"),
+        ItemSecurity(title = "Fingerprint", destination = "security"),
+        ItemSecurity(title = "Terms and conditions", destination = "security")
     )
-
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -30,7 +24,12 @@ fun VistaPerfil (onNavigate: (String) -> Unit) {
         verticalArrangement = Arrangement.spacedBy(25.dp)
     ) {
         items(items) { item ->
-            ListProfile(item) { clickedItem ->
+            MostrarSecurity(item) { clickedItem ->
                 onNavigate(clickedItem.destination) }
         } }
+
+
+
+
+
 }

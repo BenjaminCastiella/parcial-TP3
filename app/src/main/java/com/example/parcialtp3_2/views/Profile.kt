@@ -102,8 +102,7 @@ fun Profile(navController: NavController, modifier: Modifier) {
                     modifier = Modifier
                         .size(120.dp)
                         .offset(y = (-60).dp)
-                        .clip(CircleShape)
-                        .border(3.dp, Color.White, CircleShape),
+                        .clip(CircleShape),
                     contentScale = ContentScale.Crop
                 )
 
