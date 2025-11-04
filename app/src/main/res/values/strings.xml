@@ -27,6 +27,8 @@
     <string name="new_password">New Password</string>
     <string name="confirm">Confirm New Password</string>
     <string name="change">Change Password</string>
-
+    <string name="success">Password Has been Changed successfully!</string>
+    <string name="security_pin">Security Pin</string>
+    <string name="security_pin_description">Enter Security Pin</string>
 
 </resources>

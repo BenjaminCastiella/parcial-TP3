@@ -29,7 +29,7 @@ fun confirmationButton(modifier: Modifier, initText: String ,buttonColor: Color 
             when(initText){
                 "Log In" -> {
                     // Navega al home
-                    //navController?.navigate("sign")
+                    navController?.navigate("menu")
                 }
                 "Sign Up" -> {
                     // Navega al create account
@@ -43,6 +43,10 @@ fun confirmationButton(modifier: Modifier, initText: String ,buttonColor: Color 
                 }
                 "Next Step" -> {
                     // Navega al new password
+                    navController?.navigate("security_pin")
+                }
+                "Accept" -> {
+                    // Navega al new psswd
                     navController?.navigate("new_password")
                 }
                 "Change Password" -> {
