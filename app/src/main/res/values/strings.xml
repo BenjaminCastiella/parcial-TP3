@@ -19,5 +19,9 @@
     <string name = "confirm_password">Confirm Password</string>
     <string name="terms">By continuing, you agree to
  Terms of Use and Privacy Policy.</string>
+    <string name="forgot">Forgot Password</string>
+    <string name="reset">Reset Password?</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
+
 
 </resources>
