@@ -18,6 +18,7 @@ import com.example.parcialtp3_2.views.LogIn
 import com.example.parcialtp3_2.views.Menu
 import com.example.parcialtp3_2.views.NewPassword
 import com.example.parcialtp3_2.views.SignUp
+import com.example.parcialtp3_2.views.SuccessView
 import com.example.parcialtp3_2.views.Welcome
 
 class MainActivity : ComponentActivity() {
@@ -31,7 +32,7 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     NavHost(
                         navController = navController,
-                        startDestination = "forgot"
+                        startDestination = "new_password"
                     ){
                         composable(route = "/") {
                             Welcome(navController, modifier = Modifier.padding(innerPadding))
@@ -53,6 +54,9 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(route = "new_password") {
                             NewPassword(navController, modifier = Modifier.padding(innerPadding))
+                        }
+                        composable(route = "exito") {
+                            SuccessView(navController, modifier = Modifier.padding(innerPadding))
                         }
 
 

@@ -45,6 +45,10 @@ fun confirmationButton(modifier: Modifier, initText: String ,buttonColor: Color 
                     // Navega al new password
                     navController?.navigate("new_password")
                 }
+                "Change Password" -> {
+                    // Navega a la ventana de exito
+                    navController?.navigate("exito")
+                }
 
             }
         },
