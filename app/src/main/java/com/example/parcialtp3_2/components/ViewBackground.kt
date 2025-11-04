@@ -52,9 +52,10 @@ fun ViewBackground(
                 .fillMaxWidth()
                 .fillMaxHeight(whiteSpaceHeight)
                 .align(Alignment.BottomCenter)
-                .clip(RoundedCornerShape(topStart = 60.dp, topEnd = 60.dp))
-                .background(Color(0xFFF1FFF3))
-                .zIndex(0f)
+                .background(
+                    Color(0xFFF1FFF3),
+                    shape = RoundedCornerShape(topStart = 60.dp, topEnd = 60.dp)
+                )
         ){
             content2()
         }
