@@ -39,7 +39,7 @@ fun confirmationButton(
                 when(initText){
                     "Log In" -> {
                         // Navega al home
-                        navController?.navigate("menu")
+                        navController?.navigate("home")
                     }
                     "Sign Up" -> {
                         // Navega al create account

@@ -29,7 +29,6 @@ import com.example.parcialtp3_2.components.ViewBackground
 @Composable
 
 fun SuccessView(navController: NavController, modifier: Modifier) {
-    // Implementación de la pantalla de éxito
     ViewBackground(
         false,
         0.00f,
@@ -46,7 +45,6 @@ fun SuccessView(navController: NavController, modifier: Modifier) {
                     contentAlignment = Alignment.Center,
 
                 ) {
-
                     Icon(
                         painter = painterResource(id = R.drawable.checkk),
                         contentDescription = "Success Checkmark",
@@ -57,7 +55,6 @@ fun SuccessView(navController: NavController, modifier: Modifier) {
                         ),
                         tint = Color(0xFFDFF7E2)
                     )
-
                 }
 
                 Text(
@@ -69,11 +66,6 @@ fun SuccessView(navController: NavController, modifier: Modifier) {
                     modifier = Modifier.padding(top= 10.dp),
                     color = Color.White
                 )
-
-
-
-
-
             }
         },
         content2 = {

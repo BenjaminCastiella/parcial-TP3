@@ -124,7 +124,6 @@ fun SignUp(navController: NavController, modifier: Modifier){
                         navController = navController,
                         esCreate = false,
                         onClick = { }
-
                     )
 
                     Spacer(modifier = Modifier.height(10.dp))
