@@ -43,6 +43,7 @@ android {
 }
 
 dependencies {
+    val roomVersion = "2.8.2"
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -68,5 +69,12 @@ dependencies {
     ksp(libs.androidx.room.compiler)
     implementation(libs.coil)
     implementation(libs.coil.compose)
+    implementation("androidx.room:room-runtime:$roomVersion")
+    annotationProcessor("androidx.room:room-ktx:$roomVersion")
+    implementation("androidx.room:room-rxjava2:$roomVersion")
+    implementation("androidx.room:room-rxjava3:$roomVersion")
+    implementation("androidx.room:room-guava:$roomVersion")
+    testImplementation("androidx.room:room-testing:$roomVersion")
+    implementation("androidx.room:room-paging:$roomVersion")
 
 }
