@@ -14,13 +14,19 @@ import data.ItemsPerfil
 
 
 @Composable
-fun VistaPerfil (onNavigate: (String) -> Unit) {
+fun VistaPerfil (onNavigate: (String) -> Unit, int: Int) {
     val items = listOf(
-        ItemsPerfil("Edit Profile", R.drawable.profile, IconBoxes.LIGHT_BLUE, "editProfile"),
-        ItemsPerfil("Security",R.drawable.seguridad, IconBoxes.MID_BLUE, "security"),
-        ItemsPerfil("Settings",R.drawable.settings, IconBoxes.DARK_BLUE, "profile"),
-        ItemsPerfil("Help",R.drawable.help, IconBoxes.LIGHT_BLUE, "profile"),
-        ItemsPerfil("Logout",R.drawable.logout, IconBoxes.MID_BLUE, "profile")
+        ItemsPerfil("Edit Profile", R.drawable.profile, IconBoxes.LIGHT_BLUE, "editProfile",false),
+        ItemsPerfil("Security",R.drawable.seguridad, IconBoxes.MID_BLUE, "security",false),
+        ItemsPerfil("Settings",R.drawable.settings, IconBoxes.DARK_BLUE, "profile",false),
+        ItemsPerfil("Help",R.drawable.help, IconBoxes.LIGHT_BLUE, "profile",false),
+        ItemsPerfil("Logout",R.drawable.logout, IconBoxes.MID_BLUE, "profile",false)
+    )
+
+    val itemsFinger = listOf(
+        ItemsPerfil("John Fingerprint",R.drawable.huella,IconBoxes.LIGHT_BLUE,"johnFinger",true),
+        ItemsPerfil("Add Fingerprint",R.drawable.mas,IconBoxes.DARK_BLUE,"addFinger",true)
+
     )
 
     LazyColumn(
@@ -29,8 +35,18 @@ fun VistaPerfil (onNavigate: (String) -> Unit) {
             .padding(vertical = 16.dp),
         verticalArrangement = Arrangement.spacedBy(25.dp)
     ) {
+        if(int==0){
         items(items) { item ->
             ListProfile(item) { clickedItem ->
-                onNavigate(clickedItem.destination) }
-        } }
+                onNavigate(clickedItem.destination)
+            }
+        }
+        }else{
+            items(itemsFinger) { item ->
+                ListProfile(item) { clickedItem ->
+                    onNavigate(clickedItem.destination)
+                }
+            }
+        }
+    }
 }

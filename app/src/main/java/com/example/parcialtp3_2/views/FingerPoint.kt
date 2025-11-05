@@ -1,27 +1,18 @@
 package com.example.parcialtp3_2.views
 
-import android.os.Build
-import androidx.annotation.RequiresApi
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -30,17 +21,13 @@ import androidx.navigation.NavController
 import com.example.parcialtp3_2.R
 import com.example.parcialtp3_2.code_behind.IconBoxes
 import com.example.parcialtp3_2.components.IconBox
-import com.example.parcialtp3_2.components.InputChange
-import com.example.parcialtp3_2.components.InputEditProfile
-import com.example.parcialtp3_2.components.ListProfile
-import com.example.parcialtp3_2.components.SwitchEditProfile
 import com.example.parcialtp3_2.components.ViewBackground
+import com.example.parcialtp3_2.components.VistaPerfil
 import com.example.parcialtp3_2.ui.theme.poppinsFamily
-import androidx.compose.material3.Button
-import com.example.parcialtp3_2.components.BotonChange
 
 @Composable
-fun ChangePin(navController: NavController, modifier: Modifier){
+fun FingerPoint(navController: NavController, modifier: Modifier){
+
     ViewBackground(
         true,
         0.85f,
@@ -67,7 +54,7 @@ fun ChangePin(navController: NavController, modifier: Modifier){
             }
 
             Text(
-                text = "Change Pin",
+                text = "FingerPrint",
                 fontFamily = poppinsFamily,
                 fontWeight = FontWeight.SemiBold,
                 fontSize = 20.sp,
@@ -82,32 +69,27 @@ fun ChangePin(navController: NavController, modifier: Modifier){
 
 
 
-        },
-        content2 = @androidx.compose.runtime.Composable {
-
+        },content2 = {
             Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(top = 80.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
+                modifier = Modifier.fillMaxSize().padding(top = 20.dp)
             ) {
-
-                InputChange(title="Current Pin")
-                InputChange(title="New Pin")
-                InputChange(title="Current Pin")
-
-                Spacer(modifier = Modifier.height(20.dp))
-
-
-                BotonChange (navController)
-                    }
-
-                Spacer(modifier = Modifier.height(13.dp))
+                Spacer(modifier = Modifier.height(17.dp)) // mueve todo hacia abajo
+                VistaPerfil({ route -> navController.navigate(route)},1)
+            }
 
 
 
 
 
-}
-)
+        }
+
+
+
+
+
+
+
+
+    )
+
 }

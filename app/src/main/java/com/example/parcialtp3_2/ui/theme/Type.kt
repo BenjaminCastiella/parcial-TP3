@@ -15,8 +15,11 @@ import com.example.parcialtp3_2.R
 
 val poppinsFamily= FontFamily(
      Font( R.font.poppins_semi_bold, weight= FontWeight.SemiBold),
-    Font(R.font.poppins_bold, weight= FontWeight.Bold)
+    Font(R.font.poppins_bold, weight= FontWeight.Bold),
+
 )
+
+val LeagueFamily= FontFamily(Font(R.font.poppins_league_spartan_regular, weight= FontWeight.Normal))
 // Set of Material typography styles to start with
 val Typography = Typography(
     bodyLarge = TextStyle(

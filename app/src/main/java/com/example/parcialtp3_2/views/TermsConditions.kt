@@ -1,8 +1,6 @@
 package com.example.parcialtp3_2.views
 
-import android.os.Build
-import androidx.annotation.RequiresApi
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -12,9 +10,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -30,17 +29,13 @@ import androidx.navigation.NavController
 import com.example.parcialtp3_2.R
 import com.example.parcialtp3_2.code_behind.IconBoxes
 import com.example.parcialtp3_2.components.IconBox
-import com.example.parcialtp3_2.components.InputChange
-import com.example.parcialtp3_2.components.InputEditProfile
-import com.example.parcialtp3_2.components.ListProfile
-import com.example.parcialtp3_2.components.SwitchEditProfile
+import com.example.parcialtp3_2.components.Terminos
 import com.example.parcialtp3_2.components.ViewBackground
+import com.example.parcialtp3_2.ui.theme.LeagueFamily
 import com.example.parcialtp3_2.ui.theme.poppinsFamily
-import androidx.compose.material3.Button
-import com.example.parcialtp3_2.components.BotonChange
 
 @Composable
-fun ChangePin(navController: NavController, modifier: Modifier){
+fun TermsConditions(navController: NavController, modifier: Modifier){
     ViewBackground(
         true,
         0.85f,
@@ -67,47 +62,61 @@ fun ChangePin(navController: NavController, modifier: Modifier){
             }
 
             Text(
-                text = "Change Pin",
+                text = "Terms And Conditions",
                 fontFamily = poppinsFamily,
                 fontWeight = FontWeight.SemiBold,
                 fontSize = 20.sp,
                 color = colorResource(R.color.Void),
-                modifier = Modifier.absoluteOffset(x = 130.dp, y = 61.dp)
+                modifier = Modifier.absoluteOffset(x = 65.dp, y = 61.dp)
 
 
             )
-
-
-
-
-
-
         },
-        content2 = @androidx.compose.runtime.Composable {
 
+        content2 = {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(top = 80.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
+                    .background(Color(0xFFF1FFF3))
+                    .padding(16.dp)
             ) {
 
-                InputChange(title="Current Pin")
-                InputChange(title="New Pin")
-                InputChange(title="Current Pin")
-
-                Spacer(modifier = Modifier.height(20.dp))
+                Terminos(navController)
 
 
-                BotonChange (navController)
-                    }
-
-                Spacer(modifier = Modifier.height(13.dp))
+                Spacer(modifier = Modifier.weight(20F))
 
 
+                Button(
+                    onClick = {  },
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00D09E)),
+                    shape = RoundedCornerShape(16.dp),
+                    modifier = Modifier
+                        .fillMaxWidth(0.5f)
+                        .height(40.dp)
+                        .align(Alignment.CenterHorizontally)
+                ) {
+                    Text(
+                        text = "Accept",
+                        color = colorResource(R.color.Void),
+                        fontFamily = poppinsFamily,
+                        fontWeight = FontWeight.Medium,
+                        fontSize = 16.sp
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(40.dp))
+            }
 
 
 
-}
-)
-}
+
+
+
+
+
+
+
+
+        }
+    )}

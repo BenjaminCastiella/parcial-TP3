@@ -50,7 +50,7 @@ fun InputEditProfile(
 
         Spacer(modifier = Modifier.height(4.dp))
 
-        // 🔹 Input sin borde
+
         TextField(
             value = text,
             onValueChange = { text = it },
@@ -71,7 +71,7 @@ fun InputEditProfile(
                 focusedContainerColor = colorResource(R.color.Light_Green),
                 unfocusedContainerColor = colorResource(R.color.Light_Green),
                 disabledContainerColor = colorResource(R.color.Light_Green),
-                focusedIndicatorColor = Color.Transparent, // sin línea
+                focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
                 cursorColor = Color(0xFF00D09E)),
             textStyle = TextStyle(
@@ -82,5 +82,5 @@ fun InputEditProfile(
         )
     }
 
-    Spacer(modifier = Modifier.height(12.dp)) // separación entre inputs
+    Spacer(modifier = Modifier.height(12.dp))
 }

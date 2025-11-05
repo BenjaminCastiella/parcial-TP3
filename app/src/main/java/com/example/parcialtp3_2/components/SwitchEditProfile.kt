@@ -44,8 +44,8 @@ fun SwitchEditProfile(title: String) {
             colors = SwitchDefaults.colors(
                 checkedThumbColor = Color(0xFFFFFFFF),
                 uncheckedThumbColor = Color(0xFFFFFFFF),
-                checkedTrackColor = Color(0xFF3AC7A0),   // Verde claro
-                uncheckedTrackColor = Color(0xFFDFF7E2), // Color de fondo blanco-verde (igual al fondo)
+                checkedTrackColor = Color(0xFF3AC7A0),
+                uncheckedTrackColor = Color(0xFFDFF7E2),
                 disabledUncheckedTrackColor = Color(0xFFF1FFF3),
                 disabledUncheckedThumbColor = Color(0xFFFFFFFF)
             )

@@ -14,8 +14,8 @@ import data.ItemSecurity
 fun  SecurityItems(onNavigate: (String) -> Unit) {
     val items = listOf(
         ItemSecurity(title = "Change pin", destination = "changePin"),
-        ItemSecurity(title = "Fingerprint", destination = "security"),
-        ItemSecurity(title = "Terms and conditions", destination = "security")
+        ItemSecurity(title = "Fingerprint", destination = "fingerPoint"),
+        ItemSecurity(title = "Terms And Conditions", destination = "terms")
     )
     LazyColumn(
         modifier = Modifier

@@ -49,7 +49,7 @@ fun InputChange(
             .fillMaxWidth()
             .padding(horizontal = 16.dp)
     ) {
-        // 🔹 Título
+
         Text(
             text = title,
             fontFamily = poppinsFamily,
@@ -60,7 +60,6 @@ fun InputChange(
 
         Spacer(modifier = Modifier.height(4.dp))
 
-        // 🔹 Campo del PIN
         TextField(
             value = text,
             onValueChange = { text = it },
@@ -72,16 +71,16 @@ fun InputChange(
                 )
             },
             singleLine = true,
-            visualTransformation = PasswordVisualTransformation(), // 👈 muestra puntos negros
+            visualTransformation = PasswordVisualTransformation(),
             trailingIcon = {
                 Icon(
-                    painter = painterResource(id = R.drawable.ojo_cerrado), // 👁️ icono estático
+                    painter = painterResource(id = R.drawable.ojo_cerrado),
                     contentDescription = "Eye icon",
                     tint = colorResource(R.color.Cyprus)
                 )
             },
             modifier = Modifier
-                .fillMaxWidth(0.98f) // 👈 recortado del lado derecho
+                .fillMaxWidth(0.98f)
                 .height(55.dp)
                 .clip(RoundedCornerShape(14.dp))
                 .background(colorResource(R.color.Light_Green)),

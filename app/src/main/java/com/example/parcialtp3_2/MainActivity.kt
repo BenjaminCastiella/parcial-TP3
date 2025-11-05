@@ -12,14 +12,20 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.parcialtp3_2.components.PantallaCarga
+import com.example.parcialtp3_2.components.PantallaCarga
 import com.example.parcialtp3_2.ui.theme.Parcialtp3_2Theme
+import com.example.parcialtp3_2.views.AddFinger
 import com.example.parcialtp3_2.views.ChangePin
 import com.example.parcialtp3_2.views.EditProfile
+import com.example.parcialtp3_2.views.FingerPoint
+import com.example.parcialtp3_2.views.JohnFinger
 import com.example.parcialtp3_2.views.LogIn
 import com.example.parcialtp3_2.views.Menu
 import com.example.parcialtp3_2.views.Profile
 import com.example.parcialtp3_2.views.Security
 import com.example.parcialtp3_2.views.SignUp
+import com.example.parcialtp3_2.views.TermsConditions
 import com.example.parcialtp3_2.views.Welcome
 import java.security.Security
 
@@ -56,6 +62,37 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(route = "changePin") {
                             ChangePin(navController, modifier = Modifier.padding(innerPadding))
+                        }
+                        composable(route = "pantallaCargaPin") {
+                            PantallaCarga(navController, modifier = Modifier.padding(innerPadding),
+                                title = "Pin Has Been\nChanged Successfully", salida = "security",
+                                destinationInicial = "changePin"
+                            )
+                        }
+                        composable(route = "pantallDelete") {
+                            PantallaCarga(navController, modifier = Modifier.padding(innerPadding),
+                                title = "The fingerprint\nHas been Successfully\nDeleted.", salida = "fingerPoint",
+                                destinationInicial = "johnFinger")
+
+                        }
+                        composable(route = "pantallaAdd") {
+                            PantallaCarga(navController, modifier = Modifier.padding(innerPadding),
+                                title = "Fingerprint Has Been\nChanged Successfully", salida = "fingerPoint",
+                                destinationInicial = "addFinger")
+                        }
+
+
+                        composable(route = "fingerPoint") {
+                            FingerPoint(navController, modifier = Modifier.padding(innerPadding))
+                        }
+                        composable(route = "johnFinger") {
+                            JohnFinger(navController, modifier = Modifier.padding(innerPadding))
+                        }
+                        composable(route = "addFinger") {
+                            AddFinger(navController, modifier = Modifier.padding(innerPadding))
+                        }
+                        composable(route = "terms") {
+                            TermsConditions(navController, modifier = Modifier.padding(innerPadding))
                         }
 
 
