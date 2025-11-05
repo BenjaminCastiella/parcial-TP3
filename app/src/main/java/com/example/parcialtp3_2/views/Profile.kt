@@ -102,8 +102,7 @@ fun Profile(navController: NavController, modifier: Modifier) {
                     modifier = Modifier
                         .size(120.dp)
                         .offset(y = (-60).dp)
-                        .clip(CircleShape)
-                        .border(3.dp, Color.White, CircleShape),
+                        .clip(CircleShape),
                     contentScale = ContentScale.Crop
                 )
 
@@ -140,9 +139,9 @@ fun Profile(navController: NavController, modifier: Modifier) {
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(top = 115.dp,start = 24.dp)
+                        .padding(top = 115.dp,start = 18.dp)
                 ) {
-                    VistaPerfil { route -> navController.navigate(route) }
+                    VistaPerfil ({ route -> navController.navigate(route)},0)
                 }
             }
         }

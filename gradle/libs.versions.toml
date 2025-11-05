@@ -15,6 +15,12 @@ room = "2.8.3"
 coil = "2.7.0"
 dagger = "2.57.2"
 foundation = "1.9.4"
+foundationLayout = "1.9.4"
+ui = "1.9.4"
+material3 = "1.4.0"
+uiText = "1.9.4"
+composeMaterial3 = "1.5.4"
+navigationRuntimeKtx = "2.9.5"
 
 
 [libraries]
@@ -43,6 +49,12 @@ coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coi
 dagger = { group = "com.google.dagger", name = "dagger", version.ref = "dagger" }
 dagger-compiler = { group = "com.google.dagger", name = "dagger-compiler", version.ref = "dagger" }
 androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "foundation" }
+androidx-compose-foundation-layout = { group = "androidx.compose.foundation", name = "foundation-layout", version.ref = "foundationLayout" }
+androidx-compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "ui" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
+androidx-compose-ui-text = { group = "androidx.compose.ui", name = "ui-text", version.ref = "uiText" }
+compose-material3 = { group = "androidx.wear.compose", name = "compose-material3", version.ref = "composeMaterial3" }
+androidx-navigation-runtime-ktx = { group = "androidx.navigation", name = "navigation-runtime-ktx", version.ref = "navigationRuntimeKtx" }
 
 
 
