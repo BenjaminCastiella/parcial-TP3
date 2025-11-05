@@ -103,7 +103,8 @@ fun NewPassword(navController: NavController, modifier: Modifier) {
                         .padding(top = 60.dp, start = 30.dp, end = 30.dp).fillMaxWidth(),
                         initText = stringResource(R.string.change),
                         navController = navController,
-                        esCreate = false
+                        esCreate = false,
+                        onClick = { }
                     )
                 }
             }

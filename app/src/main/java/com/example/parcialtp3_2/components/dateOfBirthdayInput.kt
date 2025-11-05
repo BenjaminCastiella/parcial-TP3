@@ -18,18 +18,20 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 
-fun dateOfBirthdayInput(modifier: Modifier, initText: String){
-
-    var dateOfBirth by remember { mutableStateOf("") }
-
+fun dateOfBirthdayInput(
+    modifier: Modifier,
+    initText: String,
+    textState: String,
+    onChange: (newValue: String) -> Unit
+){
     TextField(
-        value = dateOfBirth,
+        value = textState,
         onValueChange = { nuevoTexto: String ->
 
             if (nuevoTexto.all { it.isDigit() || it == '/'  }) {
 
                 if (nuevoTexto.length <= 10) {
-                    dateOfBirth = nuevoTexto
+                    onChange(nuevoTexto)
                 }
             }
         },

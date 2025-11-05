@@ -86,14 +86,16 @@ fun SecurityPinView(navController: NavController, modifier: Modifier = Modifier)
                         modifier = modifier.height(42.dp),
                         initText = "Accept",
                         navController = navController,
-                        esCreate = false
+                        esCreate = false,
+                        onClick = { }
                     )
                     confirmationButton(
                         modifier = modifier.height(42.dp),
                         initText = "Send Again",
                         buttonColor = Color(0xFFDFF7E2),
                         navController = navController,
-                        esCreate = false
+                        esCreate = false,
+                        onClick = { }
                     )
 
                     Spacer(modifier = Modifier.height(90.dp))

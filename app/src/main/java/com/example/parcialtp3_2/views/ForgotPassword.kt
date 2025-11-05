@@ -1,6 +1,5 @@
 package com.example.parcialtp3_2.views
 
-import android.widget.Space
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -15,6 +14,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -37,13 +40,21 @@ import com.example.parcialtp3_2.components.inputText
 @Composable
 
 fun ForgotPassword(navController: NavController, modifier: Modifier){
+    var psswd by remember { mutableStateOf("") }
+
+    val updatePsswd: (String) -> Unit = { newValue ->
+        psswd = newValue
+    }
+
     ViewBackground(
         false,
         0.80f,
         null,
         content1 = {
             Column (
-                modifier = Modifier.fillMaxHeight().fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .fillMaxWidth(),
                 verticalArrangement = Arrangement.Top,
                 horizontalAlignment = Alignment.CenterHorizontally
             ){
@@ -88,7 +99,9 @@ fun ForgotPassword(navController: NavController, modifier: Modifier){
                             stringResource(R.string.lorem),
                             fontFamily = FontFamily(Font(R.font.poppins_regular)),
                             fontSize = 9.sp,
-                            modifier = Modifier.padding(bottom = 4.dp).width(359.dp),
+                            modifier = Modifier
+                                .padding(bottom = 4.dp)
+                                .width(359.dp),
                             lineHeight = 18.sp,
                         )
 
@@ -104,10 +117,10 @@ fun ForgotPassword(navController: NavController, modifier: Modifier){
 
                         inputText(
                             modifier = Modifier.fillMaxWidth(),
-                            initText = stringResource(R.string.container_label)
+                            initText = stringResource(R.string.container_label),
+                            textState = psswd,
+                            onChange = updatePsswd
                         )
-
-
                     }
 
                     Spacer(modifier.height(20.dp))
@@ -117,7 +130,8 @@ fun ForgotPassword(navController: NavController, modifier: Modifier){
                         initText = stringResource(R.string.next_step_button),
                         buttonColor = Color(0xFF00D09E),
                         navController = navController,
-                        esCreate = false
+                        esCreate = false,
+                        onClick = {}
                     )
 
                     Spacer(modifier.height(50.dp))
@@ -127,7 +141,8 @@ fun ForgotPassword(navController: NavController, modifier: Modifier){
                         initText = stringResource(R.string.sign_up_button),
                         buttonColor = Color(0xFFDFF7E2),
                         navController = navController,
-                        esCreate = false
+                        esCreate = false,
+                        onClick = { }
                     )
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(20.dp),
@@ -157,11 +172,13 @@ fun ForgotPassword(navController: NavController, modifier: Modifier){
                             }
 
                         },
-                        modifier = Modifier.padding(top = 15.dp).clickable{
-                            //Navigation to Sign Up Screen
-                            navController.navigate("create_account")
+                        modifier = Modifier
+                            .padding(top = 15.dp)
+                            .clickable {
+                                //Navigation to Sign Up Screen
+                                navController.navigate("create_account")
 
-                        },
+                            },
 
 
                         )

@@ -1,6 +1,5 @@
 package com.example.parcialtp3_2.views
 
-import android.widget.Space
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -13,13 +12,18 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.navigation.NavController
 import  androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -28,6 +32,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -57,7 +62,6 @@ fun SignUp(navController: NavController, modifier: Modifier){
                     fontWeight = FontWeight(600),
                     fontSize = 30.sp
                 )
-
             }
         },
         content2 = {
@@ -67,13 +71,11 @@ fun SignUp(navController: NavController, modifier: Modifier){
             ) {
                 Spacer(modifier = Modifier.height(50.667.dp))
 
-
                 Column(
                     verticalArrangement = Arrangement.Top,
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier.fillMaxWidth()
                 ) {
-
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -85,7 +87,14 @@ fun SignUp(navController: NavController, modifier: Modifier){
                             fontFamily = FontFamily(Font(R.font.poppins_medium)),
                             fontWeight = FontWeight(500),
                         )
-                        inputText(modifier = modifier, initText = stringResource(R.string.container_label))
+                        /*
+                        inputText(
+                            modifier = modifier,
+                            initText = stringResource(R.string.container_label),
+                            textState = "",
+                            onChange = updateEmail
+                        )
+                        */
                     }
 
                     //Spacer(modifier = Modifier.height(30.dp))
@@ -113,9 +122,10 @@ fun SignUp(navController: NavController, modifier: Modifier){
                         initText = stringResource(R.string.log_in_button),
                         buttonColor = Color(0xFF00D09E),
                         navController = navController,
-                        esCreate = false)
+                        esCreate = false,
+                        onClick = { }
 
-
+                    )
 
                     Spacer(modifier = Modifier.height(10.dp))
 
@@ -131,12 +141,31 @@ fun SignUp(navController: NavController, modifier: Modifier){
 
                     Spacer(modifier = Modifier.height(25.dp))
 
-                    confirmationButton(
-                        modifier = Modifier,
-                        initText = stringResource(R.string.sign_up_button),
-                        buttonColor = Color(0xFFDFF7E2),
-                        navController = navController,
-                        esCreate = false
+                    Text(
+                        text = buildAnnotatedString {
+                            append("Sign Up")
+                            withStyle(
+                                style = SpanStyle(
+                                    color = Color(0xFF0E3E3E),
+                                ),
+                            ){
+
+                            }
+                        },
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(30.dp))
+                            .width(195.dp)
+                            .height(55.dp)
+                            .background(Color(0xFFDFF7E2))
+                            .padding(top = 15.dp)
+                            .clickable{
+                            navController.navigate("create_account")
+                        },
+                        color = Color.Black,
+                        fontSize = 20.sp,
+                        fontFamily = FontFamily(Font(com.example.parcialtp3_2.R.font.poppins_semi_bold)),
+                        textAlign = TextAlign.Center
+
                     )
 
                     Spacer(modifier = Modifier.height(20.dp))
@@ -200,18 +229,9 @@ fun SignUp(navController: NavController, modifier: Modifier){
                             navController.navigate("create_account")
 
                         },
-
-
                     )
-
                 }
             }
         }
-
-
-
-
-
-
     )
 }

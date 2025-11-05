@@ -18,13 +18,17 @@ import com.example.parcialtp3_2.R
 
 @Composable
 
-fun mobileNumberInput(modifier: androidx.compose.ui.Modifier, initText: String){
-    var phoneNumber by remember { mutableStateOf("") }
+fun mobileNumberInput(
+    modifier: Modifier,
+    initText: String,
+    textState: String,
+    onChange: (newValue: String) -> Unit
+){
     TextField(
-        value = phoneNumber,
+        value = textState,
         onValueChange = { nuevoTexto:String ->
             if (nuevoTexto.all { it.isDigit() || it == '+' || it.isWhitespace() }) {
-                phoneNumber = nuevoTexto
+                onChange(nuevoTexto)
             }
         },
         singleLine = true,

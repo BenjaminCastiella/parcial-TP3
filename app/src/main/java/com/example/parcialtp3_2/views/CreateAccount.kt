@@ -1,7 +1,6 @@
 package com.example.parcialtp3_2.views
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.gestures.snapping.SnapPosition
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -11,6 +10,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -32,10 +35,57 @@ import com.example.parcialtp3_2.components.dateOfBirthdayInput
 import com.example.parcialtp3_2.components.inputText
 import com.example.parcialtp3_2.components.mobileNumberInput
 import com.example.parcialtp3_2.components.secretInputText
+import com.example.parcialtp3_2.infraestructura.AppDatabase
+import com.example.parcialtp3_2.infraestructura.UserEntity
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import java.util.Date
 
 
 @Composable
-fun CreateAccount(navController: NavController, modifier: Modifier) {
+fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatabase) {
+    var email by remember { mutableStateOf("") }
+    var name by remember { mutableStateOf("") }
+    var mobileNum by remember { mutableStateOf("") }
+    var birth by remember { mutableStateOf("") }
+
+    val updateEmail: (String) -> Unit = { newValue ->
+        email = newValue
+        println(email)
+    }
+
+    val updateName: (String) -> Unit = { newValue ->
+        name = newValue
+        println(name)
+    }
+
+    val updateMobileNum: (String) -> Unit = { newValue ->
+        mobileNum = newValue
+        println(mobileNum)
+    }
+
+    val updateBirth: (String) -> Unit = { newValue ->
+        birth = newValue
+        println(birth)
+    }
+
+    val createUserOnBdd: suspend () -> Unit = {
+        withContext(Dispatchers.IO) {
+            var nextUid: Int
+            var allUsers = db.userDao().getAll()
+            if(allUsers.size < 1) nextUid = 1 else nextUid = allUsers.last().id + 1
+
+            db.userDao().insert(UserEntity(
+                id = nextUid,
+                name = name,
+                email = email,
+                mobile_number = mobileNum,
+                birth_date = birth,
+                created_at = Date().toString()
+            ))
+        }
+    }
+
     ViewBackground(
         false,
         0.80f,
@@ -84,7 +134,9 @@ fun CreateAccount(navController: NavController, modifier: Modifier) {
                         )
                         inputText(
                             modifier = Modifier.fillMaxWidth(),
-                            initText = stringResource(R.string.container_label)
+                            initText = stringResource(R.string.container_label),
+                            textState = name,
+                            onChange = updateName
                         )
                     }
                     Spacer(modifier = Modifier.height(10.dp))
@@ -103,7 +155,9 @@ fun CreateAccount(navController: NavController, modifier: Modifier) {
                         )
                         inputText(
                             modifier = Modifier.fillMaxWidth(),
-                            initText = stringResource(R.string.container_label)
+                            initText = stringResource(R.string.container_label),
+                            textState = email,
+                            onChange = updateEmail
                         )
                     }
                     //Mobile number Input
@@ -124,7 +178,9 @@ fun CreateAccount(navController: NavController, modifier: Modifier) {
                         )
                         mobileNumberInput(
                             modifier = Modifier.fillMaxWidth(),
-                            initText = stringResource(R.string.create_mobile_number_content)
+                            initText = stringResource(R.string.create_mobile_number_content),
+                            textState = mobileNum,
+                            onChange = updateMobileNum
                         )
                     }
                     //Date of Birth Input
@@ -144,7 +200,9 @@ fun CreateAccount(navController: NavController, modifier: Modifier) {
                         )
                         dateOfBirthdayInput(
                             modifier = Modifier.fillMaxWidth(),
-                            initText = stringResource(R.string.create_date_input)
+                            initText = stringResource(R.string.create_date_input),
+                            textState = birth,
+                            onChange = updateBirth
                         )
                     }
 
@@ -214,7 +272,8 @@ fun CreateAccount(navController: NavController, modifier: Modifier) {
                         initText = stringResource(R.string.sign_up_button),
                         buttonColor = Color(0xFF00D09E),
                         navController = navController,
-                        esCreate = true
+                        esCreate = true,
+                        onClick = createUserOnBdd
                     )
                     Spacer(Modifier.height(5.dp))
                     Text(
