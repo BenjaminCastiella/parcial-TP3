@@ -355,6 +355,7 @@ fun Home(navController: NavController, modifier: Modifier){
                                 .padding(15.dp)
                                 .clickable{
                                     selectedPeriod = i
+
                                 },
                         )
                     }
