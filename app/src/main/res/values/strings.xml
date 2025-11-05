@@ -30,5 +30,7 @@
     <string name="success">Password Has been Changed successfully!</string>
     <string name="security_pin">Security Pin</string>
     <string name="security_pin_description">Enter Security Pin</string>
+    <string name="pin">273916</string>
+
 
 </resources>

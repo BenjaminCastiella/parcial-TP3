@@ -11,7 +11,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 
-fun pinCodeComponent(pinCode: String = "273916") {
+fun pinCodeComponent(pinCode: String ) {
     // Implementación del componente de PIN
     Row (
         modifier = Modifier.width(307.dp).wrapContentHeight(),
