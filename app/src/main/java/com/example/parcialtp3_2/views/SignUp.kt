@@ -44,6 +44,13 @@ import com.example.parcialtp3_2.components.secretInputText
 
 @Composable
 fun SignUp(navController: NavController, modifier: Modifier){
+    var email by remember { mutableStateOf("") }
+
+    val updateEmail: (String) -> Unit = { newValue ->
+        email = newValue
+        println(email)
+    }
+
     ViewBackground(
         false,
         0.80f,
@@ -87,18 +94,15 @@ fun SignUp(navController: NavController, modifier: Modifier){
                             fontFamily = FontFamily(Font(R.font.poppins_medium)),
                             fontWeight = FontWeight(500),
                         )
-                        /*
                         inputText(
                             modifier = modifier,
                             initText = stringResource(R.string.container_label),
                             textState = "",
                             onChange = updateEmail
                         )
-                        */
                     }
 
-                    //Spacer(modifier = Modifier.height(30.dp))
-
+                    Spacer(modifier = Modifier.height(30.dp))
 
                     Column(
                         modifier = Modifier
@@ -124,7 +128,6 @@ fun SignUp(navController: NavController, modifier: Modifier){
                         navController = navController,
                         esCreate = false,
                         onClick = { }
-
                     )
 
                     Spacer(modifier = Modifier.height(10.dp))
@@ -225,9 +228,7 @@ fun SignUp(navController: NavController, modifier: Modifier){
 
                         },
                         modifier = Modifier.padding(top = 5.dp).clickable{
-                            //Navigation to Sign Up Screen
                             navController.navigate("create_account")
-
                         },
                     )
                 }

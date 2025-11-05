@@ -13,8 +13,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -34,12 +36,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.parcialtp3_2.code_behind.IconBoxes
+import com.example.parcialtp3_2.components.Expense
 import com.example.parcialtp3_2.components.ViewBackground
 
 @Composable
 fun Home(navController: NavController, modifier: Modifier){
     val periods = listOf<String>("Daily", "Weekly", "Monthly")
     var selectedPeriod by remember { mutableIntStateOf(2) }
+    val scrollState = rememberScrollState()
 
     ViewBackground(
         true,
@@ -217,10 +222,10 @@ fun Home(navController: NavController, modifier: Modifier){
         },
         content2 = {
             Column(
-                verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.fillMaxWidth().fillMaxHeight()
+                modifier = Modifier.fillMaxWidth().fillMaxHeight().verticalScroll(scrollState)
             ) {
+                Spacer(modifier = Modifier.height(20.dp))
                 Box(
                     modifier = Modifier
                         .clip(RoundedCornerShape(35.dp))
@@ -353,6 +358,82 @@ fun Home(navController: NavController, modifier: Modifier){
                         )
                     }
 
+
+                }
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(25.dp),
+                    modifier = Modifier.padding(top = 25.dp)
+                ) {
+                    Expense(
+                        iconBox = IconBoxes.LIGHT_BLUE_SMALL,
+                        icon = R.drawable.money,
+                        expenseTitle = "Salary",
+                        date = "April 30",
+                        hour = "28:27",
+                        category = "Monthly",
+                        expense = 4000.00,
+                        expenseColorIsBlue = false
+                    )
+                    Expense(
+                        iconBox = IconBoxes.LIGHT_BLUE_SMALL,
+                        icon = R.drawable.money,
+                        expenseTitle = "Salary",
+                        date = "April 30",
+                        hour = "28:27",
+                        category = "Monthly",
+                        expense = 4000.00,
+                        expenseColorIsBlue = false
+                    )
+                    Expense(
+                        iconBox = IconBoxes.LIGHT_BLUE_SMALL,
+                        icon = R.drawable.money,
+                        expenseTitle = "Salary",
+                        date = "April 30",
+                        hour = "28:27",
+                        category = "Monthly",
+                        expense = 4000.00,
+                        expenseColorIsBlue = false
+                    )
+                    Expense(
+                        iconBox = IconBoxes.LIGHT_BLUE_SMALL,
+                        icon = R.drawable.money,
+                        expenseTitle = "Salary",
+                        date = "April 30",
+                        hour = "28:27",
+                        category = "Monthly",
+                        expense = 4000.00,
+                        expenseColorIsBlue = false
+                    )
+                    Expense(
+                        iconBox = IconBoxes.LIGHT_BLUE_SMALL,
+                        icon = R.drawable.money,
+                        expenseTitle = "Salary",
+                        date = "April 30",
+                        hour = "28:27",
+                        category = "Monthly",
+                        expense = 4000.00,
+                        expenseColorIsBlue = false
+                    )
+                    Expense(
+                        iconBox = IconBoxes.LIGHT_BLUE_SMALL,
+                        icon = R.drawable.money,
+                        expenseTitle = "Salary",
+                        date = "April 30",
+                        hour = "28:27",
+                        category = "Monthly",
+                        expense = 4000.00,
+                        expenseColorIsBlue = false
+                    )
+                    Expense(
+                        iconBox = IconBoxes.LIGHT_BLUE_SMALL,
+                        icon = R.drawable.money,
+                        expenseTitle = "Salary",
+                        date = "April 30",
+                        hour = "28:27",
+                        category = "Monthly",
+                        expense = 4000.00,
+                        expenseColorIsBlue = false
+                    )
 
                 }
             }
