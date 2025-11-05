@@ -1,3 +1,36 @@
 <resources>
     <string name="app_name">parcialtp3_2</string>
+    <string name="container_name">Username Or Email</string>
+    <string name="container_label">example@example.com</string>
+    <string name="container_password">Password</string>
+    <string name="welcome">Welcome</string>
+    <string name="psw_message">●●●●●●●●</string>
+    <string name="log_in_button">Log In</string>
+    <string name="sign_up_button">Sign Up</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="sign_up_with">or sign up with</string>
+    <string name="create_account">Create Account</string>
+    <string name="create_full_name">Full Name</string>
+    <string name="create_email">Email</string>
+    <string name="create_mobile_number">Mobile Number</string>
+    <string name="create_mobile_number_content">+ 123 456 789</string>
+    <string name="create_date">Date of birth</string>
+    <string name="create_date_input">DD / MM /YYYY</string>
+    <string name = "confirm_password">Confirm Password</string>
+    <string name="terms">By continuing, you agree to
+ Terms of Use and Privacy Policy.</string>
+    <string name="forgot">Forgot Password</string>
+    <string name="reset">Reset Password?</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
+    <string name="emailAddress">Enter Email Address</string>
+    <string name="next_step_button">Next Step</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm">Confirm New Password</string>
+    <string name="change">Change Password</string>
+    <string name="success">Password Has been Changed successfully!</string>
+    <string name="security_pin">Security Pin</string>
+    <string name="security_pin_description">Enter Security Pin</string>
+    <string name="pin">273916</string>
+
+
 </resources>
