@@ -15,6 +15,7 @@ import com.example.parcialtp3_2.ui.theme.Parcialtp3_2Theme
 import com.example.parcialtp3_2.views.Home
 import com.example.parcialtp3_2.views.LogIn
 import com.example.parcialtp3_2.views.SignUp
+import com.example.parcialtp3_2.views.SuccessView
 import com.example.parcialtp3_2.views.Welcome
 
 class MainActivity : ComponentActivity() {
@@ -42,6 +43,22 @@ class MainActivity : ComponentActivity() {
                         composable(route = "home") {
                             Home(navController, modifier = Modifier.padding(innerPadding))
                         }
+                        composable("create_account"){
+                            CreateAccount(navController,modifier = Modifier.padding(innerPadding))
+                        }
+                        composable(route = "forgot") {
+                            ForgotPassword(navController, modifier = Modifier.padding(innerPadding))
+                        }
+                        composable(route = "security_pin") {
+                            SecurityPinView(navController, modifier = Modifier.padding(innerPadding))
+                        }
+                        composable(route = "new_password") {
+                            NewPassword(navController, modifier = Modifier.padding(innerPadding))
+                        }
+                        composable(route = "exito") {
+                            SuccessView(navController, modifier = Modifier.padding(innerPadding))
+                        }
+
 
                     }
                 }
