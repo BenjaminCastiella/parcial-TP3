@@ -6,5 +6,6 @@ data class ItemsPerfil(
     val title: String,
     val iconID: Int,
     val IconBoxes  : IconBoxes,
-    val destination: String
+    val destination: String,
+    val flecha : Boolean
 )
