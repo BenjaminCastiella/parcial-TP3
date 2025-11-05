@@ -22,7 +22,6 @@ fun BalanceCard(
 ) {
     Card(
         modifier = modifier
-            .width(vertical)
             .padding(horizontal = 16.dp),
         colors = CardDefaults.cardColors(containerColor = Color(0xFFE6FFF4)),
         shape = RoundedCornerShape(12.dp),

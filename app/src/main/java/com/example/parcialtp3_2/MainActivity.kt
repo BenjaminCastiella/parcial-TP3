@@ -84,8 +84,6 @@ class MainActivity : ComponentActivity() {
                         composable(route = "exito") {
                             SuccessView(navController, modifier = Modifier.padding(innerPadding))
                         }
-
-
                     }
                 }
             }

@@ -132,7 +132,6 @@ fun Home(navController: NavController, modifier: Modifier){
                         )
                     }
 
-
                     Column(
                         modifier = Modifier.weight(1f),
                         horizontalAlignment = Alignment.End
@@ -375,34 +374,34 @@ fun Home(navController: NavController, modifier: Modifier){
                         expenseColorIsBlue = false
                     )
                     Expense(
-                        iconBox = IconBoxes.LIGHT_BLUE_SMALL,
-                        icon = R.drawable.money,
-                        expenseTitle = "Salary",
-                        date = "April 30",
-                        hour = "28:27",
-                        category = "Monthly",
-                        expense = 4000.00,
-                        expenseColorIsBlue = false
+                        iconBox = IconBoxes.MID_BLUE_SMALL,
+                        icon = R.drawable.groceries,
+                        expenseTitle = "Groceries",
+                        date = "April 24",
+                        hour = "17:00",
+                        category = "Pantry    ",
+                        expense = -100.00,
+                        expenseColorIsBlue = true
                     )
                     Expense(
-                        iconBox = IconBoxes.LIGHT_BLUE_SMALL,
-                        icon = R.drawable.money,
-                        expenseTitle = "Salary",
-                        date = "April 30",
-                        hour = "28:27",
-                        category = "Monthly",
-                        expense = 4000.00,
-                        expenseColorIsBlue = false
+                        iconBox = IconBoxes.DARK_BLUE_SMALL,
+                        icon = R.drawable.key,
+                        expenseTitle = "Rent",
+                        date = "April 15",
+                        hour = "08:30",
+                        category = "Rent      ",
+                        expense = -674.40,
+                        expenseColorIsBlue = true
                     )
                     Expense(
-                        iconBox = IconBoxes.LIGHT_BLUE_SMALL,
-                        icon = R.drawable.money,
-                        expenseTitle = "Salary",
-                        date = "April 30",
-                        hour = "28:27",
-                        category = "Monthly",
-                        expense = 4000.00,
-                        expenseColorIsBlue = false
+                        iconBox = IconBoxes.MID_BLUE_SMALL,
+                        icon = R.drawable.bus,
+                        expenseTitle = "Transport",
+                        date = "April 08",
+                        hour = "09:30",
+                        category = "Fuel      ",
+                        expense = -4.13,
+                        expenseColorIsBlue = true
                     )
                     Expense(
                         iconBox = IconBoxes.LIGHT_BLUE_SMALL,
