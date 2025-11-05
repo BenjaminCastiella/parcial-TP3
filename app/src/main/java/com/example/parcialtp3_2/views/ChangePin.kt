@@ -1,16 +1,24 @@
 package com.example.parcialtp3_2.views
 
+import android.os.Build
+import androidx.annotation.RequiresApi
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.absoluteOffset
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -22,8 +30,13 @@ import androidx.navigation.NavController
 import com.example.parcialtp3_2.R
 import com.example.parcialtp3_2.code_behind.IconBoxes
 import com.example.parcialtp3_2.components.IconBox
+import com.example.parcialtp3_2.components.InputChange
+import com.example.parcialtp3_2.components.InputEditProfile
+import com.example.parcialtp3_2.components.ListProfile
+import com.example.parcialtp3_2.components.SwitchEditProfile
 import com.example.parcialtp3_2.components.ViewBackground
 import com.example.parcialtp3_2.ui.theme.poppinsFamily
+import androidx.compose.material3.Button
 
 @Composable
 fun ChangePin(navController: NavController, modifier: Modifier){
@@ -69,26 +82,45 @@ fun ChangePin(navController: NavController, modifier: Modifier){
 
 
         },
-        content2 = {
+        content2 = @androidx.compose.runtime.Composable {
 
-
-            Button(
-                onClick = { },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00D09E)),
-                shape = RoundedCornerShape(16.dp),
+            Column(
                 modifier = Modifier
-                    .fillMaxWidth(0.5f)
-                    .height(40.dp)
+                    .fillMaxSize()
+                    .padding(top = 80.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(
-                    text = "Change Pin",
-                    color = colorResource(R.color.Void),
-                    fontFamily = poppinsFamily,
-                    fontWeight = FontWeight.Medium,
-                    fontSize = 16.sp
-                )
+
+                InputChange(title="Current Pin")
+                InputChange(title="New Pin")
+                InputChange(title="Current Pin")
+
+                Spacer(modifier = Modifier.height(20.dp))
+
+
+                Button(
+                    onClick = { },
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00D09E)),
+                    shape = RoundedCornerShape(16.dp),
+                    modifier = Modifier
+                        .fillMaxWidth(0.5f)
+                        .height(45.dp)
+                ) {
+                    Text(
+                        text = "Change Pin",
+                        color = colorResource(R.color.Void),
+                        fontFamily = poppinsFamily,
+                        fontWeight = FontWeight.Medium,
+                        fontSize = 16.sp
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(13.dp))
+
             }
 
-            Spacer(modifier = Modifier.height(13.dp))
 
-        })}
+
+}
+)
+}
