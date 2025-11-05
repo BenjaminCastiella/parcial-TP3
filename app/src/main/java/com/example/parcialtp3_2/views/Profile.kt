@@ -56,8 +56,6 @@ fun Profile(navController: NavController, modifier: Modifier) {
                     .clip(RoundedCornerShape(25.71.dp))
                     .width(30.dp)
                     .height(30.dp)
-
-
             ) {
                 IconBox(iconBox = IconBoxes.LIGHT_GREEN, icon = R.drawable.vector)
             }
@@ -70,13 +68,6 @@ fun Profile(navController: NavController, modifier: Modifier) {
             ) {
                 IconBox(iconBox = IconBoxes.GREEN, icon = R.drawable.flecha_back)
             }
-
-
-
-
-
-
-
 
             Text(
                 text = "Profile",
@@ -130,9 +121,6 @@ fun Profile(navController: NavController, modifier: Modifier) {
                         color = colorResource(R.color.Fence_Green),
 
                     )
-
-
-
 
                 }
 

@@ -32,10 +32,7 @@ data class TxItem(
 )
 
 @Composable
-fun TransactionScreenContent(
-    modifier: Modifier = Modifier,
-    navController: NavController? = null
-) {
+fun TransactionScreenContent(modifier: Modifier, navController: NavController) {
 
     val sample = remember {
         listOf(
@@ -140,10 +137,4 @@ fun TransactionScreenContent(
             }
         )
     }
-}
-
-@Preview(showBackground = true, widthDp = 360, heightDp = 780)
-@Composable
-private fun TransactionScreenContentPreview() {
-    TransactionScreenContent()
 }

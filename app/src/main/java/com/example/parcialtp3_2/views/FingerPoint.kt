@@ -73,7 +73,7 @@ fun FingerPoint(navController: NavController, modifier: Modifier){
             Column(
                 modifier = Modifier.fillMaxSize().padding(top = 20.dp)
             ) {
-                Spacer(modifier = Modifier.height(17.dp)) // mueve todo hacia abajo
+                Spacer(modifier = Modifier.height(17.dp))
                 VistaPerfil({ route -> navController.navigate(route)},1)
             }
 
