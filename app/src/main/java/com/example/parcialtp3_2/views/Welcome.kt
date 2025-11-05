@@ -32,25 +32,33 @@ import com.example.parcialtp3_2.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Welcome(navController: NavController, modifier: Modifier){
-
-    ViewBackground(
-        false,
-        0.70f,
-        navController,
-        content1 = {
-            Text(
-                "Welcome to Expense Manager",
-                textAlign = TextAlign.Center,
-                modifier = modifier
-                    .padding(top = 30.dp),
-                lineHeight = 40.sp,
-                color = Color(0xAA031314),
-                fontSize = 30.sp,
-                fontWeight = FontWeight.Bold
-            )
-        },
-        content2 = {},
+    data class CarouselItem(
+        val i: Int,
+        @DrawableRes val img: Int,
+        val msj: String
     )
+/*
+    HorizontalUncontainedCarousel (
+        state = rememberCarouselState { carouselItems.count() },
+        modifier = Modifier
+            .fillMaxWidth()
+            .wrapContentHeight()
+            .padding(top = 16.dp, bottom = 16.dp),
+        itemWidth = 186.dp,
+        itemSpacing = 8.dp,
+        contentPadding = PaddingValues(horizontal = 16.dp)
+    ) { i ->
+        val item = carouselItems[i]
+        Image(
+            modifier = Modifier
+                .height(205.dp)
+                .maskClip(MaterialTheme.shapes.extraLarge),
+            painter = painterResource(id = item.img),
+            contentDescription = item.msj,
+            contentScale = ContentScale.Crop
+        )
+    }
+
     ViewBackground(
         false,
         0.70f,
@@ -68,39 +76,11 @@ fun Welcome(navController: NavController, modifier: Modifier){
             )
         },
         content2 = {
-            data class CarouselItem(
-                val i: Int,
-                @DrawableRes val img: Int,
-                val msj: String
-            )
 
-            val carouselItems = remember {
-                listOf(
-                    CarouselItem(0, R.drawable.welcome_img1, "Next"),
-                    CarouselItem(1, R.drawable.welcome_img2, "Next"),
-                )
-            }
 
-            HorizontalUncontainedCarousel (
-                state = rememberCarouselState { carouselItems.count() },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .wrapContentHeight()
-                    .padding(top = 16.dp, bottom = 16.dp),
-                itemWidth = 186.dp,
-                itemSpacing = 8.dp,
-                contentPadding = PaddingValues(horizontal = 16.dp)
-            ) { i ->
-                val item = carouselItems[i]
-                Image(
-                    modifier = Modifier
-                        .height(205.dp)
-                        .maskClip(MaterialTheme.shapes.extraLarge),
-                    painter = painterResource(id = item.img),
-                    contentDescription = item.msj,
-                    contentScale = ContentScale.Crop
-                )
-            }
+
+
+
 
             Image(
                 modifier = modifier
@@ -111,4 +91,5 @@ fun Welcome(navController: NavController, modifier: Modifier){
             )
         }
     )
+    */
 }

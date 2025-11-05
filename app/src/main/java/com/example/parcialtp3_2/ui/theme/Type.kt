@@ -1,11 +1,22 @@
 package com.example.parcialtp3_2.ui.theme
 
 import androidx.compose.material3.Typography
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
+
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.sp
 
+import androidx.compose.ui.unit.sp
+import com.example.parcialtp3_2.R
+
+
+
+val poppinsFamily= FontFamily(
+     Font( R.font.poppins_semi_bold, weight= FontWeight.SemiBold),
+    Font(R.font.poppins_bold, weight= FontWeight.Bold)
+)
 // Set of Material typography styles to start with
 val Typography = Typography(
     bodyLarge = TextStyle(

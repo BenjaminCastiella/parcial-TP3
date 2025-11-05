@@ -7,7 +7,7 @@ enum class Views (
     val label: String,
     val icon: Int,
 ){
-    MENU("menu", "Menu", R.drawable.homee),
+    MENU("menu", "Menu", R.drawable.ic_home),
     ANALYSIS("menu", "Menu", R.drawable.analysis),
     TRANSACTIONS("trans", "Menu", R.drawable.transactions),
     CATEGORY("category", "Menu", R.drawable.category),
