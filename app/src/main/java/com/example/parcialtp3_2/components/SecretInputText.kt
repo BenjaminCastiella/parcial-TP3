@@ -1,7 +1,6 @@
 
 package com.example.parcialtp3_2.components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
