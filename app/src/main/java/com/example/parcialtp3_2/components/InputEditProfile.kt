@@ -37,9 +37,9 @@ fun InputEditProfile(
 ) {
     var text by remember { mutableStateOf("") }
 
-    Column(modifier = Modifier.fillMaxWidth()
+    Column(modifier = Modifier
+        .fillMaxWidth()
         .padding(horizontal = 16.dp)) {
-        // 🔹 Título arriba
         Text(
             text = title,
             fontFamily = poppinsFamily,
@@ -60,27 +60,30 @@ fun InputEditProfile(
                     fontFamily = poppinsFamily,
                     fontWeight = FontWeight.Medium,
                     color = colorResource(R.color.Void),
-                    fontSize = 14.sp
+                    fontSize =10.sp
                 )
             },
             singleLine = true,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(30.dp),
-            colors =TextFieldDefaults.colors(
+                .height(50.dp),
+            colors = TextFieldDefaults.colors(
                 focusedContainerColor = colorResource(R.color.Light_Green),
                 unfocusedContainerColor = colorResource(R.color.Light_Green),
                 disabledContainerColor = colorResource(R.color.Light_Green),
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
-                cursorColor = Color(0xFF00D09E)),
+                cursorColor = Color(0xFF00D09E),
+                unfocusedPlaceholderColor = colorResource(R.color.Void),
+                focusedPlaceholderColor = colorResource(R.color.Void),
+            ),
             textStyle = TextStyle(
                 fontFamily = poppinsFamily,
-                fontSize = 14.sp,
-                color = colorResource(R.color.Light_Green)
+                fontSize = 10.sp,
+                color = colorResource(R.color.Void)
             )
         )
     }
 
-    Spacer(modifier = Modifier.height(12.dp))
+    Spacer(modifier = Modifier.height(3.dp))
 }

@@ -37,6 +37,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.withStyle
 import com.example.parcialtp3_2.components.ListProfile
 import com.example.parcialtp3_2.components.VistaPerfil
 import data.ItemsPerfil
@@ -52,16 +55,19 @@ fun Profile(navController: NavController, modifier: Modifier) {
 
             Box(
                 modifier = Modifier
-                    .absoluteOffset(x = 325.dp, y = 61.dp)
+                    .align(Alignment.TopEnd)
+                    .padding(top = 61.dp, end = 25.dp)
                     .clip(RoundedCornerShape(25.71.dp))
                     .width(30.dp)
                     .height(30.dp)
+
+
             ) {
                 IconBox(iconBox = IconBoxes.LIGHT_GREEN, icon = R.drawable.vector)
             }
             Box(
                 modifier = Modifier
-                    .absoluteOffset(x = 25.dp, y = 61.dp)
+                    .padding(start = 25.dp, top = 61.dp)
                     .clip(RoundedCornerShape(25.71.dp))
                     .width(30.dp)
                     .height(30.dp)
@@ -69,17 +75,23 @@ fun Profile(navController: NavController, modifier: Modifier) {
                 IconBox(iconBox = IconBoxes.GREEN, icon = R.drawable.flecha_back)
             }
 
-            Text(
-                text = "Profile",
-                fontFamily = poppinsFamily,
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 20.sp,
-                color = colorResource(R.color.Void),
-                modifier = Modifier.absoluteOffset(x = 153.dp, y = 61.dp)
 
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 61.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "Profile",
+                    fontFamily = poppinsFamily,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 20.sp,
+                    color = colorResource(R.color.Void),
+                    modifier = Modifier
 
-            )
-
+                )
+            }
 
         },
         content2 = {
@@ -114,9 +126,15 @@ fun Profile(navController: NavController, modifier: Modifier) {
                     Spacer(modifier = Modifier.height(2.dp))
 
                     Text(
-                        text = "ID:25030024",
+                        text = buildAnnotatedString {
+                            withStyle(style = SpanStyle(fontWeight = FontWeight.SemiBold)) {
+                                append("ID:")
+                            }
+                            withStyle(style = SpanStyle(fontWeight = FontWeight.Light)) {
+                                append("25030024")
+                            }
+                        },
                         fontFamily = poppinsFamily,
-                        fontWeight = FontWeight.Light,
                         fontSize = 12.sp,
                         color = colorResource(R.color.Fence_Green),
 

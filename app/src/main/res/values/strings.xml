@@ -1,4 +1,7 @@
 <resources>
+    <string name="edit_perfil">Edit Profile</string>
+
+
     <string name="app_name">parcialtp3_2</string>
     <string name="container_name">Username Or Email</string>
     <string name="container_label">example@example.com</string>

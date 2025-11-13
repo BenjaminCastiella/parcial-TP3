@@ -1,7 +1,6 @@
 package com.example.parcialtp3_2.ui.theme
 
 import androidx.compose.material3.Typography
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 
 import androidx.compose.ui.text.font.Font
@@ -19,7 +18,8 @@ val poppinsFamily= FontFamily(
 
 )
 
-val LeagueFamily= FontFamily(Font(R.font.poppins_league_spartan_regular, weight= FontWeight.Normal))
+val LeagueFamily= FontFamily(Font(R.font.league_spartan_regular, weight= FontWeight.Normal),
+    Font(R.font.league_spartan_regular, weight= FontWeight.Medium))
 // Set of Material typography styles to start with
 val Typography = Typography(
     bodyLarge = TextStyle(

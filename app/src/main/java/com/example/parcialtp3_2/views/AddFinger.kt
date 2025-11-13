@@ -46,7 +46,8 @@ fun AddFinger(navController: NavController, modifier: Modifier){
         navController,
         content1 = {Box(
             modifier = Modifier
-                .absoluteOffset(x = 325.dp, y = 61.dp)
+                .align(Alignment.TopEnd)
+                .padding( top = 61.dp,end = 25.dp)
                 .clip(RoundedCornerShape(25.71.dp))
                 .width(30.dp)
                 .height(30.dp)
@@ -57,7 +58,7 @@ fun AddFinger(navController: NavController, modifier: Modifier){
         }
             Box(
                 modifier = Modifier
-                    .absoluteOffset(x = 25.dp, y = 61.dp)
+                    .padding(start = 25.dp, top = 61.dp)
                     .clip(RoundedCornerShape(25.71.dp))
                     .width(30.dp)
                     .height(30.dp)
@@ -65,16 +66,22 @@ fun AddFinger(navController: NavController, modifier: Modifier){
                 IconBox(iconBox = IconBoxes.GREEN, icon = R.drawable.flecha_back)
             }
 
-            Text(
-                text = "Add FingerPrint",
-                fontFamily = poppinsFamily,
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 20.sp,
-                color = colorResource(R.color.Void),
-                modifier = Modifier.absoluteOffset(x = 110.dp, y = 61.dp)
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 61.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "Add FingerPrint",
+                    fontFamily = poppinsFamily,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 20.sp,
+                    color = colorResource(R.color.Void),
+                    modifier = Modifier
 
-
-            )
+                )
+            }
 
 
         },
@@ -97,7 +104,7 @@ fun AddFinger(navController: NavController, modifier: Modifier){
 
                     Spacer(modifier = Modifier.height(20.dp))
                     Text(
-                        text = "Use fingerprint  to access. ",
+                        text = "Use Fingerprint To Access. ",
                         fontFamily = poppinsFamily,
                         fontWeight = FontWeight.SemiBold,
                         fontSize = 20.sp,
@@ -107,9 +114,10 @@ fun AddFinger(navController: NavController, modifier: Modifier){
                     Spacer(modifier = Modifier.height(20.dp))
                     Text(
                         text = "Lorem ipsum dolor sit amet, consectetur adipiscing\nelit, sed do eiusmod tempor incididunt. ",
+                        lineHeight = 10.sp,
                         fontFamily = LeagueFamily,
-                        fontWeight = FontWeight.Normal,
-                        fontSize = 10.sp,
+                        fontWeight = FontWeight.Medium,
+                        fontSize = 14.sp,
                         color = colorResource(R.color.Fence_Green),
                         textAlign = TextAlign.Center
 

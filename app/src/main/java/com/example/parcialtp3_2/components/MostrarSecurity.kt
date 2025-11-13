@@ -31,8 +31,6 @@ fun MostrarSecurity(item: ItemSecurity,
         modifier = Modifier
             .fillMaxWidth()
             .clickable { onItemClick(item) }
-            .padding(horizontal = 6.dp, vertical = 8.dp),
-        verticalAlignment = Alignment.CenterVertically
     ) {
         Spacer(modifier = Modifier.width(16.dp))
 
@@ -41,7 +39,7 @@ fun MostrarSecurity(item: ItemSecurity,
             text = item.title,
             fontFamily = poppinsFamily,
             fontWeight = FontWeight.Medium,
-            fontSize = 13.sp,
+            fontSize = 14.sp,
             color = Color(0xFF093030),
             modifier = Modifier.weight(1f)
         )

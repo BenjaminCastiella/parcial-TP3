@@ -15,13 +15,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.parcialtp3_2.R
+import com.example.parcialtp3_2.code_behind.ViewsRoutes
 import com.example.parcialtp3_2.ui.theme.poppinsFamily
 
 @Composable
 fun BotonDelete(navController: NavController) {
     Button(
         onClick = {
-            navController.navigate("pantallDelete")
+            navController.navigate(ViewsRoutes.DELETE.getRoute())
         },
         colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00D09E)),
         shape = RoundedCornerShape(16.dp),

@@ -15,13 +15,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.parcialtp3_2.R
+import com.example.parcialtp3_2.code_behind.ViewsRoutes
 import com.example.parcialtp3_2.ui.theme.poppinsFamily
 
 @Composable
 fun BotonAdd(navController: NavController) {
     Button(
         onClick = {
-            navController.navigate("pantallaAdd")
+            navController.navigate(ViewsRoutes.ADD.getRoute())
         },
         colors = ButtonDefaults.buttonColors(containerColor = colorResource(R.color.Light_Green)),
         shape = RoundedCornerShape(16.dp),
@@ -30,7 +31,7 @@ fun BotonAdd(navController: NavController) {
             .height(45.dp)
     ) {
         Text(
-            text = "Use touch id",
+            text = "Use Touch Id",
             color = colorResource(R.color.Void),
             fontFamily = poppinsFamily,
             fontWeight = FontWeight.Medium,

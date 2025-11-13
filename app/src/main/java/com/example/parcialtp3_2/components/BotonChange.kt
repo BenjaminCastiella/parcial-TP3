@@ -16,11 +16,13 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.parcialtp3_2.ui.theme.poppinsFamily
 import com.example.parcialtp3_2.R
+import com.example.parcialtp3_2.code_behind.ViewsRoutes
+
 @Composable
 fun BotonChange(navController: NavController) {
     Button(
         onClick = {
-            navController.navigate("pantallaCargaPin")
+            navController.navigate(ViewsRoutes.LOAD.getRoute())
         },
         colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00D09E)),
         shape = RoundedCornerShape(16.dp),

@@ -28,12 +28,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.parcialtp3_2.R
 import com.example.parcialtp3_2.code_behind.IconBoxes
+import com.example.parcialtp3_2.code_behind.ViewsRoutes
 import com.example.parcialtp3_2.components.IconBox
 import com.example.parcialtp3_2.components.InputEditProfile
 import com.example.parcialtp3_2.components.SwitchEditProfile
@@ -49,7 +53,8 @@ fun EditProfile(navController: NavController, modifier: Modifier){
         content1 = {
             Box(
                 modifier = Modifier
-                    .absoluteOffset(x = 325.dp, y = 61.dp)
+                    .align(Alignment.TopEnd)
+                    .padding( top = 61.dp,end = 25.dp)
                     .clip(RoundedCornerShape(25.71.dp))
                     .width(30.dp)
                     .height(30.dp)
@@ -60,7 +65,7 @@ fun EditProfile(navController: NavController, modifier: Modifier){
             }
             Box(
                 modifier = Modifier
-                    .absoluteOffset(x = 25.dp, y = 61.dp)
+                    .padding(start = 25.dp, top = 61.dp)
                     .clip(RoundedCornerShape(25.71.dp))
                     .width(30.dp)
                     .height(30.dp)
@@ -68,21 +73,31 @@ fun EditProfile(navController: NavController, modifier: Modifier){
                 IconBox(iconBox = IconBoxes.GREEN, icon = R.drawable.flecha_back)
             }
 
-            Text(
-                text = "Edit My Profile",
-                fontFamily = poppinsFamily,
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 20.sp,
-                color = colorResource(R.color.Void),
-                modifier = Modifier.absoluteOffset(x = 120.dp, y = 61.dp)
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 61.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "Edit My Profile",
+                    fontFamily = poppinsFamily,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 20.sp,
+                    color = colorResource(R.color.Void),
+                    modifier = Modifier
 
-
-            )
+                )
+            }
         },
         content2 = {
             Box(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.TopCenter
+            ) {Box(
+                modifier = Modifier
+                    .size(120.dp) // <-- Este Box define el área de 120dp x 120dp
+                    .offset(y = (-0).dp), //
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.foto),
@@ -95,12 +110,13 @@ fun EditProfile(navController: NavController, modifier: Modifier){
                 )
 
                 Box(
-                    modifier = Modifier.absoluteOffset(x = 37.dp, y = 30.dp)
+
+                            modifier = Modifier.absoluteOffset(x = 90.dp, y = 30.dp)
 
 
-                ) {
+                            ) {
                     IconBox(iconBox = IconBoxes.FOTO_EDIT, icon = R.drawable.icon_cam)
-                }
+                }}
 
 
                 Column(
@@ -120,50 +136,55 @@ fun EditProfile(navController: NavController, modifier: Modifier){
                     Spacer(modifier = Modifier.height(2.dp))
 
                     Text(
-                        text = "ID:25030024",
+                        text =buildAnnotatedString {
+                            withStyle(style = SpanStyle(fontWeight = FontWeight.SemiBold)) {
+                                append("ID:")
+                            }
+                            withStyle(style = SpanStyle(fontWeight = FontWeight.Light)) {
+                                append("25030024")
+                            }
+                        },
                         fontFamily = poppinsFamily,
-                        fontWeight = FontWeight.Light,
                         fontSize = 12.sp,
                         color = colorResource(R.color.Fence_Green),
 
                         )
 
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(10.dp))
 
-                    // 🔹 Título
-                    Text(
-                        text = "Account Settings",
-                        fontFamily = poppinsFamily,
-                        fontWeight = FontWeight.SemiBold,
-                        fontSize = 20.sp,
-                        color = colorResource(R.color.Void),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(start = 20.dp, end=20.dp)
-                    )
 
-                    Spacer(modifier = Modifier.height(11.dp))
 
-                    // 🔹 Inputs
-                    Column(modifier = Modifier.padding(start = 20.dp, end=20.dp)) {
-                        InputEditProfile(title = "Username", placeholder = "John Smith")
-                        InputEditProfile(title = "Phone", placeholder = "+44 555 5555 55")
-                        InputEditProfile(title = "Email Address", placeholder = "example@example.com"
+                    Column(modifier = Modifier.padding(start = 8.dp, end=8.dp)) {
+
+                        Text(
+                            text = "Account Settings",
+                            fontFamily = poppinsFamily,
+                            fontWeight = FontWeight.SemiBold,
+                            fontSize = 20.sp,
+                            color = colorResource(R.color.Void),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 20.dp, end=20.dp)
                         )
 
-                        Spacer(modifier = Modifier.height(8.dp))
+                        Spacer(modifier = Modifier.height(10.dp))
 
-                        // 🔹 Switches
+                        InputEditProfile(title = "Username", placeholder = "John Smith")
+                        InputEditProfile(title = "Phone", placeholder = "+44 555 5555 55")
+                        InputEditProfile(title = "Email Address", placeholder = "example@example.com")
+
+                        Spacer(modifier = Modifier.height(2.dp))
+
                         SwitchEditProfile(title = "Push Notifications")
                         SwitchEditProfile(title = "Turn Dark Theme")
 
-                        Spacer(modifier = Modifier.height(10.dp))
+
                     }
-                    // 🔹 Botón Update Profile
+                    Spacer(modifier = Modifier.height(2.dp))
                     Button(
-                        onClick = { },
+                        onClick = { navController.navigate(ViewsRoutes.PROFILE.getRoute())},
                         colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00D09E)),
-                        shape = RoundedCornerShape(16.dp),
+                        shape = RoundedCornerShape(10.dp),
                         modifier = Modifier
                             .fillMaxWidth(0.5f)
                             .height(40.dp)
@@ -177,7 +198,7 @@ fun EditProfile(navController: NavController, modifier: Modifier){
                         )
                     }
 
-                    Spacer(modifier = Modifier.height(13.dp))
+
 
 
 

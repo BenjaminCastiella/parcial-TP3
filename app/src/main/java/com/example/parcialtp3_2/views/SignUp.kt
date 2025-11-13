@@ -39,6 +39,7 @@ import androidx.compose.ui.unit.sp
 import com.example.parcialtp3_2.components.ViewBackground
 import com.example.parcialtp3_2.components.inputText
 import com.example.parcialtp3_2.R
+import com.example.parcialtp3_2.code_behind.ViewsRoutes
 import com.example.parcialtp3_2.components.confirmationButton
 import com.example.parcialtp3_2.components.secretInputText
 
@@ -138,7 +139,7 @@ fun SignUp(navController: NavController, modifier: Modifier){
                         fontWeight = FontWeight(600),
                         fontFamily = FontFamily(Font(R.font.poppins_semi_bold)),
                         modifier = Modifier.clickable {
-                            navController.navigate("forgot")
+                            navController.navigate(ViewsRoutes.FORGOT_PSWD.getRoute())
                         }
                     )
 
@@ -162,7 +163,7 @@ fun SignUp(navController: NavController, modifier: Modifier){
                             .background(Color(0xFFDFF7E2))
                             .padding(top = 15.dp)
                             .clickable{
-                            navController.navigate("create_account")
+                            navController.navigate(ViewsRoutes.CREATE_ACCOUNT.getRoute())
                         },
                         color = Color.Black,
                         fontSize = 20.sp,
@@ -228,7 +229,7 @@ fun SignUp(navController: NavController, modifier: Modifier){
 
                         },
                         modifier = Modifier.padding(top = 5.dp).clickable{
-                            navController.navigate("create_account")
+                            navController.navigate(ViewsRoutes.CREATE_ACCOUNT.getRoute())
                         },
                     )
                 }

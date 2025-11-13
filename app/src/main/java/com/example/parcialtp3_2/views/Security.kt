@@ -1,5 +1,6 @@
 package com.example.parcialtp3_2.views
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.colorResource
@@ -20,6 +22,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.parcialtp3_2.R
 import com.example.parcialtp3_2.code_behind.IconBoxes
+import com.example.parcialtp3_2.code_behind.ViewsRoutes
 import com.example.parcialtp3_2.components.IconBox
 import com.example.parcialtp3_2.components.InputEditProfile
 import com.example.parcialtp3_2.components.SecurityItems
@@ -39,7 +42,8 @@ fun Security(navController: NavController, modifier: Modifier) {
 
             Box(
                 modifier = Modifier
-                    .absoluteOffset(x = 325.dp, y = 61.dp)
+                    .align(Alignment.TopEnd)
+                    .padding( top = 61.dp,end = 25.dp)
                     .clip(RoundedCornerShape(25.71.dp))
                     .width(30.dp)
                     .height(30.dp)
@@ -50,24 +54,29 @@ fun Security(navController: NavController, modifier: Modifier) {
             }
             Box(
                 modifier = Modifier
-                    .absoluteOffset(x = 25.dp, y = 61.dp)
+                    .padding(start = 25.dp, top = 61.dp)
                     .clip(RoundedCornerShape(25.71.dp))
                     .width(30.dp)
                     .height(30.dp)
             ) {
                 IconBox(iconBox = IconBoxes.GREEN, icon = R.drawable.flecha_back)
             }
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 61.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "Security",
+                    fontFamily = poppinsFamily,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 20.sp,
+                    color = colorResource(R.color.Void),
+                    modifier = Modifier
 
-            Text(
-                text = "Security",
-                fontFamily = poppinsFamily,
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 20.sp,
-                color = colorResource(R.color.Void),
-                modifier = Modifier.absoluteOffset(x = 153.dp, y = 61.dp)
-
-
-            )
+                )
+            }
 
 
 
@@ -75,26 +84,20 @@ fun Security(navController: NavController, modifier: Modifier) {
         },
         content2 = {
 
-            Text(
-                text = "Security",
-                fontFamily = poppinsFamily,
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 20.sp,
-                color = colorResource(R.color.Void),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 45.dp,top = 50.dp)
-            )
-
-            Spacer(modifier = Modifier.height(30.dp))
-
-            // 🔹 Inputs
-
                 Column(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 115.dp,start = 24.dp)
+                        .fillMaxWidth().padding(start = 28.dp, top=60.dp)
                 ) {
+                    Text(
+                    text = "Security",
+                    fontFamily = poppinsFamily,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 20.sp,
+                    color = colorResource(R.color.Void),
+                )
+
+                    Spacer(modifier = Modifier.height(35.dp))
+
                     SecurityItems { route -> navController.navigate(route) }
                 }
 

@@ -28,12 +28,12 @@ import kotlinx.coroutines.delay
 @Composable
 fun PantallaCarga(
     navController: NavController,
-    title: String,                 // Aquí solo cambia el título
-    salida: String,                // Pantalla a la que navegar después
-    destinationInicial: String,    // Pantalla actual para popUpTo
+    title: String,
+    salida: String,
+    destinationInicial: String,
     modifier: Modifier = Modifier
 ) {
-    // Lanzar la navegación después de 3 segundos
+
     LaunchedEffect(Unit) {
         delay(3000)
         navController.navigate(salida) {
@@ -41,29 +41,39 @@ fun PantallaCarga(
         }
     }
 
-    // Pantalla
-    Box(
-        modifier = modifier
-            .fillMaxSize()
-            .background(Color(0xFF00D09E))
-            .systemBarsPadding(),
-        contentAlignment = Alignment.Center
-    ) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+    ViewBackground(
+        false,
+        0.0f,
+        navController,
+        content1 = {
+            Box(
+                modifier = modifier
+                    .fillMaxSize()
+                    .background(Color(0xFF00D09E))
+                    .systemBarsPadding(),
+                contentAlignment = Alignment.Center
+            ) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
 
-            IconBox(IconBoxes.GREEN_GRANDE, R.drawable.icono_change)
+                    IconBox(IconBoxes.GREEN_GRANDE, R.drawable.icono_change)
 
-            Spacer(modifier = Modifier.height(25.dp))
+                    Spacer(modifier = Modifier.height(25.dp))
 
 
-            Text(
-                text = title,
-                color = colorResource(R.color.Light_Green),
-                fontFamily = poppinsFamily,
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 20.sp,
-                textAlign = TextAlign.Center
-            )
-        }
-    }
-}
+                    Text(
+                        text = title,
+                        color = colorResource(R.color.Light_Green),
+                        fontFamily = poppinsFamily,
+                        fontWeight = FontWeight.SemiBold,
+                        fontSize = 20.sp,
+                        textAlign = TextAlign.Center
+                    )
+                }
+            }
+        },
+
+            content2 ={
+
+            }
+)}
+

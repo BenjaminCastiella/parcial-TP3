@@ -99,7 +99,7 @@ fun InputChange(
             )
         )
 
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(30.dp))
 
 
 

@@ -47,7 +47,8 @@ fun ChangePin(navController: NavController, modifier: Modifier){
         navController,
         content1 = {Box(
             modifier = Modifier
-                .absoluteOffset(x = 325.dp, y = 61.dp)
+                .align(Alignment.TopEnd)
+                .padding( top = 61.dp,end = 25.dp)
                 .clip(RoundedCornerShape(25.71.dp))
                 .width(30.dp)
                 .height(30.dp)
@@ -58,24 +59,29 @@ fun ChangePin(navController: NavController, modifier: Modifier){
         }
             Box(
                 modifier = Modifier
-                    .absoluteOffset(x = 25.dp, y = 61.dp)
+                    .padding(start = 25.dp, top = 61.dp)
                     .clip(RoundedCornerShape(25.71.dp))
                     .width(30.dp)
                     .height(30.dp)
             ) {
                 IconBox(iconBox = IconBoxes.GREEN, icon = R.drawable.flecha_back)
             }
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 61.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "Change Pin",
+                    fontFamily = poppinsFamily,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 20.sp,
+                    color = colorResource(R.color.Void),
+                    modifier = Modifier
 
-            Text(
-                text = "Change Pin",
-                fontFamily = poppinsFamily,
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 20.sp,
-                color = colorResource(R.color.Void),
-                modifier = Modifier.absoluteOffset(x = 130.dp, y = 61.dp)
-
-
-            )
+                )
+            }
 
 
 
@@ -96,13 +102,13 @@ fun ChangePin(navController: NavController, modifier: Modifier){
                 InputChange(title="New Pin")
                 InputChange(title="Current Pin")
 
-                Spacer(modifier = Modifier.height(20.dp))
+                Spacer(modifier = Modifier.height(30.dp))
 
 
                 BotonChange (navController)
                     }
 
-                Spacer(modifier = Modifier.height(13.dp))
+
 
 
 

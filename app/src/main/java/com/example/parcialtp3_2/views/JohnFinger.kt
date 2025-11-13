@@ -50,7 +50,8 @@ fun JohnFinger(navController: NavController, modifier: Modifier){
         navController,
         content1 = {Box(
             modifier = Modifier
-                .absoluteOffset(x = 325.dp, y = 61.dp)
+                .align(Alignment.TopEnd)
+                .padding( top = 61.dp,end = 25.dp)
                 .clip(RoundedCornerShape(25.71.dp))
                 .width(30.dp)
                 .height(30.dp)
@@ -61,24 +62,29 @@ fun JohnFinger(navController: NavController, modifier: Modifier){
         }
             Box(
                 modifier = Modifier
-                    .absoluteOffset(x = 25.dp, y = 61.dp)
+                    .padding(start = 25.dp, top = 61.dp)
                     .clip(RoundedCornerShape(25.71.dp))
                     .width(30.dp)
                     .height(30.dp)
             ) {
                 IconBox(iconBox = IconBoxes.GREEN, icon = R.drawable.flecha_back)
             }
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 61.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "Jhon FingerPrint",
+                    fontFamily = poppinsFamily,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 20.sp,
+                    color = colorResource(R.color.Void),
+                    modifier = Modifier
 
-            Text(
-                text = "Jhon FingerPrint",
-                fontFamily = poppinsFamily,
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 20.sp,
-                color = colorResource(R.color.Void),
-                modifier = Modifier.absoluteOffset(x = 105.dp, y = 61.dp)
-
-
-            )
+                )
+            }
 
 
         },
@@ -105,7 +111,7 @@ fun JohnFinger(navController: NavController, modifier: Modifier){
                     TextField(
                         value = text,
                         onValueChange = { text = it },
-                        placeholder = { Text("Jhon fingerprint") },
+                        placeholder = { Text("Jhon Fingerprint") },
                         singleLine = true,
                         colors = TextFieldDefaults.colors(
                             focusedTextColor = colorResource(R.color.Void),
@@ -118,15 +124,15 @@ fun JohnFinger(navController: NavController, modifier: Modifier){
                             focusedIndicatorColor =colorResource(R.color.Light_Green),
                             unfocusedIndicatorColor = colorResource(R.color.Light_Green),
                             disabledIndicatorColor = colorResource(R.color.Light_Green),
-                            focusedPlaceholderColor = Color.Gray,
-                            unfocusedPlaceholderColor = Color.Gray,
-                            disabledPlaceholderColor = Color.LightGray
+                            focusedPlaceholderColor = colorResource(R.color.Void),
+                            unfocusedPlaceholderColor = colorResource(R.color.Void),
+                            disabledPlaceholderColor = colorResource(R.color.Void)
                         ),
-                        shape = RoundedCornerShape(16.dp),
+                        shape = RoundedCornerShape(25.dp),
                         modifier = Modifier
-                            .fillMaxWidth(0.8f)
+                            .fillMaxWidth(0.8f),
                     )
-                    Spacer(modifier = Modifier.height(60.dp))
+                    Spacer(modifier = Modifier.height(70.dp))
 
                     BotonDelete(navController)
                     Spacer(modifier = Modifier.height(40.dp))

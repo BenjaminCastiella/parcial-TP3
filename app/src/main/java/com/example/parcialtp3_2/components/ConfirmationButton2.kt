@@ -15,6 +15,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.parcialtp3_2.code_behind.ViewsRoutes
 import kotlinx.coroutines.launch
 
 
@@ -35,29 +36,29 @@ fun confirmationButton(
                 when(initText){
                     "Log In" -> {
                         // Navega al home
-                        navController?.navigate("home")
+                        navController?.navigate(ViewsRoutes.HOME.getRoute())
                     }
                     "Sign Up" -> {
                         // Navega al create account
                         if(esCreate){
                             onClick()
                             println("todo ok!!!!!!!!!!!!!")
-                            navController?.navigate("sign")
+                            navController?.navigate(ViewsRoutes.SIGN_UP.getRoute())
                         } else {
-                            navController?.navigate("create_account")
+                            navController?.navigate(ViewsRoutes.CREATE_ACCOUNT.getRoute())
                         }
                     }
                     "Next Step" -> {
                         // Navega al new password
-                        navController?.navigate("security_pin")
+                        navController?.navigate(ViewsRoutes.SECURITY_PIN.getRoute())
                     }
                     "Accept" -> {
                         // Navega al new psswd
-                        navController?.navigate("new_password")
+                        navController?.navigate(ViewsRoutes.NEW_PSWD.getRoute())
                     }
                     "Change Password" -> {
                         // Navega a la ventana de exito
-                        navController?.navigate("exito")
+                        navController?.navigate(ViewsRoutes.SUCCESS.getRoute())
                     }
                 }
             }

@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.parcialtp3_2.R
+import com.example.parcialtp3_2.code_behind.ViewsRoutes
 import com.example.parcialtp3_2.components.ViewBackground
 import com.example.parcialtp3_2.components.confirmationButton
 import com.example.parcialtp3_2.components.inputText
@@ -137,7 +138,7 @@ fun SecurityPinView(navController: NavController, modifier: Modifier = Modifier)
                         modifier = Modifier
                             .padding(top = 5.dp)
                             .clickable {
-                                navController.navigate("create_account")
+                                navController.navigate(ViewsRoutes.CREATE_ACCOUNT.getRoute())
                             }
                     )
                 }

@@ -5,12 +5,14 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.colorResource
@@ -34,7 +36,8 @@ fun FingerPoint(navController: NavController, modifier: Modifier){
         navController,
         content1 = {Box(
             modifier = Modifier
-                .absoluteOffset(x = 325.dp, y = 61.dp)
+                .align(Alignment.TopEnd)
+                .padding( top = 61.dp,end = 25.dp)
                 .clip(RoundedCornerShape(25.71.dp))
                 .width(30.dp)
                 .height(30.dp)
@@ -45,7 +48,7 @@ fun FingerPoint(navController: NavController, modifier: Modifier){
         }
             Box(
                 modifier = Modifier
-                    .absoluteOffset(x = 25.dp, y = 61.dp)
+                    .padding(start = 25.dp, top = 61.dp)
                     .clip(RoundedCornerShape(25.71.dp))
                     .width(30.dp)
                     .height(30.dp)
@@ -53,16 +56,22 @@ fun FingerPoint(navController: NavController, modifier: Modifier){
                 IconBox(iconBox = IconBoxes.GREEN, icon = R.drawable.flecha_back)
             }
 
-            Text(
-                text = "FingerPrint",
-                fontFamily = poppinsFamily,
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 20.sp,
-                color = colorResource(R.color.Void),
-                modifier = Modifier.absoluteOffset(x = 130.dp, y = 61.dp)
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 61.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "FingerPrint",
+                    fontFamily = poppinsFamily,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 20.sp,
+                    color = colorResource(R.color.Void),
+                    modifier = Modifier
 
-
-            )
+                )
+            }
 
 
 

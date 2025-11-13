@@ -28,7 +28,7 @@ fun SwitchEditProfile(title: String) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 4.dp),
+            .padding(start = 16.dp, end=16.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -46,8 +46,10 @@ fun SwitchEditProfile(title: String) {
                 uncheckedThumbColor = Color(0xFFFFFFFF),
                 checkedTrackColor = Color(0xFF3AC7A0),
                 uncheckedTrackColor = Color(0xFFDFF7E2),
-                disabledUncheckedTrackColor = Color(0xFFF1FFF3),
-                disabledUncheckedThumbColor = Color(0xFFFFFFFF)
+                disabledUncheckedTrackColor = Color(0xFFFFFFFF),
+                disabledUncheckedThumbColor = Color(0xFFFFFFFF),
+                disabledUncheckedBorderColor=Color(0xFFDFF7E2),
+
             )
         )
     }

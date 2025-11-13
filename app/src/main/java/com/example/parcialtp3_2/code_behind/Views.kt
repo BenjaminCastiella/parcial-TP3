@@ -7,9 +7,10 @@ enum class Views (
     val label: String,
     val icon: Int,
 ){
-    MENU("home", "Menu", R.drawable.ic_home),
-    ANALYSIS("home", "Menu", R.drawable.analysis),
-    TRANSACTIONS("trans", "Menu", R.drawable.transactions),
-    CATEGORY("category", "Menu", R.drawable.category),
-    PROFILE("profile", "Menu", R.drawable.profile)
+    MENU(ViewsRoutes.HOME.getRoute(), "Menu", R.drawable.ic_home),
+    ANALYSIS(ViewsRoutes.HOME.getRoute(), "Menu", R.drawable.analysis),
+    TRANSACTIONS(ViewsRoutes.TRANSACTIONS.getRoute(), "Menu", R.drawable.transactions),
+    CATEGORY(ViewsRoutes.CATEGORYS.getRoute(), "Menu", R.drawable.category),
+    PROFILE(ViewsRoutes.PROFILE.getRoute(), "Menu", R.drawable.profile)
 }
+
