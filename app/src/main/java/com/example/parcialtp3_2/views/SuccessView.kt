@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.parcialtp3_2.R
+import com.example.parcialtp3_2.code_behind.ViewsRoutes
 import com.example.parcialtp3_2.components.ViewBackground
 
 @Composable
@@ -50,7 +51,7 @@ fun SuccessView(navController: NavController, modifier: Modifier) {
                         contentDescription = "Success Checkmark",
                         modifier = Modifier.size(202.dp).clickable(
                             onClick = {
-                                navController.navigate("menu")
+                                navController.navigate(ViewsRoutes.HOME.getRoute())
                             }
                         ),
                         tint = Color(0xFFDFF7E2)

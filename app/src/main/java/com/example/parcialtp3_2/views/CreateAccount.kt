@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.parcialtp3_2.R
+import com.example.parcialtp3_2.code_behind.ViewsRoutes
 import com.example.parcialtp3_2.components.ViewBackground
 import com.example.parcialtp3_2.components.confirmationButton
 import com.example.parcialtp3_2.components.dateOfBirthdayInput
@@ -290,7 +291,7 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
                         },
                         modifier = Modifier.padding(top = 5.dp).clickable{
                             //Navigation to Sign Up Screen
-                            navController.navigate("sign")
+                            navController.navigate(ViewsRoutes.SIGN_UP.getRoute())
                         },)
 
                 }

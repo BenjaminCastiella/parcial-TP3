@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.parcialtp3_2.R
+import com.example.parcialtp3_2.code_behind.ViewsRoutes
 import com.example.parcialtp3_2.components.ViewBackground
 import com.example.parcialtp3_2.components.confirmationButton
 import com.example.parcialtp3_2.components.inputText
@@ -176,7 +177,7 @@ fun ForgotPassword(navController: NavController, modifier: Modifier){
                             .padding(top = 15.dp)
                             .clickable {
                                 //Navigation to Sign Up Screen
-                                navController.navigate("create_account")
+                                navController.navigate(ViewsRoutes.CREATE_ACCOUNT.getRoute())
 
                             },
 
