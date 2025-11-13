@@ -7,10 +7,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -18,18 +14,20 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 
-fun dateOfBirthdayInput(modifier: Modifier, initText: String){
-
-    var dateOfBirth by remember { mutableStateOf("") }
-
+fun dateOfBirthdayInput(
+    modifier: Modifier,
+    initText: String,
+    textState: String,
+    onChange: (newValue: String) -> Unit
+){
     TextField(
-        value = dateOfBirth,
+        value = textState,
         onValueChange = { nuevoTexto: String ->
 
             if (nuevoTexto.all { it.isDigit() || it == '/'  }) {
 
                 if (nuevoTexto.length <= 10) {
-                    dateOfBirth = nuevoTexto
+                    onChange(nuevoTexto)
                 }
             }
         },
