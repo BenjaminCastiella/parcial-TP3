@@ -132,6 +132,9 @@ fun ForgotPassword(navController: NavController, modifier: Modifier){
                         buttonColor = Color(0xFF00D09E),
                         esCreate = false,
                         onClick = {
+                            if (psswd == ""){
+                                return@confirmationButton
+                            }
                             navController.navigate(ViewsRoutes.SECURITY_PIN.getRoute())
                         }
                     )
@@ -144,6 +147,7 @@ fun ForgotPassword(navController: NavController, modifier: Modifier){
                         buttonColor = Color(0xFFDFF7E2),
                         esCreate = false,
                         onClick = {
+
                             navController.navigate(ViewsRoutes.SIGN_UP.getRoute())
                         }
                     )

@@ -49,6 +49,8 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
     var name by remember { mutableStateOf("") }
     var mobileNum by remember { mutableStateOf("") }
     var birth by remember { mutableStateOf("") }
+    var psswd by remember { mutableStateOf("") }
+    var confirmPsswd by remember { mutableStateOf("") }
 
     val updateEmail: (String) -> Unit = { newValue ->
         email = newValue
@@ -226,8 +228,11 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
                         )
                         secretInputText(
                             modifier = Modifier.fillMaxWidth(),
-                            initText = stringResource(R.string.psw_message)
+                            initText = stringResource(R.string.psw_message),
+                            value = psswd,
+                            onValueChange = { psswd = it }
                         )
+
                     }
                     //Confirm password Input
 
@@ -247,8 +252,9 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
                         )
                         secretInputText(
                             modifier = Modifier.fillMaxWidth(),
-                            initText = stringResource(R.string.psw_message)
-                        )
+                            initText = stringResource(R.string.psw_message),
+                            value = confirmPsswd,
+                            onValueChange = { confirmPsswd = it })
                     }
                     Spacer(modifier = Modifier.height(5.dp))
                     Text(
@@ -276,7 +282,9 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
                         buttonColor = Color(0xFF00D09E),
                         esCreate = true,
                         onClick = { createUserOnBdd
-                            navController.navigate(ViewsRoutes.SIGN_UP.getRoute())
+                            if(name.isNotEmpty() && email.isNotEmpty() && mobileNum.isNotEmpty() && birth.isNotEmpty() && psswd.isNotEmpty() && confirmPsswd == psswd){
+                                navController.navigate(ViewsRoutes.SIGN_UP.getRoute())
+                            }
                         }
                     )
                     Spacer(Modifier.height(5.dp))
