@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.parcialtp3_2.R
+import com.example.parcialtp3_2.code_behind.ViewsRoutes
 import com.example.parcialtp3_2.components.ViewBackground
 import com.example.parcialtp3_2.components.confirmationButton
 import com.example.parcialtp3_2.components.inputText
@@ -102,9 +103,8 @@ fun NewPassword(navController: NavController, modifier: Modifier) {
                     confirmationButton(modifier = Modifier
                         .padding(top = 60.dp, start = 30.dp, end = 30.dp).fillMaxWidth(),
                         initText = stringResource(R.string.change),
-                        navController = navController,
                         esCreate = false,
-                        onClick = { }
+                        onClick = { navController.navigate(ViewsRoutes.SUCCESS.getRoute())}
                     )
                 }
             }

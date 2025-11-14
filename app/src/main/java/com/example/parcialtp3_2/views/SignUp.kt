@@ -98,8 +98,6 @@ fun SignUp(navController: NavController, modifier: Modifier){
                         inputText(
                             modifier = modifier,
                             initText = stringResource(R.string.container_label),
-                            textState = "",
-                            onChange = updateEmail
                         )
                     }
 
@@ -126,9 +124,11 @@ fun SignUp(navController: NavController, modifier: Modifier){
                     confirmationButton(modifier = Modifier,
                         initText = stringResource(R.string.log_in_button),
                         buttonColor = Color(0xFF00D09E),
-                        navController = navController,
                         esCreate = false,
-                        onClick = { }
+                        onClick = {
+
+                            navController.navigate(ViewsRoutes.HOME.getRoute())
+                        }
                     )
 
                     Spacer(modifier = Modifier.height(10.dp))

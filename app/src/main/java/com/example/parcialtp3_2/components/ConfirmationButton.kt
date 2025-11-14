@@ -22,42 +22,19 @@ import com.example.parcialtp3_2.code_behind.ViewsRoutes
 
 
 @Composable
-fun confirmationButton(modifier: Modifier, initText: String ,buttonColor: Color = Color(0xFF00D09E),
-        navController: NavController? = null, esCreate:Boolean) {
+fun confirmationButton(
+    modifier: Modifier,
+    initText: String,
+    buttonColor: Color = Color(0xFF00D09E),
+    esCreate: Boolean = false,
+    onClick: () -> Unit
+) {
     Button(
         shape = RoundedCornerShape(30.dp),
-        onClick = {
-            when(initText){
-                "Log In" -> {
-                    // Navega al home
-                    navController?.navigate(ViewsRoutes.HOME.getRoute())
-                }
-                "Sign Up" -> {
-                    // Navega al create account
-                    if(esCreate){
-                        navController?.navigate(ViewsRoutes.SIGN_UP.getRoute())
-
-                    }else {
-                        navController?.navigate(ViewsRoutes.CREATE_ACCOUNT.getRoute())
-                    }
-
-                }
-                "Next Step" -> {
-                    // Navega al new password
-                    navController?.navigate(ViewsRoutes.SECURITY_PIN.getRoute())
-                }
-                "Accept" -> {
-                    // Navega al new psswd
-                    navController?.navigate(ViewsRoutes.NEW_PSWD.getRoute())
-                }
-                "Change Password" -> {
-                    // Navega a la ventana de exito
-                    navController?.navigate(ViewsRoutes.SUCCESS.getRoute())
-                }
-
-            }
-        },
-        modifier = modifier.width(195.dp).height(55.dp),
+        onClick = { onClick() },   // <-- solo llama a la lambda
+        modifier = modifier
+            .width(195.dp)
+            .height(55.dp),
         colors = ButtonDefaults.buttonColors(
             containerColor = buttonColor
         )

@@ -28,6 +28,7 @@ import com.example.parcialtp3_2.R
 fun inputText(modifier: Modifier, initText: String){
     var textState by remember { mutableStateOf("") }
 
+
     TextField(
         value = textState,
         onValueChange = { newText: String ->
@@ -56,5 +57,6 @@ fun inputText(modifier: Modifier, initText: String){
 
 
     )
+
 
 }

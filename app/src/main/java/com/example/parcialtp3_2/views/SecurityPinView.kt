@@ -15,6 +15,11 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -79,22 +84,39 @@ fun SecurityPinView(navController: NavController, modifier: Modifier = Modifier)
 
                     Spacer(modifier = Modifier.height(20.dp))
 
-                    pinCodeComponent(pinCode = stringResource(R.string.pin))
+                    var pin by remember { mutableStateOf("") }
+                    var showError by remember { mutableStateOf(false) }
+                    pinCodeComponent(pinLength = 6,
+                        onPinChange = { newPin ->
+                            pin = newPin
+                        })
+                    if (showError) {
+                        Text(
+                            text = "Please enter all 6 digits",
+                            color = Color.Red,
+                            fontSize = 14.sp,
+                            modifier = Modifier.padding(top = 8.dp)
+                        )
+                    }
 
                     Spacer(modifier = Modifier.height(60.dp))
 
                     confirmationButton(
                         modifier = modifier.height(42.dp),
                         initText = "Accept",
-                        navController = navController,
                         esCreate = false,
-                        onClick = { }
+                        onClick = {
+                            if (pin.length < 6){
+                                showError = true
+                                return@confirmationButton
+                            }
+                            navController.navigate(ViewsRoutes.NEW_PSWD.getRoute())
+                        }
                     )
                     confirmationButton(
                         modifier = modifier.height(42.dp),
                         initText = "Send Again",
                         buttonColor = Color(0xFFDFF7E2),
-                        navController = navController,
                         esCreate = false,
                         onClick = { }
                     )

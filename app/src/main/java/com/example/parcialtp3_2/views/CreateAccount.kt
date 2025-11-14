@@ -93,7 +93,9 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
         null,
         content1 = {
             Column (
-                modifier = Modifier.fillMaxHeight().fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .fillMaxWidth(),
                 verticalArrangement = Arrangement.Top,
                 horizontalAlignment = Alignment.CenterHorizontally
             ){
@@ -272,9 +274,10 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
                         modifier = Modifier,
                         initText = stringResource(R.string.sign_up_button),
                         buttonColor = Color(0xFF00D09E),
-                        navController = navController,
                         esCreate = true,
-                        onClick = createUserOnBdd
+                        onClick = { createUserOnBdd
+                            navController.navigate(ViewsRoutes.SIGN_UP.getRoute())
+                        }
                     )
                     Spacer(Modifier.height(5.dp))
                     Text(
@@ -289,10 +292,12 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
                             }
 
                         },
-                        modifier = Modifier.padding(top = 5.dp).clickable{
-                            //Navigation to Sign Up Screen
-                            navController.navigate(ViewsRoutes.SIGN_UP.getRoute())
-                        },)
+                        modifier = Modifier
+                            .padding(top = 5.dp)
+                            .clickable {
+                                //Navigation to Sign Up Screen
+                                navController.navigate(ViewsRoutes.SIGN_UP.getRoute())
+                            },)
 
                 }
             }
