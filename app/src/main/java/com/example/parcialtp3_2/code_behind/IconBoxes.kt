@@ -8,6 +8,7 @@ enum class IconBoxes(
     private val boxHeight: Int,
     private val boxRoundVal: Int
 ) {
+    CHECK(0x00000, 0XFF093030, 40, 30, 30, 2),
     LIGHT_GREEN(0xFFDFF7E2,0xFF093030,22, 37, 37,15 ),
     DARK_BLUE(0xFF0068FF, 0xFFFFFFFF, 30, 55, 50, 25),
     MID_BLUE(0xFF3299FF, 0xFFFFFFFF, 30, 55, 50, 25),

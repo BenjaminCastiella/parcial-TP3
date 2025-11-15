@@ -21,6 +21,7 @@ material3 = "1.4.0"
 uiText = "1.9.4"
 composeMaterial3 = "1.5.4"
 navigationRuntimeKtx = "2.9.5"
+benchmarkTraceprocessor = "1.4.1"
 
 
 [libraries]
@@ -55,6 +56,7 @@ androidx-compose-material3 = { group = "androidx.compose.material3", name = "mat
 androidx-compose-ui-text = { group = "androidx.compose.ui", name = "ui-text", version.ref = "uiText" }
 compose-material3 = { group = "androidx.wear.compose", name = "compose-material3", version.ref = "composeMaterial3" }
 androidx-navigation-runtime-ktx = { group = "androidx.navigation", name = "navigation-runtime-ktx", version.ref = "navigationRuntimeKtx" }
+androidx-benchmark-traceprocessor = { group = "androidx.benchmark", name = "benchmark-traceprocessor", version.ref = "benchmarkTraceprocessor" }
 
 
 

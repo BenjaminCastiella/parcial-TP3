@@ -43,6 +43,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.benchmark.traceprocessor)
     val roomVersion = "2.8.2"
 
     implementation(libs.androidx.core.ktx)
