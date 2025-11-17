@@ -136,7 +136,7 @@ fun PageTwo(navController: NavController) {
                 buttonColor = Color(0xFF00D09E),
                 esCreate = false,
                 onClick = {
-                    navController.navigate(ViewsRoutes.HOME.getRoute())
+                    navController.navigate(ViewsRoutes.SIGN_UP.getRoute())
                 }
             )
 
@@ -149,7 +149,8 @@ fun PageTwo(navController: NavController) {
 
                 esCreate = true,
                 onClick = {
-                    navController.navigate(ViewsRoutes.SIGN_UP.getRoute())
+
+                    navController.navigate(ViewsRoutes.CREATE_ACCOUNT.getRoute())
                 }
             )
 
