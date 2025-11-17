@@ -49,6 +49,8 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
     var name by remember { mutableStateOf("") }
     var mobileNum by remember { mutableStateOf("") }
     var birth by remember { mutableStateOf("") }
+    var psswd by remember { mutableStateOf("") }
+    var confirmPsswd by remember { mutableStateOf("") }
 
     val updateEmail: (String) -> Unit = { newValue ->
         email = newValue
@@ -93,7 +95,9 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
         null,
         content1 = {
             Column (
-                modifier = Modifier.fillMaxHeight().fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .fillMaxWidth(),
                 verticalArrangement = Arrangement.Top,
                 horizontalAlignment = Alignment.CenterHorizontally
             ){
@@ -224,8 +228,11 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
                         )
                         secretInputText(
                             modifier = Modifier.fillMaxWidth(),
-                            initText = stringResource(R.string.psw_message)
+                            initText = stringResource(R.string.psw_message),
+                            value = psswd,
+                            onValueChange = { psswd = it }
                         )
+
                     }
                     //Confirm password Input
 
@@ -245,8 +252,9 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
                         )
                         secretInputText(
                             modifier = Modifier.fillMaxWidth(),
-                            initText = stringResource(R.string.psw_message)
-                        )
+                            initText = stringResource(R.string.psw_message),
+                            value = confirmPsswd,
+                            onValueChange = { confirmPsswd = it })
                     }
                     Spacer(modifier = Modifier.height(5.dp))
                     Text(
@@ -272,9 +280,12 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
                         modifier = Modifier,
                         initText = stringResource(R.string.sign_up_button),
                         buttonColor = Color(0xFF00D09E),
-                        navController = navController,
                         esCreate = true,
-                        onClick = createUserOnBdd
+                        onClick = { createUserOnBdd
+                            if(name.isNotEmpty() && email.isNotEmpty() && mobileNum.isNotEmpty() && birth.isNotEmpty() && psswd.isNotEmpty() && confirmPsswd == psswd){
+                                navController.navigate(ViewsRoutes.SIGN_UP.getRoute())
+                            }
+                        }
                     )
                     Spacer(Modifier.height(5.dp))
                     Text(
@@ -289,10 +300,12 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
                             }
 
                         },
-                        modifier = Modifier.padding(top = 5.dp).clickable{
-                            //Navigation to Sign Up Screen
-                            navController.navigate(ViewsRoutes.SIGN_UP.getRoute())
-                        },)
+                        modifier = Modifier
+                            .padding(top = 5.dp)
+                            .clickable {
+                                //Navigation to Sign Up Screen
+                                navController.navigate(ViewsRoutes.SIGN_UP.getRoute())
+                            },)
 
                 }
             }

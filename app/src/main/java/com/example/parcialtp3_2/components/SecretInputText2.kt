@@ -30,8 +30,9 @@ import androidx.compose.ui.unit.sp
 import com.example.parcialtp3_2.R
 
 @Composable
-fun secretInputText(modifier: Modifier, initText: String) {
-    var textState by remember { mutableStateOf("") }
+fun secretInputText(modifier: Modifier, initText: String, value: String,
+                    onValueChange: (String) -> Unit,) {
+    //var textState by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
 
     val fieldTextStyle = TextStyle(
@@ -42,8 +43,9 @@ fun secretInputText(modifier: Modifier, initText: String) {
     )
 
     TextField(
-        value = textState,
-        onValueChange = { newText -> textState = newText },
+        value = value,
+        onValueChange = { newText:String  ->
+            onValueChange(newText) },
         textStyle = fieldTextStyle,
        placeholder = {
             Text(

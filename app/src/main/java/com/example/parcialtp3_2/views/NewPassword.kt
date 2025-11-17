@@ -9,6 +9,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -19,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.parcialtp3_2.R
+import com.example.parcialtp3_2.code_behind.ViewsRoutes
 import com.example.parcialtp3_2.components.ViewBackground
 import com.example.parcialtp3_2.components.confirmationButton
 import com.example.parcialtp3_2.components.inputText
@@ -28,6 +33,8 @@ import com.example.parcialtp3_2.components.secretInputText
 
 fun NewPassword(navController: NavController, modifier: Modifier) {
     // Implementación de la pantalla de nueva contraseña
+    var psswd by remember { mutableStateOf("") }
+    var confirmPsswd by remember { mutableStateOf("") }
     ViewBackground(
         false,
         0.80f,
@@ -77,8 +84,10 @@ fun NewPassword(navController: NavController, modifier: Modifier) {
                         )
                         secretInputText(
                             modifier = Modifier.fillMaxWidth(),
-                            initText = stringResource(R.string.psw_message)
-                        )
+                            initText = stringResource(R.string.psw_message),
+                            value = psswd,
+                            onValueChange = { psswd = it })
+
 
                         Spacer(modifier = Modifier.height(60.dp))
                         //confirm new password
@@ -91,8 +100,10 @@ fun NewPassword(navController: NavController, modifier: Modifier) {
                         )
                         secretInputText(
                             modifier = Modifier.fillMaxWidth(),
-                            initText = stringResource(R.string.psw_message)
-                        )
+                            initText = stringResource(R.string.psw_message),
+                            value = confirmPsswd,
+                            onValueChange = { confirmPsswd = it })
+
 
 
 
@@ -102,9 +113,15 @@ fun NewPassword(navController: NavController, modifier: Modifier) {
                     confirmationButton(modifier = Modifier
                         .padding(top = 60.dp, start = 30.dp, end = 30.dp).fillMaxWidth(),
                         initText = stringResource(R.string.change),
-                        navController = navController,
                         esCreate = false,
-                        onClick = { }
+                        onClick = {
+                            if(psswd == confirmPsswd && psswd.isNotEmpty()){
+                                navController.navigate(ViewsRoutes.SUCCESS.getRoute())
+                            }else{
+                                return@confirmationButton
+                            }
+
+                        }
                     )
                 }
             }

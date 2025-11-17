@@ -46,7 +46,7 @@ import com.example.parcialtp3_2.components.secretInputText
 @Composable
 fun SignUp(navController: NavController, modifier: Modifier){
     var email by remember { mutableStateOf("") }
-
+    var psswd by remember { mutableStateOf("") }
     val updateEmail: (String) -> Unit = { newValue ->
         email = newValue
         println(email)
@@ -98,8 +98,8 @@ fun SignUp(navController: NavController, modifier: Modifier){
                         inputText(
                             modifier = modifier,
                             initText = stringResource(R.string.container_label),
-                            textState = "",
-                            onChange = updateEmail
+                            value = email,
+                            onValueChange = { email = it }
                         )
                     }
 
@@ -117,7 +117,9 @@ fun SignUp(navController: NavController, modifier: Modifier){
                             fontWeight = FontWeight(500),
                         )
 
-                        secretInputText(modifier = modifier, initText = stringResource(R.string.psw_message))
+                        secretInputText(modifier = modifier, initText = stringResource(R.string.psw_message),
+                            value = psswd,
+                            onValueChange = { psswd = it })
                     }
 
 
@@ -126,9 +128,14 @@ fun SignUp(navController: NavController, modifier: Modifier){
                     confirmationButton(modifier = Modifier,
                         initText = stringResource(R.string.log_in_button),
                         buttonColor = Color(0xFF00D09E),
-                        navController = navController,
                         esCreate = false,
-                        onClick = { }
+                        onClick = {
+                            if(email == "" || psswd == "" ){
+                                return@confirmationButton
+
+                            }
+                            navController.navigate(ViewsRoutes.HOME.getRoute())
+                        }
                     )
 
                     Spacer(modifier = Modifier.height(10.dp))
@@ -163,6 +170,10 @@ fun SignUp(navController: NavController, modifier: Modifier){
                             .background(Color(0xFFDFF7E2))
                             .padding(top = 15.dp)
                             .clickable{
+                                /*if(email == "" || psswd == "" ){
+                                    return@clickable
+
+                                }*/
                             navController.navigate(ViewsRoutes.CREATE_ACCOUNT.getRoute())
                         },
                         color = Color.Black,
