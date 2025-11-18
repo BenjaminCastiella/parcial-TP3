@@ -1,9 +1,7 @@
-package com.example.parcialtp3_2.infraestructura
+package com.example.parcialtp3_2.infraestructure
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.parcialtp3_2.infraestructura.UserEntity
-import com.example.parcialtp3_2.infraestructura.UserRepository
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn

@@ -1,4 +1,4 @@
-package com.example.parcialtp3_2.infraestructura
+package com.example.parcialtp3_2.infraestructure
 
 import androidx.room.Dao
 import androidx.room.Insert

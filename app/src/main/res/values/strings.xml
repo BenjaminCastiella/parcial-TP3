@@ -7,6 +7,7 @@
     <string name="container_label">example@example.com</string>
     <string name="container_password">Password</string>
     <string name="welcome">Welcome</string>
+    <string name="edit_profile">Edit Profile</string>
     <string name="psw_message">●●●●●●●●</string>
     <string name="log_in_button">Log In</string>
     <string name="sign_up_button">Sign Up</string>

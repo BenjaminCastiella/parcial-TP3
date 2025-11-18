@@ -40,10 +40,21 @@ android {
     buildFeatures {
         compose = true
     }
-}
+    packaging {
+        // Indica a Gradle que omita los archivos que causan el conflicto.
+        resources {
+            excludes.add("META-INF/INDEX.LIST")
+            excludes.add("META-INF/DEPENDENCIES")
+            // A veces también es necesario excluir estos:
+            excludes.add("META-INF/io.netty.versions.properties")
+            excludes.add("META-INF/{AL2.0,LGPL2.1}")
+        }
+}}
 
 dependencies {
     implementation(libs.androidx.benchmark.traceprocessor)
+    implementation(libs.firebase.appdistribution.gradle)
+    implementation(libs.androidx.compose.runtime)
     val roomVersion = "2.8.2"
 
     implementation(libs.androidx.core.ktx)
@@ -52,6 +63,16 @@ dependencies {
     implementation(platform(libs.androidx.compose.bom))
     implementation("androidx.compose.material:material-icons-extended")
     implementation(libs.androidx.ui)
+
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
+
+
+
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)

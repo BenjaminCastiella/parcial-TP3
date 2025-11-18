@@ -42,14 +42,42 @@ import com.example.parcialtp3_2.R
 import com.example.parcialtp3_2.code_behind.ViewsRoutes
 import com.example.parcialtp3_2.components.confirmationButton
 import com.example.parcialtp3_2.components.secretInputText
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope // Necesario si quieres mostrar un Snackbar
+import com.example.parcialtp3_2.infraestructure.model.LoginViewModel
+
+// Asegúrate de que LoginViewModel y LoginUiState estén disponibles (importados)
 
 @Composable
-fun SignUp(navController: NavController, modifier: Modifier){
-    var email by remember { mutableStateOf("") }
+fun SignUp(
+    navController: NavController,
+    modifier: Modifier,
+    // Obtener el ViewModel. 'viewModel()' automáticamente crea y retiene la instancia.
+    viewModel: LoginViewModel = viewModel()
+) {var email by remember { mutableStateOf("") }
     var psswd by remember { mutableStateOf("") }
-    val updateEmail: (String) -> Unit = { newValue ->
-        email = newValue
-        println(email)
+
+    // 1. Observar el estado de la red (LoginUiState)
+    val loginState by viewModel.uiState.collectAsState()
+
+    // 2. Efecto para manejar la navegación tras un login exitoso (YA ESTÁ CORRECTO)
+    LaunchedEffect(loginState.isSuccess) {
+        if (loginState.isSuccess) {
+            navController.navigate(ViewsRoutes.HOME.getRoute()) {
+                popUpTo(navController.graph.startDestinationId) { inclusive = true }
+            }
+        }
+    }
+
+    // 3. Efecto para manejar y mostrar mensajes de error (YA ESTÁ CORRECTO)
+    LaunchedEffect(loginState.errorMessage) {
+        if (loginState.errorMessage != null) {
+            println("ERROR DE LOGIN: ${loginState.errorMessage}")
+            // Aquí puedes añadir un Toast o Snackbar real
+        }
     }
 
     ViewBackground(
@@ -125,16 +153,26 @@ fun SignUp(navController: NavController, modifier: Modifier){
 
                     Spacer(modifier = Modifier.height(25.dp))
 
-                    confirmationButton(modifier = Modifier,
-                        initText = stringResource(R.string.log_in_button),
+                    confirmationButton(
+                        modifier = Modifier,
+                        // El texto del botón aún puede reflejar el estado de carga
+                        initText = if (loginState.isLoading) "Iniciando Sesión..." else stringResource(R.string.log_in_button),
                         buttonColor = Color(0xFF00D09E),
                         esCreate = false,
                         onClick = {
-                            if(email == "" || psswd == "" ){
+                            // 1. **IGNORAR EL CLIC SI ESTÁ CARGANDO** 🛑
+                            if (loginState.isLoading) {
+                                println("CLICK IGNORADO: Ya hay una petición en curso.")
                                 return@confirmationButton
-
                             }
-                            navController.navigate(ViewsRoutes.HOME.getRoute())
+
+                            // 2. Validación de campos (se mantiene igual)
+                            if (email.isEmpty() || psswd.isEmpty() ){
+                                return@confirmationButton
+                            }
+
+                            // 3. Llamar al ViewModel
+                            viewModel.login(email, psswd)
                         }
                     )
 
