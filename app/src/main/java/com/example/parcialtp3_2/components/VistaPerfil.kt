@@ -10,6 +10,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.parcialtp3_2.R
 import com.example.parcialtp3_2.code_behind.IconBoxes
@@ -21,16 +22,16 @@ import data.ItemsPerfil
 @Composable
 fun VistaPerfil (onNavigate: (String) -> Unit, int: Int) {
     val items = listOf(
-        ItemsPerfil("Editar Perfil", R.drawable.profile, IconBoxes.LIGHT_BLUE, ViewsRoutes.EDIT_PROFILE.getRoute(),false),
-        ItemsPerfil("Security",R.drawable.seguridad, IconBoxes.MID_BLUE, ViewsRoutes.SECURITY.getRoute(),false),
-        ItemsPerfil("Settings",R.drawable.settings, IconBoxes.DARK_BLUE, ViewsRoutes.PROFILE.getRoute(),false),
-        ItemsPerfil("Help",R.drawable.help, IconBoxes.LIGHT_BLUE, ViewsRoutes.PROFILE.getRoute(),false),
-        ItemsPerfil("Logout",R.drawable.logout, IconBoxes.MID_BLUE, ViewsRoutes.PROFILE.getRoute(),false)
+        ItemsPerfil(stringResource(R.string.edit_profile), R.drawable.profile, IconBoxes.LIGHT_BLUE, ViewsRoutes.EDIT_PROFILE.getRoute(),false),
+        ItemsPerfil(stringResource(R.string.security),R.drawable.seguridad, IconBoxes.MID_BLUE, ViewsRoutes.SECURITY.getRoute(),false),
+        ItemsPerfil(stringResource(R.string.settings),R.drawable.settings, IconBoxes.DARK_BLUE, ViewsRoutes.PROFILE.getRoute(),false),
+        ItemsPerfil(stringResource(R.string.help),R.drawable.help, IconBoxes.LIGHT_BLUE, ViewsRoutes.PROFILE.getRoute(),false),
+        ItemsPerfil(stringResource(R.string.log_out),R.drawable.logout, IconBoxes.MID_BLUE, ViewsRoutes.PROFILE.getRoute(),false)
     )
 
     val itemsFinger = listOf(
-        ItemsPerfil("John Fingerprint",R.drawable.huella,IconBoxes.LIGHT_BLUE,ViewsRoutes.JOHN_FINGER.getRoute(),true),
-        ItemsPerfil("Add Fingerprint",R.drawable.mas,IconBoxes.DARK_BLUE,ViewsRoutes.ADD_FINGER.getRoute(),true)
+        ItemsPerfil(stringResource(R.string.john_fingerprint),R.drawable.huella,IconBoxes.LIGHT_BLUE,ViewsRoutes.JOHN_FINGER.getRoute(),true),
+        ItemsPerfil(stringResource(R.string.add_fingerprint),R.drawable.mas,IconBoxes.DARK_BLUE,ViewsRoutes.ADD_FINGER.getRoute(),true)
 
     )
 

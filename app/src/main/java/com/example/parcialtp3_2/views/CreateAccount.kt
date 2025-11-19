@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -36,9 +37,11 @@ import com.example.parcialtp3_2.components.dateOfBirthdayInput
 import com.example.parcialtp3_2.components.inputText
 import com.example.parcialtp3_2.components.mobileNumberInput
 import com.example.parcialtp3_2.components.secretInputText
+import com.example.parcialtp3_2.infraestructure.RetrofitClient
 import com.example.parcialtp3_2.infraestructure.room.AppDatabase
 import com.example.parcialtp3_2.infraestructure.room.UserEntity
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.Date
 
@@ -112,6 +115,7 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
             }
         },
         content2 = {
+            val scope = rememberCoroutineScope()
             Column(
                 modifier = Modifier,
                 verticalArrangement = Arrangement.Top
@@ -287,8 +291,19 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
                         onClick = {
                             createUserOnBdd
                             if (name.isNotEmpty() && email.isNotEmpty() && mobileNum.isNotEmpty() && birth.isNotEmpty() && psswd.isNotEmpty() && confirmPsswd == psswd) {
-                                navController.navigate(ViewsRoutes.SIGN_UP.getRoute())
+                                scope.launch {
+                                    val client = RetrofitClient()
+                                    val res = client.getCreate(name, email, psswd)
+
+                                    if (res != null) {
+                                        println("Login Exitoso: ${res}")
+                                        navController.navigate(ViewsRoutes.SIGN_UP.getRoute())
+                                    } else {
+                                        println("Algo salió mal")
+                                    }
+                                }
                             }
+
                         })
                     Spacer(Modifier.height(5.dp))
                     Text(

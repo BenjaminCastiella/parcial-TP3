@@ -2,11 +2,31 @@ package com.example.parcialtp3_2.infraestructure
 
 import com.google.gson.annotations.SerializedName
 
-data class CreateUserResponse(
+data class UserResponse(
+    val address: Adress,
+    val id : Int,
+    val email: String,
+    val username: String,
+    val password: String,
+    val name : Name,
+    val phone : String,
 
-    val id: Int,
-val email: String,
-val username: String
+)
+
+data class Name(
+    val firstname: String,
+    val lastname: String
+)
+data class Adress(
+   val geoLocation : GeoLocation,
+    val city : String,
+    val street : String,
+    val number : Int,
+    val zipcode : String
+)
+data class GeoLocation(
+    val lat: Double,
+  val long: Double
 )
 
 data class CreateUserRequest(
