@@ -1,7 +1,24 @@
 <resources>
+
+    <string name="food_c">Food</string>
+    <string name="transport_c">Transport</string>
+    <string name="medicine_c">Medicine</string>
+    <string name="groceries_c">Groceries</string>
+    <string name="rent_c">Rent</string>
+    <string name="gift_c">Gifts</string>
+    <string name="saving_c">Savings</string>
+    <string name="entertainment_c">Entertainment</string>
+    <string name="more_c">More</string>
+
+    <string name="travel_c">Travel</string>
+    <string name="new_home_c">New House</string>
+    <string name="car_c">Car</string>
+    <string name="wedding_c">Wedding</string>
+
+
+
+
     <string name="edit_perfil">Edit Profile</string>
-
-
     <string name="app_name">parcialtp3_2</string>
     <string name="container_name">Username Or Email</string>
     <string name="container_label">example@example.com</string>

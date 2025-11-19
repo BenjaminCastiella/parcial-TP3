@@ -1,8 +1,8 @@
- FinanzasApp TP3: Gestión Financiera Inteligente
+ FinanceApp TP3: Gestión Financiera Inteligente
 
 Descripción General
 
-FinanzasApp TP3 es una aplicación móvil para Android desarrollada para Software ORT TP3. Su misión es transformar la gestión de las finanzas personales y comerciales, ofreciendo a los usuarios una herramienta intuitiva y potente para monitorear ingresos y egresos, tomar mejores decisiones económicas y construir hábitos saludables.
+FinanceApp TP3 es una aplicación móvil para Android desarrollada para Software ORT TP3. Su misión es transformar la gestión de las finanzas personales y comerciales, ofreciendo a los usuarios una herramienta intuitiva y potente para monitorear ingresos y egresos, tomar mejores decisiones económicas y construir hábitos saludables.
 
 La aplicación se enfoca en la personalización, habilitando funcionalidades adaptadas a las necesidades del perfil de cada usuario, desde el registro detallado de movimientos hasta la visualización de insights personalizados.
 
