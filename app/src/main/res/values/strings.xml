@@ -34,6 +34,8 @@
     <string name="security_pin">Security Pin</string>
     <string name="security_pin_description">Enter Security Pin</string>
     <string name="pin">273916</string>
+    <string name="income_value">Income: $4,000.00</string>
+    <string name="expense_value">Expense: -$1,187.40</string>
 
 
 </resources>

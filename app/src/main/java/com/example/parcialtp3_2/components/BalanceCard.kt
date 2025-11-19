@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.parcialtp3_2.ui.theme.poppinsFamily
 
 
@@ -22,14 +23,16 @@ fun BalanceCard(
 ) {
     Card(
         modifier = modifier
-            .padding(horizontal = 16.dp),
+            .padding(horizontal = 15.dp)
+            .height(90.dp)
+            .width(400.dp),
         colors = CardDefaults.cardColors(containerColor = Color(0xFFE6FFF4)),
         shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
     ) {
         Column(
             modifier = Modifier
-                .padding(vertical = 16.dp)
+                .padding(vertical = 8.dp)
                 .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -38,15 +41,17 @@ fun BalanceCard(
                 style = MaterialTheme.typography.labelLarge.copy(
                     fontFamily = poppinsFamily,
                     fontWeight = FontWeight.Medium,
+                    fontSize = 16.sp,
                     color = Color(0xFF003300)
                 )
             )
-            Spacer(modifier = Modifier.height(4.dp))
+            Spacer(modifier = Modifier.height(1.dp))
             Text(
                 text = totalBalance,
                 style = MaterialTheme.typography.displayLarge.copy(
                     fontFamily = poppinsFamily,
                     fontWeight = FontWeight.ExtraBold,
+                    fontSize = 24.sp,
                     color = Color(0xFF003300)
                 )
             )

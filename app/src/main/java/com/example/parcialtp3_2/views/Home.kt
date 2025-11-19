@@ -359,81 +359,67 @@ fun Home(navController: NavController, modifier: Modifier){
 
 
                 }
-                Column(
-                    verticalArrangement = Arrangement.spacedBy(25.dp),
-                    modifier = Modifier.padding(top = 25.dp)
-                ) {
-                    Expense(
-                        iconBox = IconBoxes.LIGHT_BLUE_SMALL,
-                        icon = R.drawable.money,
-                        expenseTitle = "Salary",
-                        date = "April 30",
-                        hour = "28:27",
-                        category = "Monthly",
-                        expense = 4000.00,
-                        expenseColorIsBlue = false
-                    )
-                    Expense(
-                        iconBox = IconBoxes.MID_BLUE_SMALL,
-                        icon = R.drawable.groceries,
-                        expenseTitle = "Groceries",
-                        date = "April 24",
-                        hour = "17:00",
-                        category = "Pantry    ",
-                        expense = -100.00,
-                        expenseColorIsBlue = true
-                    )
-                    Expense(
-                        iconBox = IconBoxes.DARK_BLUE_SMALL,
-                        icon = R.drawable.key,
-                        expenseTitle = "Rent",
-                        date = "April 15",
-                        hour = "08:30",
-                        category = "Rent      ",
-                        expense = -674.40,
-                        expenseColorIsBlue = true
-                    )
-                    Expense(
-                        iconBox = IconBoxes.MID_BLUE_SMALL,
-                        icon = R.drawable.bus,
-                        expenseTitle = "Transport",
-                        date = "April 08",
-                        hour = "09:30",
-                        category = "Fuel      ",
-                        expense = -4.13,
-                        expenseColorIsBlue = true
-                    )
-                    Expense(
-                        iconBox = IconBoxes.LIGHT_BLUE_SMALL,
-                        icon = R.drawable.money,
-                        expenseTitle = "Salary",
-                        date = "April 30",
-                        hour = "28:27",
-                        category = "Monthly",
-                        expense = 4000.00,
-                        expenseColorIsBlue = false
-                    )
-                    Expense(
-                        iconBox = IconBoxes.LIGHT_BLUE_SMALL,
-                        icon = R.drawable.money,
-                        expenseTitle = "Salary",
-                        date = "April 30",
-                        hour = "28:27",
-                        category = "Monthly",
-                        expense = 4000.00,
-                        expenseColorIsBlue = false
-                    )
-                    Expense(
-                        iconBox = IconBoxes.LIGHT_BLUE_SMALL,
-                        icon = R.drawable.money,
-                        expenseTitle = "Salary",
-                        date = "April 30",
-                        hour = "28:27",
-                        category = "Monthly",
-                        expense = 4000.00,
-                        expenseColorIsBlue = false
-                    )
+                Spacer(modifier = Modifier.height(25.dp))
 
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 40.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth(0.90f)
+                            .clip(RoundedCornerShape(30.dp))
+                            .padding(horizontal = 18.dp, vertical = 22.dp),
+                        verticalArrangement = Arrangement.spacedBy(22.dp)
+                    ) {
+                        Expense(
+                            modifier = Modifier.fillMaxWidth(),
+                            iconBox = IconBoxes.LIGHT_BLUE_SMALL,
+                            icon = R.drawable.money,
+                            expenseTitle = "Salary",
+                            date = "April 30",
+                            hour = "28:27",
+                            category = "Monthly",
+                            expense = 4000.00,
+                            expenseColorIsBlue = false
+                        )
+                        Expense(
+                            modifier = Modifier.fillMaxWidth(),
+                            iconBox = IconBoxes.MID_BLUE_SMALL,
+                            icon = R.drawable.groceries,
+                            expenseTitle = "Groceries",
+                            date = "April 24",
+                            hour = "17:00",
+                            category = "Pantry",
+                            expense = -100.00,
+                            expenseColorIsBlue = true
+                        )
+                        Expense(
+                            modifier = Modifier.fillMaxWidth(),
+                            iconBox = IconBoxes.DARK_BLUE_SMALL,
+                            icon = R.drawable.key,
+                            expenseTitle = "Rent",
+                            date = "April 15",
+                            hour = "08:30",
+                            category = "Rent",
+                            expense = -674.40,
+                            expenseColorIsBlue = true
+                        )
+                        Expense(
+                            modifier = Modifier.fillMaxWidth(),
+                            iconBox = IconBoxes.MID_BLUE_SMALL,
+                            icon = R.drawable.bus,
+                            expenseTitle = "Transport",
+                            date = "April 08",
+                            hour = "09:30",
+                            category = "Fuel",
+                            expense = -4.13,
+                            expenseColorIsBlue = true
+                        )
+                        // agrega los demás Expense aquí igual
+                    }
                 }
             }
         }
