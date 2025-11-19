@@ -91,6 +91,9 @@ class MainActivity : ComponentActivity() {
                         composable(route = ViewsRoutes.TRANSACTIONS.getRoute()) {
                             Transactions(modifier = Modifier.padding(innerPadding), navController)
                         }
+                        composable(route = ViewsRoutes.CATEGORIES.getRoute()) {
+                            Transactions(modifier = Modifier.padding(innerPadding), navController)
+                        }
                         composable(route = ViewsRoutes.SECURITY.getRoute()) {
                             Security(navController, modifier = Modifier.padding(innerPadding))
                         }

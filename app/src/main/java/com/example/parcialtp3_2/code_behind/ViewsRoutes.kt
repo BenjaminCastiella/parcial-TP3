@@ -5,9 +5,8 @@ enum class ViewsRoutes(
 ) {
     START("/"),
     SIGN_UP("sign"),
-    LOG_IN("log"),
     HOME("home"),
-    CATEGORYS("categorys"),
+    CATEGORIES("categories"),
     CREATE_ACCOUNT("createAccount"),
     FORGOT_PSWD("forgotPswd"),
     SECURITY_PIN("securityPin"),

@@ -296,7 +296,7 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
                                         navController.navigate(ViewsRoutes.HOME.getRoute())
                                     } else {
                                         println("Algo salió mal")
-                                        navController.navigate(ViewsRoutes.PROFILE.getRoute())
+                                        navController.navigate(ViewsRoutes.CREATE_ACCOUNT.getRoute())
                                     }
                                 }
                             }
