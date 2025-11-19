@@ -18,7 +18,10 @@ import com.example.parcialtp3_2.components.PantallaCarga
 import com.example.parcialtp3_2.infraestructure.room.AppDatabase
 import com.example.parcialtp3_2.infraestructure.room.MIGRATION_1_2
 import com.example.parcialtp3_2.ui.theme.Parcialtp3_2Theme
+import com.example.parcialtp3_2.views.AddExpenses
 import com.example.parcialtp3_2.views.AddFinger
+import com.example.parcialtp3_2.views.Categories
+import com.example.parcialtp3_2.views.Category
 import com.example.parcialtp3_2.views.ChangePin
 import com.example.parcialtp3_2.views.CreateAccount
 import com.example.parcialtp3_2.views.EditProfile
@@ -69,6 +72,27 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(route = ViewsRoutes.HOME.getRoute()) {
                             Home(navController, modifier = Modifier.padding(innerPadding))
+                        }
+                        composable(route = ViewsRoutes.CATEGORIES.getRoute()) {
+                          Categories(navController, modifier = Modifier.padding(innerPadding))
+                        }
+                        //composable(route = ViewsRoutes.CATEGORY.getRoute()) {
+                        //    Category(navController, modifier = Modifier.padding(innerPadding))
+                        //}
+
+                        composable(
+                            route = "category/{categoryId}"
+                        ) { backStackEntry ->
+                            val categoryId = backStackEntry.arguments?.getString("categoryId")?.toInt()
+                            Category(
+                                navController = navController,
+                                modifier = Modifier.padding(innerPadding),
+                                category = categoryId ?: 0
+                            )
+                        }
+
+                        composable(ViewsRoutes.ADD_EXPENSES.getRoute()){
+                            AddExpenses(navController, modifier = Modifier.padding(innerPadding))
                         }
                         composable(ViewsRoutes.CREATE_ACCOUNT.getRoute()){
                             CreateAccount(navController, modifier = Modifier.padding(innerPadding), dataBase)

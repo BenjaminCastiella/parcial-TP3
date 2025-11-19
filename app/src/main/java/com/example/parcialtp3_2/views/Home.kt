@@ -40,6 +40,7 @@ import androidx.compose.ui.unit.sp
 import com.example.parcialtp3_2.code_behind.IconBoxes
 import com.example.parcialtp3_2.components.Expense
 import com.example.parcialtp3_2.components.ViewBackground
+import com.example.parcialtp3_2.components.categories.AppHeader
 
 @Composable
 fun Home(navController: NavController, modifier: Modifier){
@@ -59,9 +60,9 @@ fun Home(navController: NavController, modifier: Modifier){
             Row(
                 modifier = Modifier.padding(top = 50.dp, start = 20.dp, end = 20.dp)
             ) {
-                Column (
+                Column(
                     modifier = Modifier.weight(1f)
-                ){
+                ) {
                     Text(
                         stringResource(R.string.welcomeBack),
                         fontWeight = FontWeight.Bold,
@@ -73,15 +74,13 @@ fun Home(navController: NavController, modifier: Modifier){
                     )
                 }
 
-                IconButton (
+                IconButton(
                     modifier = Modifier
                         .background(
                             color = Color.White.copy(alpha = 1f),
                             shape = CircleShape
                         ),
-                    onClick = {
-
-                    }
+                    onClick = { }
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.bell),
@@ -92,6 +91,7 @@ fun Home(navController: NavController, modifier: Modifier){
                 }
             }
 
+            // SEGUNDO ROW (Total balance / expense)
             Column {
                 Row(
                     modifier = Modifier
@@ -99,6 +99,7 @@ fun Home(navController: NavController, modifier: Modifier){
                         .fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
+                    // LEFT
                     Column(
                         modifier = Modifier.weight(1f),
                         horizontalAlignment = Alignment.Start
@@ -126,9 +127,10 @@ fun Home(navController: NavController, modifier: Modifier){
                         )
                     }
 
+                    // DIVISOR
                     Box(
                         modifier = Modifier.padding(top = 10.dp)
-                    ){
+                    ) {
                         Box(
                             modifier = Modifier
                                 .width(1.dp)
@@ -137,6 +139,7 @@ fun Home(navController: NavController, modifier: Modifier){
                         )
                     }
 
+                    // RIGHT
                     Column(
                         modifier = Modifier.weight(1f),
                         horizontalAlignment = Alignment.End
@@ -166,6 +169,7 @@ fun Home(navController: NavController, modifier: Modifier){
                 }
             }
 
+            // BARRA DE PROGRESO
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -182,7 +186,10 @@ fun Home(navController: NavController, modifier: Modifier){
                         .fillMaxWidth(0.3f)
                         .background(
                             color = Color(0xFF052224),
-                            shape = RoundedCornerShape(topStart = 25.dp, bottomStart = 25.dp)
+                            shape = RoundedCornerShape(
+                                topStart = 25.dp,
+                                bottomStart = 25.dp
+                            )
                         )
                         .padding(horizontal = 23.dp),
                     contentAlignment = Alignment.CenterStart
@@ -204,9 +211,10 @@ fun Home(navController: NavController, modifier: Modifier){
                 )
             }
 
+            // CHECK "looks good"
             Box(
                 modifier = Modifier.padding(top = 255.dp, start = 60.dp),
-            ){
+            ) {
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(6.dp),
