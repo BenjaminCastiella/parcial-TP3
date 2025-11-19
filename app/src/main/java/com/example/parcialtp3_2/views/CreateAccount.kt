@@ -10,8 +10,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -29,7 +27,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.parcialtp3_2.R
 import com.example.parcialtp3_2.code_behind.ViewsRoutes
@@ -39,15 +36,14 @@ import com.example.parcialtp3_2.components.dateOfBirthdayInput
 import com.example.parcialtp3_2.components.inputText
 import com.example.parcialtp3_2.components.mobileNumberInput
 import com.example.parcialtp3_2.components.secretInputText
-import com.example.parcialtp3_2.infraestructure.AppDatabase
-import com.example.parcialtp3_2.infraestructure.UserEntity
-import com.example.parcialtp3_2.infraestructure.model.RegisterViewModel
+import com.example.parcialtp3_2.infraestructure.room.AppDatabase
+import com.example.parcialtp3_2.infraestructure.room.UserEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.util.Date
 
 @Composable
-fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatabase,viewModel: RegisterViewModel = viewModel()) {
+fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatabase ) {
     var email by remember { mutableStateOf("") }
     var name by remember { mutableStateOf("") }
     var mobileNum by remember { mutableStateOf("") }
@@ -92,24 +88,6 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
         }
     }
 
-
-    val registerState by viewModel.uiState.collectAsState()
-
-    // 2. Manejo de navegación
-    LaunchedEffect(registerState.isSuccess) {
-        if (registerState.isSuccess) {
-            // El registro fue exitoso. Navegar a la pantalla de Login (SignUp)
-            navController.navigate(ViewsRoutes.SIGN_UP.getRoute())
-        }
-    }
-
-    // 3. Manejo de errores
-    LaunchedEffect(registerState.errorMessage) {
-        if (registerState.errorMessage != null) {
-            println("ERROR DE REGISTRO: ${registerState.errorMessage}")
-            // Muestra un Toast o Snackbar
-        }
-    }
 
     ViewBackground(
         false,
@@ -301,28 +279,16 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
                     confirmationButton(
                         modifier = Modifier,
                         // Mostrar estado de carga
-                        initText = if (registerState.isLoading) "Registrando..." else stringResource(R.string.sign_up_button),
+                        initText = stringResource(R.string.sign_up_button),
                         buttonColor = Color(0xFF00D09E),
                         esCreate = true,
                         // CORRECCIÓN: Usar 'enabled' si tu confirmationButton lo soporta
                         // enabled = !registerState.isLoading,
                         onClick = {
-                            // CORRECCIÓN: Usamos una sentencia IF para envolver toda la lógica
-                            if (!registerState.isLoading) {
-
-                                // Validación de campos
-                                if (name.isNotEmpty() && email.isNotEmpty() && mobileNum.isNotEmpty() &&
-                                    birth.isNotEmpty() && psswd.isNotEmpty() && confirmPsswd == psswd
-                                ) {
-                                    // 4. Llamada al método del RegisterViewModel
-                                    viewModel.registerUser(
-                                        name = name,
-                                        email = email,
-                                        mobileNum = mobileNum,
-                                        birth = birth,
-                                        psswd = psswd
-                                    )
-                                }}
+                            createUserOnBdd
+                            if (name.isNotEmpty() && email.isNotEmpty() && mobileNum.isNotEmpty() && birth.isNotEmpty() && psswd.isNotEmpty() && confirmPsswd == psswd) {
+                                navController.navigate(ViewsRoutes.SIGN_UP.getRoute())
+                            }
                         })
                     Spacer(Modifier.height(5.dp))
                     Text(

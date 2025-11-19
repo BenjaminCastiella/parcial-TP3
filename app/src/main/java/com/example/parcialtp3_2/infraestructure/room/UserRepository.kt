@@ -1,4 +1,4 @@
-package com.example.parcialtp3_2.infraestructure
+package com.example.parcialtp3_2.infraestructure.room
 
 class UserRepository(private val db: AppDatabase) {
     private val dao = db.userDao()

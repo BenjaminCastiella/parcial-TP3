@@ -15,8 +15,8 @@ import androidx.navigation.compose.rememberNavController
 import androidx.room.Room
 import com.example.parcialtp3_2.code_behind.ViewsRoutes
 import com.example.parcialtp3_2.components.PantallaCarga
-import com.example.parcialtp3_2.infraestructure.AppDatabase
-import com.example.parcialtp3_2.infraestructure.MIGRATION_1_2
+import com.example.parcialtp3_2.infraestructure.room.AppDatabase
+import com.example.parcialtp3_2.infraestructure.room.MIGRATION_1_2
 import com.example.parcialtp3_2.ui.theme.Parcialtp3_2Theme
 import com.example.parcialtp3_2.views.AddFinger
 import com.example.parcialtp3_2.views.ChangePin

@@ -1,4 +1,4 @@
-package com.example.parcialtp3_2.infraestructure
+package com.example.parcialtp3_2.infraestructure.room
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
