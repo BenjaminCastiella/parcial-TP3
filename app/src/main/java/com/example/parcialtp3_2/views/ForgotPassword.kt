@@ -130,9 +130,13 @@ fun ForgotPassword(navController: NavController, modifier: Modifier){
                         modifier = Modifier.height(42.dp),
                         initText = stringResource(R.string.next_step_button),
                         buttonColor = Color(0xFF00D09E),
-                        navController = navController,
                         esCreate = false,
-                        onClick = {}
+                        onClick = {
+                            if (psswd == ""){
+                                return@confirmationButton
+                            }
+                            navController.navigate(ViewsRoutes.SECURITY_PIN.getRoute())
+                        }
                     )
 
                     Spacer(modifier.height(50.dp))
@@ -141,9 +145,11 @@ fun ForgotPassword(navController: NavController, modifier: Modifier){
                         modifier = Modifier.height(42.dp),
                         initText = stringResource(R.string.sign_up_button),
                         buttonColor = Color(0xFFDFF7E2),
-                        navController = navController,
                         esCreate = false,
-                        onClick = { }
+                        onClick = {
+
+                            navController.navigate(ViewsRoutes.SIGN_UP.getRoute())
+                        }
                     )
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(20.dp),

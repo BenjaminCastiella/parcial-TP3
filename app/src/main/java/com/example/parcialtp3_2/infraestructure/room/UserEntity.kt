@@ -1,9 +1,7 @@
-package com.example.parcialtp3_2.infraestructura
+package com.example.parcialtp3_2.infraestructure.room
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.time.LocalDateTime
-import java.util.Date
 
 @Entity(tableName = "users")
 data class UserEntity(

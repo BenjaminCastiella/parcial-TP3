@@ -3,6 +3,7 @@ package com.example.parcialtp3_2.views
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -43,6 +44,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import com.example.parcialtp3_2.R
+import com.example.parcialtp3_2.code_behind.ViewsRoutes
 import com.example.parcialtp3_2.components.confirmationButton
 
 @Composable
@@ -132,9 +134,10 @@ fun PageTwo(navController: NavController) {
             confirmationButton(modifier = Modifier,
                 initText = stringResource(R.string.log_in_button),
                 buttonColor = Color(0xFF00D09E),
-                navController = navController,
                 esCreate = false,
-                onClick = { }
+                onClick = {
+                    navController.navigate(ViewsRoutes.SIGN_UP.getRoute())
+                }
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -143,9 +146,12 @@ fun PageTwo(navController: NavController) {
                 modifier = Modifier,
                 initText = stringResource(R.string.sign_up_button),
                 buttonColor = Color(0xFFDFF7E2),
-                navController = navController,
+
                 esCreate = true,
-                onClick = { }
+                onClick = {
+
+                    navController.navigate(ViewsRoutes.CREATE_ACCOUNT.getRoute())
+                }
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -155,7 +161,10 @@ fun PageTwo(navController: NavController) {
                 fontSize = 14.sp,
                 color = Color(0xFF093030),
                 fontFamily = FontFamily(Font(R.font.poppins_semi_bold)),
-                modifier = Modifier.padding(top = 8.dp)
+                modifier = Modifier.padding(top = 8.dp).clickable{
+                    navController.navigate(ViewsRoutes.FORGOT_PSWD.getRoute())
+                }
+
             )
         }
     }

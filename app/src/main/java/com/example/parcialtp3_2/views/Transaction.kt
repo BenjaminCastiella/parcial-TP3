@@ -6,6 +6,10 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -14,6 +18,22 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.parcialtp3_2.R
 import com.example.parcialtp3_2.components.*
+import com.example.parcialtp3_2.components.ViewBackground
+import com.example.parcialtp3_2.components.BalanceCard
+import com.example.parcialtp3_2.components.IncomeExpenseRow
+import com.example.parcialtp3_2.components.TransactionRow
+import androidx.compose.ui.draw.clip
+import com.example.parcialtp3_2.infraestructure.RetrofitClient
+import kotlinx.coroutines.launch
+
+data class TxItem(
+    val id: Int,
+    val title: String,
+    val date: String,
+    val subtitle: String,
+    val amount: String,
+    val iconRes: Int
+)
 
 @Composable
 fun TransactionScreenContent(modifier: Modifier, navController: NavController) {

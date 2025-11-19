@@ -1,9 +1,7 @@
-package com.example.parcialtp3_2.infraestructura
+package com.example.parcialtp3_2.infraestructure.room
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.parcialtp3_2.infraestructura.UserEntity
-import com.example.parcialtp3_2.infraestructura.UserRepository
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
@@ -11,7 +9,7 @@ import kotlinx.coroutines.launch
 
 class UserViewModel(private val repo: UserRepository) : ViewModel() {
     val users: StateFlow<List<UserEntity>> =
-        repo.observeUsers().stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
+        repo.observeUsers().stateIn(viewModelScope, SharingStarted.Companion.Lazily, emptyList())
 
     fun refreshFromRemoteAndSave(fetcher: suspend () -> List<UserEntity>) {
         viewModelScope.launch {

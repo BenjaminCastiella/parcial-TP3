@@ -26,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -34,6 +35,7 @@ import com.example.parcialtp3_2.R
 import com.example.parcialtp3_2.code_behind.IconBoxes
 import com.example.parcialtp3_2.code_behind.ViewsRoutes
 import com.example.parcialtp3_2.components.IconBox
+import com.example.parcialtp3_2.components.InputChange
 import com.example.parcialtp3_2.components.Terminos
 import com.example.parcialtp3_2.components.ViewBackground
 import com.example.parcialtp3_2.ui.theme.LeagueFamily
@@ -73,7 +75,7 @@ fun TermsConditions(navController: NavController, modifier: Modifier){
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = "Terms And Conditions",
+                    stringResource(R.string.terms_condition),
                     fontFamily = poppinsFamily,
                     fontWeight = FontWeight.SemiBold,
                     fontSize = 20.sp,

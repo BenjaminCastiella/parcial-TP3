@@ -25,13 +25,16 @@ import com.example.parcialtp3_2.R
 
 @Composable
 
-fun inputText(modifier: Modifier, initText: String){
-    var textState by remember { mutableStateOf("") }
+fun inputText(
+              initText: String,
+              value: String,
+              onValueChange: (String) -> Unit,
+              modifier: Modifier = Modifier,){
 
     TextField(
-        value = textState,
+        value = value,
         onValueChange = { newText: String ->
-            textState = newText
+            onValueChange(newText)
         },
         placeholder = {
             Text(
@@ -56,5 +59,6 @@ fun inputText(modifier: Modifier, initText: String){
 
 
     )
+
 
 }

@@ -37,6 +37,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
@@ -83,7 +84,7 @@ fun Profile(navController: NavController, modifier: Modifier) {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = "Profile",
+                    stringResource(R.string.profile),
                     fontFamily = poppinsFamily,
                     fontWeight = FontWeight.SemiBold,
                     fontSize = 20.sp,
@@ -116,7 +117,7 @@ fun Profile(navController: NavController, modifier: Modifier) {
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = "John Smith",
+                        stringResource(R.string.john_smith),
                         fontFamily = poppinsFamily,
                         fontWeight = FontWeight.Bold,
                         fontSize = 20.sp,

@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -31,7 +32,7 @@ fun BotonChange(navController: NavController) {
             .height(45.dp)
     ) {
         Text(
-            text = "Change Pin",
+            stringResource(R.string.change_pin),
             color = colorResource(R.color.Void),
             fontFamily = poppinsFamily,
             fontWeight = FontWeight.Medium,

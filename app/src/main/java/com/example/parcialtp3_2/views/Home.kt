@@ -356,8 +356,6 @@ fun Home(navController: NavController, modifier: Modifier){
                                 },
                         )
                     }
-
-
                 }
                 Spacer(modifier = Modifier.height(25.dp))
 

@@ -1,13 +1,16 @@
 package com.example.parcialtp3_2.components
 
+import android.R
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.Font
@@ -16,54 +19,22 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.parcialtp3_2.code_behind.ViewsRoutes
-import kotlinx.coroutines.launch
 
 
 @Composable
-fun confirmationButton(
+fun confirmationButton2(
     modifier: Modifier,
     initText: String,
     buttonColor: Color = Color(0xFF00D09E),
-    navController: NavController? = null, esCreate:Boolean,
-    onClick: suspend () -> Unit
+    esCreate: Boolean = false,
+    onClick: () -> Unit
 ) {
-    val scope = rememberCoroutineScope()
-
     Button(
         shape = RoundedCornerShape(30.dp),
-        onClick = {
-            scope.launch {
-                when(initText){
-                    "Log In" -> {
-                        // Navega al home
-                        navController?.navigate(ViewsRoutes.HOME.getRoute())
-                    }
-                    "Sign Up" -> {
-                        // Navega al create account
-                        if(esCreate){
-                            onClick()
-                            println("todo ok!!!!!!!!!!!!!")
-                            navController?.navigate(ViewsRoutes.SIGN_UP.getRoute())
-                        } else {
-                            navController?.navigate(ViewsRoutes.CREATE_ACCOUNT.getRoute())
-                        }
-                    }
-                    "Next Step" -> {
-                        // Navega al new password
-                        navController?.navigate(ViewsRoutes.SECURITY_PIN.getRoute())
-                    }
-                    "Accept" -> {
-                        // Navega al new psswd
-                        navController?.navigate(ViewsRoutes.NEW_PSWD.getRoute())
-                    }
-                    "Change Password" -> {
-                        // Navega a la ventana de exito
-                        navController?.navigate(ViewsRoutes.SUCCESS.getRoute())
-                    }
-                }
-            }
-        },
-        modifier = modifier.width(195.dp).height(55.dp),
+        onClick = { onClick() },   // <-- solo llama a la lambda
+        modifier = modifier
+            .width(195.dp)
+            .height(55.dp),
         colors = ButtonDefaults.buttonColors(
             containerColor = buttonColor
         )

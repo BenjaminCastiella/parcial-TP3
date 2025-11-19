@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -36,19 +37,22 @@ import com.example.parcialtp3_2.components.dateOfBirthdayInput
 import com.example.parcialtp3_2.components.inputText
 import com.example.parcialtp3_2.components.mobileNumberInput
 import com.example.parcialtp3_2.components.secretInputText
-import com.example.parcialtp3_2.infraestructura.AppDatabase
-import com.example.parcialtp3_2.infraestructura.UserEntity
+import com.example.parcialtp3_2.infraestructure.RetrofitClient
+import com.example.parcialtp3_2.infraestructure.room.AppDatabase
+import com.example.parcialtp3_2.infraestructure.room.UserEntity
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.Date
 
-
 @Composable
-fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatabase) {
+fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatabase ) {
     var email by remember { mutableStateOf("") }
     var name by remember { mutableStateOf("") }
     var mobileNum by remember { mutableStateOf("") }
     var birth by remember { mutableStateOf("") }
+    var psswd by remember { mutableStateOf("") }
+    var confirmPsswd by remember { mutableStateOf("") }
 
     val updateEmail: (String) -> Unit = { newValue ->
         email = newValue
@@ -87,13 +91,16 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
         }
     }
 
+
     ViewBackground(
         false,
         0.80f,
         null,
         content1 = {
             Column (
-                modifier = Modifier.fillMaxHeight().fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .fillMaxWidth(),
                 verticalArrangement = Arrangement.Top,
                 horizontalAlignment = Alignment.CenterHorizontally
             ){
@@ -108,6 +115,7 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
             }
         },
         content2 = {
+            val scope = rememberCoroutineScope()
             Column(
                 modifier = Modifier,
                 verticalArrangement = Arrangement.Top
@@ -224,8 +232,11 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
                         )
                         secretInputText(
                             modifier = Modifier.fillMaxWidth(),
-                            initText = stringResource(R.string.psw_message)
+                            initText = stringResource(R.string.psw_message),
+                            value = psswd,
+                            onValueChange = { psswd = it }
                         )
+
                     }
                     //Confirm password Input
 
@@ -245,8 +256,9 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
                         )
                         secretInputText(
                             modifier = Modifier.fillMaxWidth(),
-                            initText = stringResource(R.string.psw_message)
-                        )
+                            initText = stringResource(R.string.psw_message),
+                            value = confirmPsswd,
+                            onValueChange = { confirmPsswd = it })
                     }
                     Spacer(modifier = Modifier.height(5.dp))
                     Text(
@@ -270,12 +282,29 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
 
                     confirmationButton(
                         modifier = Modifier,
+                        // Mostrar estado de carga
                         initText = stringResource(R.string.sign_up_button),
                         buttonColor = Color(0xFF00D09E),
-                        navController = navController,
                         esCreate = true,
-                        onClick = createUserOnBdd
-                    )
+                        // CORRECCIÓN: Usar 'enabled' si tu confirmationButton lo soporta
+                        // enabled = !registerState.isLoading,
+                        onClick = {
+                            createUserOnBdd
+                            if (name.isNotEmpty() && email.isNotEmpty() && mobileNum.isNotEmpty() && birth.isNotEmpty() && psswd.isNotEmpty() && confirmPsswd == psswd) {
+                                scope.launch {
+                                    val client = RetrofitClient()
+                                    val res = client.getCreate(name, email, psswd)
+
+                                    if (res != null) {
+                                        println("Login Exitoso: ${res}")
+                                        navController.navigate(ViewsRoutes.SIGN_UP.getRoute())
+                                    } else {
+                                        println("Algo salió mal")
+                                    }
+                                }
+                            }
+
+                        })
                     Spacer(Modifier.height(5.dp))
                     Text(
                         text = buildAnnotatedString {
@@ -289,10 +318,12 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
                             }
 
                         },
-                        modifier = Modifier.padding(top = 5.dp).clickable{
-                            //Navigation to Sign Up Screen
-                            navController.navigate(ViewsRoutes.SIGN_UP.getRoute())
-                        },)
+                        modifier = Modifier
+                            .padding(top = 5.dp)
+                            .clickable {
+                                //Navigation to Sign Up Screen
+                                navController.navigate(ViewsRoutes.SIGN_UP.getRoute())
+                            },)
 
                 }
             }

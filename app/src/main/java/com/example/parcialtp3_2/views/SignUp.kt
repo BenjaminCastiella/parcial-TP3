@@ -1,5 +1,6 @@
 package com.example.parcialtp3_2.views
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -42,15 +43,20 @@ import com.example.parcialtp3_2.R
 import com.example.parcialtp3_2.code_behind.ViewsRoutes
 import com.example.parcialtp3_2.components.confirmationButton
 import com.example.parcialtp3_2.components.secretInputText
+import androidx.compose.runtime.rememberCoroutineScope // Necesario si quieres mostrar un Snackbar
+import com.example.parcialtp3_2.infraestructure.RetrofitClient
+import kotlinx.coroutines.launch
 
+// Asegúrate de que LoginViewModel y LoginUiState estén disponibles (importados)
+
+@SuppressLint("CoroutineCreationDuringComposition")
 @Composable
-fun SignUp(navController: NavController, modifier: Modifier){
+fun SignUp(
+    navController: NavController,
+    modifier: Modifier,
+) {
     var email by remember { mutableStateOf("") }
-
-    val updateEmail: (String) -> Unit = { newValue ->
-        email = newValue
-        println(email)
-    }
+    var psswd by remember { mutableStateOf("") }
 
     ViewBackground(
         false,
@@ -73,6 +79,7 @@ fun SignUp(navController: NavController, modifier: Modifier){
             }
         },
         content2 = {
+            val scope = rememberCoroutineScope()
             Column(
                 modifier = Modifier,
                 verticalArrangement = Arrangement.Top
@@ -98,8 +105,8 @@ fun SignUp(navController: NavController, modifier: Modifier){
                         inputText(
                             modifier = modifier,
                             initText = stringResource(R.string.container_label),
-                            textState = "",
-                            onChange = updateEmail
+                            value = email,
+                            onValueChange = { email = it }
                         )
                     }
 
@@ -117,18 +124,33 @@ fun SignUp(navController: NavController, modifier: Modifier){
                             fontWeight = FontWeight(500),
                         )
 
-                        secretInputText(modifier = modifier, initText = stringResource(R.string.psw_message))
+                        secretInputText(modifier = modifier, initText = stringResource(R.string.psw_message),
+                            value = psswd,
+                            onValueChange = { psswd = it })
                     }
-
 
                     Spacer(modifier = Modifier.height(25.dp))
 
                     confirmationButton(modifier = Modifier,
                         initText = stringResource(R.string.log_in_button),
                         buttonColor = Color(0xFF00D09E),
-                        navController = navController,
                         esCreate = false,
-                        onClick = { }
+                        onClick = {
+                            if(email == "" || psswd == "" ){
+                                return@confirmationButton
+                            }
+                            scope.launch {
+                                val client = RetrofitClient()
+                                val res = client.getToken(email, psswd)
+
+                                if(res != null){
+                                    println("Login Exitoso: ${res}")
+                                    navController.navigate(ViewsRoutes.HOME.getRoute())
+                                } else{
+                                    println("Algo salió mal")
+                                }
+                            }
+                        }
                     )
 
                     Spacer(modifier = Modifier.height(10.dp))
@@ -163,6 +185,10 @@ fun SignUp(navController: NavController, modifier: Modifier){
                             .background(Color(0xFFDFF7E2))
                             .padding(top = 15.dp)
                             .clickable{
+                                /*if(email == "" || psswd == "" ){
+                                    return@clickable
+
+                                }*/
                             navController.navigate(ViewsRoutes.CREATE_ACCOUNT.getRoute())
                         },
                         color = Color.Black,
