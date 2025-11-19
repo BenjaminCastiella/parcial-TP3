@@ -1,21 +1,41 @@
 package com.example.parcialtp3_2.components
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.layout.Arrangement
+import com.example.parcialtp3_2.R
 
-// Implementación mínima para evitar errores de referencia. Puedes enriquecerla después.
 @Composable
-fun IncomeExpenseRow(modifier: Modifier = Modifier) {
+fun IncomeExpenseRow(
+    selectedIndex: Int?,                          // null = All, 0 = Income, 1 = Expense
+    onSelectedChange: (Int?) -> Unit,
+    modifier: Modifier = Modifier
+) {
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        Text("Income: $4,000.00")
-        Spacer(modifier = Modifier.weight(1f))
-        Text("Expense: -$1,187.40")
+        IncomeExpenseCard(
+            title = "Income",
+            amount = "$4,120.00",
+            iconRes = R.drawable.income_icon,
+            isSelected = selectedIndex == 0,
+            onClick = { onSelectedChange(if (selectedIndex == 0) null else 0) },
+            modifier = Modifier.weight(1f)
+        )
+        IncomeExpenseCard(
+            title = "Expense",
+            amount = "$1,187.40",
+            iconRes = R.drawable.expense_icon,
+            isSelected = selectedIndex == 1,
+            onClick = { onSelectedChange(if (selectedIndex == 1) null else 1) },
+            modifier = Modifier.weight(1f)
+        )
     }
 }
