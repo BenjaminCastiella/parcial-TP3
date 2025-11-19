@@ -7,7 +7,11 @@ enum class ViewsRoutes(
     SIGN_UP("sign"),
     LOG_IN("log"),
     HOME("home"),
-    CATEGORYS("categorys"),
+    CATEGORIES("categories"),
+
+    //CATEGORY("category"),
+
+    ADD_EXPENSES("addExpenses"),
     CREATE_ACCOUNT("createAccount"),
     FORGOT_PSWD("forgotPswd"),
     SECURITY_PIN("securityPin"),

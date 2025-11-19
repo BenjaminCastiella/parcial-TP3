@@ -10,7 +10,7 @@ enum class Views (
     MENU(ViewsRoutes.HOME.getRoute(), "Menu", R.drawable.ic_home),
     ANALYSIS(ViewsRoutes.HOME.getRoute(), "Menu", R.drawable.analysis),
     TRANSACTIONS(ViewsRoutes.TRANSACTIONS.getRoute(), "Menu", R.drawable.transactions),
-    CATEGORY(ViewsRoutes.CATEGORYS.getRoute(), "Menu", R.drawable.category),
+    CATEGORY(ViewsRoutes.CATEGORIES.getRoute(), "Menu", R.drawable.category),
     PROFILE(ViewsRoutes.PROFILE.getRoute(), "Menu", R.drawable.profile)
 }
 
