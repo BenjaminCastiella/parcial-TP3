@@ -13,4 +13,3 @@ enum class Views (
     CATEGORY(ViewsRoutes.CATEGORYS.getRoute(), "Menu", R.drawable.category),
     PROFILE(ViewsRoutes.PROFILE.getRoute(), "Menu", R.drawable.profile)
 }
-

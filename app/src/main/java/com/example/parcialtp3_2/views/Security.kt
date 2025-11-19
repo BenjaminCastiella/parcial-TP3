@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -68,7 +69,7 @@ fun Security(navController: NavController, modifier: Modifier) {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = "Security",
+                    stringResource(R.string.security),
                     fontFamily = poppinsFamily,
                     fontWeight = FontWeight.SemiBold,
                     fontSize = 20.sp,
@@ -89,7 +90,7 @@ fun Security(navController: NavController, modifier: Modifier) {
                         .fillMaxWidth().padding(start = 28.dp, top=60.dp)
                 ) {
                     Text(
-                    text = "Security",
+                        stringResource(R.string.security),
                     fontFamily = poppinsFamily,
                     fontWeight = FontWeight.SemiBold,
                     fontSize = 20.sp,

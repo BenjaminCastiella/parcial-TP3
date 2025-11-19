@@ -1,5 +1,6 @@
 package com.example.parcialtp3_2.views
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -42,15 +43,20 @@ import com.example.parcialtp3_2.R
 import com.example.parcialtp3_2.code_behind.ViewsRoutes
 import com.example.parcialtp3_2.components.confirmationButton
 import com.example.parcialtp3_2.components.secretInputText
+import androidx.compose.runtime.rememberCoroutineScope // Necesario si quieres mostrar un Snackbar
+import com.example.parcialtp3_2.infraestructure.RetrofitClient
+import kotlinx.coroutines.launch
 
+// Asegúrate de que LoginViewModel y LoginUiState estén disponibles (importados)
+
+@SuppressLint("CoroutineCreationDuringComposition")
 @Composable
-fun SignUp(navController: NavController, modifier: Modifier){
+fun SignUp(
+    navController: NavController,
+    modifier: Modifier,
+) {
     var email by remember { mutableStateOf("") }
     var psswd by remember { mutableStateOf("") }
-    val updateEmail: (String) -> Unit = { newValue ->
-        email = newValue
-        println(email)
-    }
 
     ViewBackground(
         false,
@@ -73,6 +79,7 @@ fun SignUp(navController: NavController, modifier: Modifier){
             }
         },
         content2 = {
+            val scope = rememberCoroutineScope()
             Column(
                 modifier = Modifier,
                 verticalArrangement = Arrangement.Top
@@ -122,7 +129,6 @@ fun SignUp(navController: NavController, modifier: Modifier){
                             onValueChange = { psswd = it })
                     }
 
-
                     Spacer(modifier = Modifier.height(25.dp))
 
                     confirmationButton(modifier = Modifier,
@@ -132,9 +138,18 @@ fun SignUp(navController: NavController, modifier: Modifier){
                         onClick = {
                             if(email == "" || psswd == "" ){
                                 return@confirmationButton
-
                             }
-                            navController.navigate(ViewsRoutes.HOME.getRoute())
+                            scope.launch {
+                                val client = RetrofitClient()
+                                val res = client.getToken(email, psswd)
+
+                                if(res != null){
+                                    println("Login Exitoso: ${res}")
+                                    navController.navigate(ViewsRoutes.HOME.getRoute())
+                                } else{
+                                    println("Algo salió mal")
+                                }
+                            }
                         }
                     )
 

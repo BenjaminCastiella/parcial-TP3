@@ -37,6 +37,7 @@ import com.example.parcialtp3_2.components.SwitchEditProfile
 import com.example.parcialtp3_2.components.ViewBackground
 import com.example.parcialtp3_2.ui.theme.poppinsFamily
 import androidx.compose.material3.Button
+import androidx.compose.ui.res.stringResource
 import com.example.parcialtp3_2.components.BotonChange
 
 @Composable
@@ -73,7 +74,7 @@ fun ChangePin(navController: NavController, modifier: Modifier){
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = "Change Pin",
+                    stringResource(R.string.change_pin),
                     fontFamily = poppinsFamily,
                     fontWeight = FontWeight.SemiBold,
                     fontSize = 20.sp,
@@ -98,14 +99,15 @@ fun ChangePin(navController: NavController, modifier: Modifier){
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
-                InputChange(title="Current Pin")
-                InputChange(title="New Pin")
-                InputChange(title="Current Pin")
-
-                Spacer(modifier = Modifier.height(30.dp))
+                InputChange(stringResource(R.string.change_pin))
+                InputChange(stringResource(R.string.new_pin))
+                InputChange(stringResource(R.string.current_pin))
 
 
-                BotonChange (navController)
+
+
+
+                        BotonChange (navController)
                     }
 
 

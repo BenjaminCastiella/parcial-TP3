@@ -21,6 +21,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -28,6 +29,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -42,6 +44,7 @@ import com.example.parcialtp3_2.components.IconBox
 import com.example.parcialtp3_2.components.InputEditProfile
 import com.example.parcialtp3_2.components.SwitchEditProfile
 import com.example.parcialtp3_2.components.ViewBackground
+import com.example.parcialtp3_2.infraestructure.RetrofitClient
 import com.example.parcialtp3_2.ui.theme.poppinsFamily
 
 @Composable
@@ -80,7 +83,7 @@ fun EditProfile(navController: NavController, modifier: Modifier){
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = "Edit My Profile",
+                    stringResource(R.string.edit_profile),
                     fontFamily = poppinsFamily,
                     fontWeight = FontWeight.SemiBold,
                     fontSize = 20.sp,
@@ -90,7 +93,11 @@ fun EditProfile(navController: NavController, modifier: Modifier){
                 )
             }
         },
-        content2 = {
+        content2 = {LaunchedEffect(key1 = Unit) {
+            val client = RetrofitClient()
+            val res = client.getUser()
+        }
+
             Box(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.TopCenter
@@ -126,7 +133,7 @@ fun EditProfile(navController: NavController, modifier: Modifier){
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = "John Smith",
+                        stringResource(R.string.john_smith),
                         fontFamily = poppinsFamily,
                         fontWeight = FontWeight.Bold,
                         fontSize = 20.sp,
@@ -157,7 +164,7 @@ fun EditProfile(navController: NavController, modifier: Modifier){
                     Column(modifier = Modifier.padding(start = 8.dp, end=8.dp)) {
 
                         Text(
-                            text = "Account Settings",
+                            stringResource(R.string.account_settings),
                             fontFamily = poppinsFamily,
                             fontWeight = FontWeight.SemiBold,
                             fontSize = 20.sp,
@@ -169,14 +176,14 @@ fun EditProfile(navController: NavController, modifier: Modifier){
 
                         Spacer(modifier = Modifier.height(10.dp))
 
-                        InputEditProfile(title = "Username", placeholder = "John Smith")
-                        InputEditProfile(title = "Phone", placeholder = "+44 555 5555 55")
-                        InputEditProfile(title = "Email Address", placeholder = "example@example.com")
+                        InputEditProfile(title = stringResource(R.string.user_name), placeholder = "John Smith")
+                        InputEditProfile(title =stringResource(R.string.phone), placeholder = "+44 555 5555 55")
+                        InputEditProfile(title = stringResource(R.string.email_address), placeholder = "example@example.com")
 
                         Spacer(modifier = Modifier.height(2.dp))
 
-                        SwitchEditProfile(title = "Push Notifications")
-                        SwitchEditProfile(title = "Turn Dark Theme")
+                        SwitchEditProfile(title = stringResource(R.string.push_notifications))
+                        SwitchEditProfile(title = stringResource(R.string.turn_dark_theme))
 
 
                     }
@@ -190,7 +197,7 @@ fun EditProfile(navController: NavController, modifier: Modifier){
                             .height(40.dp)
                     ) {
                         Text(
-                            text = "Update Profile",
+                            text = stringResource(R.string.update_profile),
                             color = colorResource(R.color.Void),
                             fontFamily = poppinsFamily,
                             fontWeight = FontWeight.Medium,

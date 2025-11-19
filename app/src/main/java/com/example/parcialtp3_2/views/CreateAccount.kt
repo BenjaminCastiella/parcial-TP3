@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -36,15 +37,16 @@ import com.example.parcialtp3_2.components.dateOfBirthdayInput
 import com.example.parcialtp3_2.components.inputText
 import com.example.parcialtp3_2.components.mobileNumberInput
 import com.example.parcialtp3_2.components.secretInputText
-import com.example.parcialtp3_2.infraestructura.AppDatabase
-import com.example.parcialtp3_2.infraestructura.UserEntity
+import com.example.parcialtp3_2.infraestructure.RetrofitClient
+import com.example.parcialtp3_2.infraestructure.room.AppDatabase
+import com.example.parcialtp3_2.infraestructure.room.UserEntity
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.Date
 
-
 @Composable
-fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatabase) {
+fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatabase ) {
     var email by remember { mutableStateOf("") }
     var name by remember { mutableStateOf("") }
     var mobileNum by remember { mutableStateOf("") }
@@ -89,6 +91,7 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
         }
     }
 
+
     ViewBackground(
         false,
         0.80f,
@@ -112,6 +115,7 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
             }
         },
         content2 = {
+            val scope = rememberCoroutineScope()
             Column(
                 modifier = Modifier,
                 verticalArrangement = Arrangement.Top
@@ -278,15 +282,29 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
 
                     confirmationButton(
                         modifier = Modifier,
+                        // Mostrar estado de carga
                         initText = stringResource(R.string.sign_up_button),
                         buttonColor = Color(0xFF00D09E),
                         esCreate = true,
-                        onClick = { createUserOnBdd
-                            if(name.isNotEmpty() && email.isNotEmpty() && mobileNum.isNotEmpty() && birth.isNotEmpty() && psswd.isNotEmpty() && confirmPsswd == psswd){
-                                navController.navigate(ViewsRoutes.SIGN_UP.getRoute())
+                        // CORRECCIÓN: Usar 'enabled' si tu confirmationButton lo soporta
+                        // enabled = !registerState.isLoading,
+                        onClick = {
+                            createUserOnBdd
+                            if (name.isNotEmpty() && email.isNotEmpty() && mobileNum.isNotEmpty() && birth.isNotEmpty() && psswd.isNotEmpty() && confirmPsswd == psswd) {
+                                scope.launch {
+                                    val client = RetrofitClient()
+                                    val res = client.getCreate(name, email, psswd)
+
+                                    if (res != null) {
+                                        println("Login Exitoso: ${res}")
+                                        navController.navigate(ViewsRoutes.SIGN_UP.getRoute())
+                                    } else {
+                                        println("Algo salió mal")
+                                    }
+                                }
                             }
-                        }
-                    )
+
+                        })
                     Spacer(Modifier.height(5.dp))
                     Text(
                         text = buildAnnotatedString {

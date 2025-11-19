@@ -356,8 +356,6 @@ fun Home(navController: NavController, modifier: Modifier){
                                 },
                         )
                     }
-
-
                 }
                 Column(
                     verticalArrangement = Arrangement.spacedBy(25.dp),
@@ -433,7 +431,6 @@ fun Home(navController: NavController, modifier: Modifier){
                         expense = 4000.00,
                         expenseColorIsBlue = false
                     )
-
                 }
             }
         }
