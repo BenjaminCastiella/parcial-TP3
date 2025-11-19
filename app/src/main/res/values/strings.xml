@@ -54,6 +54,27 @@
     <string name="terms_condition">Terms And Conditions</string>
     <string name="new_pin">New Pin</string>
     <string name="current_pin">Current Pin</string>
+    <string name="thirtyOff">30% of your expenses, looks good.</string>
+    <string name="thirty">30%</string>
+    <string name="twentyThousand">$20,000.00</string>
+    <string name="savings">Savings On Goals</string>
+    <string name="revenueLastWeek">Revenue Last Week</string>
+    <string name="fourThousand">$4.000.00</string>
+    <string name="foodLastWeek">Food Last Week</string>
+    <string name="minusHundred">-$100.00</string>
+    <string name="welcomeBack">Hi, Welcome Back</string>
+    <string name="goodMorning">Good Morning</string>
+    <string name="balance">Total balance</string>
+    <string name="totalBalance">$7,783.00</string>
+    <string name="expense">Total expense</string>
+    <string name="totalExpense">-$1.187.40</string>
+    <string name="daily">Daily</string>
+    <string name="weekly">Weekly</string>
+    <string name="monthly">Monthly</string>
+    <string name="salaryExpense">Salary</string>
+    <string name="groceries">Groceries</string>
+    <string name="rent">Rent</string>
+    <string name="transport">Transport</string>
 
 
 </resources>

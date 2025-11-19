@@ -3,64 +3,63 @@ package com.example.parcialtp3_2.infraestructure
 import com.google.gson.annotations.SerializedName
 
 data class UserResponse(
-    val address: Adress,
-    val id : Int,
-    val email: String,
-    val username: String,
-    val password: String,
-    val name : Name,
-    val phone : String,
-
+    @SerializedName("address") val address: Adress,
+    @SerializedName("id") val id: Int,
+    @SerializedName("email") val email: String,
+    @SerializedName("username") val username: String,
+    @SerializedName("password") val password: String,
+    @SerializedName("name") val name: Name,
+    @SerializedName("phone") val phone: String,
 )
 
 data class Name(
-    val firstname: String,
-    val lastname: String
+    @SerializedName("firstname") val firstname: String,
+    @SerializedName("lastname") val lastname: String
 )
+
 data class Adress(
-   val geoLocation : GeoLocation,
-    val city : String,
-    val street : String,
-    val number : Int,
-    val zipcode : String
+    @SerializedName("geolocation") val geoLocation: GeoLocation,
+    @SerializedName("city") val city: String,
+    @SerializedName("street") val street: String,
+    @SerializedName("number") val number: Int,
+    @SerializedName("zipcode") val zipcode: String
 )
+
 data class GeoLocation(
-    val lat: Double,
-  val long: Double
+    @SerializedName("lat") val lat: Double,
+    @SerializedName("long") val long: Double
 )
 
 data class CreateUserRequest(
-    val id: Int,
-    val username: String,
-    val email: String,
-    val password: String
+    @SerializedName("id") val id: Int,
+    @SerializedName("username") val username: String,
+    @SerializedName("email") val email: String,
+    @SerializedName("password") val password: String
 )
 
 data class LoginRequest(
-    val username: String,
-    val password: String
+    @SerializedName("username") val username: String,
+    @SerializedName("password") val password: String
 )
 
 data class LoginResponse(
-
-    val token: String,
-
+    @SerializedName("token") val token: String,
 )
 
 data class TransactionResponse(
-    val user_id :Int,
-    val balanced: Double,
-    val income : Int,
-    val expense : Double,
-    val transaction : List<Transaction>
-)
-data class Transaction(
-    val transaction_id: String,
-    val date: String,
-    val description: String,
-    val amount: Double,
-    val currency : String,
-    val type : String,
-    val subtype : String
+    @SerializedName("user_id") val user_id: Int,
+    @SerializedName("balanced") val balanced: Double,
+    @SerializedName("income") val income: Int,
+    @SerializedName("expense") val expense: Double,
+    @SerializedName("transaction") val transaction: List<Transaction>
 )
 
+data class Transaction(
+    @SerializedName("transaction_id") val transaction_id: String,
+    @SerializedName("date") val date: String,
+    @SerializedName("description") val description: String,
+    @SerializedName("amount") val amount: Double,
+    @SerializedName("currency") val currency: String,
+    @SerializedName("type") val type: String,
+    @SerializedName("subtype") val subtype: String
+)

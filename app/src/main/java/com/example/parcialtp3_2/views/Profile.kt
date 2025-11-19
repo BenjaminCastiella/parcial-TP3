@@ -33,6 +33,7 @@ import com.example.parcialtp3_2.components.IconBox
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -43,6 +44,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import com.example.parcialtp3_2.components.ListProfile
 import com.example.parcialtp3_2.components.VistaPerfil
+import com.example.parcialtp3_2.infraestructure.RetrofitClient
 import data.ItemsPerfil
 
 
@@ -96,6 +98,13 @@ fun Profile(navController: NavController, modifier: Modifier) {
 
         },
         content2 = {
+            LaunchedEffect(key1 = Unit) {
+                val client = RetrofitClient()
+                val res = client.getUser()
+
+                println(res)
+            }
+
             Box(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.TopCenter

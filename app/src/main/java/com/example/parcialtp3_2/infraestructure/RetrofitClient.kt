@@ -64,7 +64,6 @@ class RetrofitClient : com.example.parcialtp3_2.infraestructure.model.Retrofit {
         email: String,
         password: String
     ): UserResponse? {
-
         val randomId = (System.currentTimeMillis() % 1000000).toInt()
 
         val request = CreateUserRequest(

@@ -1,5 +1,6 @@
 package com.example.parcialtp3_2.views
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -45,6 +46,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.Date
 
+@SuppressLint("CoroutineCreationDuringComposition")
 @Composable
 fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatabase ) {
     var email by remember { mutableStateOf("") }
@@ -91,7 +93,6 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
         }
     }
 
-
     ViewBackground(
         false,
         0.80f,
@@ -111,11 +112,11 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
                     fontWeight = FontWeight(600),
                     fontSize = 30.sp
                 )
-
             }
         },
         content2 = {
             val scope = rememberCoroutineScope()
+
             Column(
                 modifier = Modifier,
                 verticalArrangement = Arrangement.Top
@@ -148,8 +149,9 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
                             onChange = updateName
                         )
                     }
+
                     Spacer(modifier = Modifier.height(10.dp))
-                    //Email Input
+
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -169,7 +171,6 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
                             onChange = updateEmail
                         )
                     }
-                    //Mobile number Input
 
                     Spacer(modifier = Modifier.height(10.dp))
 
@@ -192,7 +193,7 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
                             onChange = updateMobileNum
                         )
                     }
-                    //Date of Birth Input
+
                     Spacer(modifier = Modifier.height(10.dp))
 
                     Column(
@@ -238,7 +239,6 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
                         )
 
                     }
-                    //Confirm password Input
 
                     Spacer(modifier = Modifier.height(10.dp))
 
@@ -282,30 +282,28 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
 
                     confirmationButton(
                         modifier = Modifier,
-                        // Mostrar estado de carga
                         initText = stringResource(R.string.sign_up_button),
                         buttonColor = Color(0xFF00D09E),
                         esCreate = true,
-                        // CORRECCIÓN: Usar 'enabled' si tu confirmationButton lo soporta
-                        // enabled = !registerState.isLoading,
                         onClick = {
-                            createUserOnBdd
                             if (name.isNotEmpty() && email.isNotEmpty() && mobileNum.isNotEmpty() && birth.isNotEmpty() && psswd.isNotEmpty() && confirmPsswd == psswd) {
                                 scope.launch {
                                     val client = RetrofitClient()
                                     val res = client.getCreate(name, email, psswd)
 
                                     if (res != null) {
-                                        println("Login Exitoso: ${res}")
-                                        navController.navigate(ViewsRoutes.SIGN_UP.getRoute())
+                                        println("Cuenta creada con éxito: ${res}")
+                                        navController.navigate(ViewsRoutes.HOME.getRoute())
                                     } else {
                                         println("Algo salió mal")
+                                        navController.navigate(ViewsRoutes.PROFILE.getRoute())
                                     }
                                 }
                             }
-
                         })
+
                     Spacer(Modifier.height(5.dp))
+
                     Text(
                         text = buildAnnotatedString {
                             append("Already have an account? ")
@@ -316,15 +314,13 @@ fun CreateAccount(navController: NavController, modifier: Modifier, db: AppDatab
                             ){
                                 append("Log In")
                             }
-
                         },
                         modifier = Modifier
                             .padding(top = 5.dp)
                             .clickable {
-                                //Navigation to Sign Up Screen
                                 navController.navigate(ViewsRoutes.SIGN_UP.getRoute())
-                            },)
-
+                            },
+                        )
                 }
             }
         })

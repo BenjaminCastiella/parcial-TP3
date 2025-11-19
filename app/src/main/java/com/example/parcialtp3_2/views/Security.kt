@@ -34,7 +34,6 @@ import java.security.Security
 
 @Composable
 fun Security(navController: NavController, modifier: Modifier) {
-
     ViewBackground(
         true,
         0.85f,
@@ -75,7 +74,6 @@ fun Security(navController: NavController, modifier: Modifier) {
                     fontSize = 20.sp,
                     color = colorResource(R.color.Void),
                     modifier = Modifier
-
                 )
             }
 

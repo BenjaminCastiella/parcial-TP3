@@ -7,9 +7,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -21,10 +19,7 @@ import com.example.parcialtp3_2.components.*
 import com.example.parcialtp3_2.components.ViewBackground
 import com.example.parcialtp3_2.components.BalanceCard
 import com.example.parcialtp3_2.components.IncomeExpenseRow
-import com.example.parcialtp3_2.components.TransactionRow
-import androidx.compose.ui.draw.clip
 import com.example.parcialtp3_2.infraestructure.RetrofitClient
-import kotlinx.coroutines.launch
 
 data class TxItem(
     val id: Int,
@@ -36,7 +31,7 @@ data class TxItem(
 )
 
 @Composable
-fun TransactionScreenContent(modifier: Modifier, navController: NavController) {
+fun Transactions(modifier: Modifier, navController: NavController) {
     var selectedIndex by remember { mutableStateOf<Int?>(null) }
 
     Box(modifier = modifier) {
@@ -94,6 +89,13 @@ fun TransactionScreenContent(modifier: Modifier, navController: NavController) {
                 }
             },
             content2 = {
+                LaunchedEffect(key1 = Unit) {
+                    val client = RetrofitClient()
+                    val res = client.getTransaction()
+
+                    println(res)
+                }
+
                 Box (
                     modifier = Modifier
                         .fillMaxWidth()

@@ -33,7 +33,7 @@ import com.example.parcialtp3_2.views.SecurityPinView
 import com.example.parcialtp3_2.views.SignUp
 import com.example.parcialtp3_2.views.SuccessView
 import com.example.parcialtp3_2.views.TermsConditions
-import com.example.parcialtp3_2.views.TransactionScreenContent
+import com.example.parcialtp3_2.views.Transactions
 import com.example.parcialtp3_2.views.Welcome
 import kotlinx.coroutines.launch
 
@@ -89,7 +89,7 @@ class MainActivity : ComponentActivity() {
                             Profile(navController, modifier = Modifier.padding(innerPadding))
                         }
                         composable(route = ViewsRoutes.TRANSACTIONS.getRoute()) {
-                            TransactionScreenContent(modifier = Modifier.padding(innerPadding), navController)
+                            Transactions(modifier = Modifier.padding(innerPadding), navController)
                         }
                         composable(route = ViewsRoutes.SECURITY.getRoute()) {
                             Security(navController, modifier = Modifier.padding(innerPadding))

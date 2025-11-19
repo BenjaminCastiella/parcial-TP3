@@ -32,6 +32,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import com.example.parcialtp3_2.R
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -42,7 +43,11 @@ import com.example.parcialtp3_2.components.ViewBackground
 
 @Composable
 fun Home(navController: NavController, modifier: Modifier){
-    val periods = listOf<String>("Daily", "Weekly", "Monthly")
+    val periods = listOf<String>(
+        stringResource(R.string.daily),
+        stringResource(R.string.weekly),
+        stringResource(R.string.monthly),
+    )
     var selectedPeriod by remember { mutableIntStateOf(2) }
     val scrollState = rememberScrollState()
 
@@ -58,12 +63,12 @@ fun Home(navController: NavController, modifier: Modifier){
                     modifier = Modifier.weight(1f)
                 ){
                     Text(
-                        "Hi, Welcome Back",
+                        stringResource(R.string.welcomeBack),
                         fontWeight = FontWeight.Bold,
                         fontSize = 24.sp,
                     )
                     Text(
-                        "Good Morning",
+                        stringResource(R.string.goodMorning),
                         fontSize = 16.sp
                     )
                 }
@@ -109,12 +114,12 @@ fun Home(navController: NavController, modifier: Modifier){
                                 modifier = Modifier.size(13.dp)
                             )
                             Text(
-                                "Total balance",
+                                stringResource(R.string.balance),
                                 fontSize = 15.sp
                             )
                         }
                         Text(
-                            "$7,783.00",
+                            stringResource(R.string.totalBalance),
                             fontSize = 27.sp,
                             fontWeight = FontWeight.Bold,
                             color = Color(0xFFFFFFFF)
@@ -147,12 +152,12 @@ fun Home(navController: NavController, modifier: Modifier){
                                 modifier = Modifier.size(13.dp)
                             )
                             Text(
-                                "Total expense",
+                                stringResource(R.string.expense),
                                 fontSize = 15.sp
                             )
                         }
                         Text(
-                            "-$1.187.40",
+                            stringResource(R.string.totalExpense),
                             fontSize = 27.sp,
                             fontWeight = FontWeight.Bold,
                             color = Color(0xFF0068FF)
@@ -183,14 +188,14 @@ fun Home(navController: NavController, modifier: Modifier){
                     contentAlignment = Alignment.CenterStart
                 ) {
                     Text(
-                        text = "30%",
+                        stringResource(R.string.thirty),
                         color = Color.White,
                         fontSize = 14.sp,
                     )
                 }
 
                 Text(
-                    text = "$20,000.00",
+                    stringResource(R.string.twentyThousand),
                     color = Color.Black,
                     fontSize = 14.sp,
                     modifier = Modifier
@@ -213,7 +218,7 @@ fun Home(navController: NavController, modifier: Modifier){
                         modifier = Modifier.size(13.dp)
                     )
                     Text(
-                        "30% of your expenses, looks good.",
+                        stringResource(R.string.thirtyOff),
                         fontSize = 17.sp
                     )
                 }
@@ -248,7 +253,7 @@ fun Home(navController: NavController, modifier: Modifier){
                                 contentDescription = ""
                             )
                             Text(
-                                "Savings On Goals",
+                                stringResource(R.string.savings),
                                 modifier = Modifier.width(80.dp),
                                 textAlign = TextAlign.Center
                             )
@@ -280,11 +285,11 @@ fun Home(navController: NavController, modifier: Modifier){
                                     horizontalAlignment = Alignment.Start,
                                 ) {
                                     Text(
-                                        "Revenue Last Week",
+                                        stringResource(R.string.revenueLastWeek),
                                         fontSize = 14.sp,
                                     )
                                     Text(
-                                        "$4.000.00",
+                                        stringResource(R.string.fourThousand),
                                         fontSize = 17.sp,
                                         fontWeight = FontWeight.Bold
                                     )
@@ -313,11 +318,11 @@ fun Home(navController: NavController, modifier: Modifier){
                                     horizontalAlignment = Alignment.Start,
                                 ) {
                                     Text(
-                                        "Food Last Week",
+                                        stringResource(R.string.foodLastWeek),
                                         fontSize = 14.sp,
                                     )
                                     Text(
-                                        "-$100.00",
+                                        stringResource(R.string.minusHundred),
                                         fontSize = 20.sp,
                                         fontWeight = FontWeight.Bold,
                                         color = Color(0xFF0068FF)
@@ -376,10 +381,10 @@ fun Home(navController: NavController, modifier: Modifier){
                             modifier = Modifier.fillMaxWidth(),
                             iconBox = IconBoxes.LIGHT_BLUE_SMALL,
                             icon = R.drawable.money,
-                            expenseTitle = "Salary",
+                            expenseTitle = stringResource(R.string.salaryExpense),
                             date = "April 30",
                             hour = "28:27",
-                            category = "Monthly",
+                            category = stringResource(R.string.monthly),
                             expense = 4000.00,
                             expenseColorIsBlue = false
                         )
@@ -387,7 +392,7 @@ fun Home(navController: NavController, modifier: Modifier){
                             modifier = Modifier.fillMaxWidth(),
                             iconBox = IconBoxes.MID_BLUE_SMALL,
                             icon = R.drawable.groceries,
-                            expenseTitle = "Groceries",
+                            expenseTitle = stringResource(R.string.groceries),
                             date = "April 24",
                             hour = "17:00",
                             category = "Pantry",
@@ -398,7 +403,7 @@ fun Home(navController: NavController, modifier: Modifier){
                             modifier = Modifier.fillMaxWidth(),
                             iconBox = IconBoxes.DARK_BLUE_SMALL,
                             icon = R.drawable.key,
-                            expenseTitle = "Rent",
+                            expenseTitle = stringResource(R.string.rent),
                             date = "April 15",
                             hour = "08:30",
                             category = "Rent",
@@ -409,14 +414,13 @@ fun Home(navController: NavController, modifier: Modifier){
                             modifier = Modifier.fillMaxWidth(),
                             iconBox = IconBoxes.MID_BLUE_SMALL,
                             icon = R.drawable.bus,
-                            expenseTitle = "Transport",
+                            expenseTitle = stringResource(R.string.transport),
                             date = "April 08",
                             hour = "09:30",
                             category = "Fuel",
                             expense = -4.13,
                             expenseColorIsBlue = true
                         )
-                        // agrega los demás Expense aquí igual
                     }
                 }
             }
